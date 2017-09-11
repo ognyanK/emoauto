@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('panelInsert');
 });
 
-Route::resource('welcome', 'PostController');
+Route::resource('panelInsert', 'PostController');
 
 //Route::resource('panelInsert', 'PostController');

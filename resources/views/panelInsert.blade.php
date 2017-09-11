@@ -66,25 +66,8 @@
         </head>
         <body>
 
-        {{!! Form::open(array('route' => 'welcome.store')) !!}}
-              <!--<form name="pub" method="get" action="welcome" style="margin: 0px; padding: 0px;">-->         
-      <input type="hidden" name="topmenu" value="1">
-      <input type="hidden" name="act" value="1">
-      <input type="hidden" name="subact" value="4">
-      <input type="hidden" name="rub" value="1">
-      <input type="hidden" name="actions" value="1">
-      <input type="hidden" name="pubact" value="1">
-      
-      <input type="hidden" name="f0" value="5.53.255.156">
-    <input type="hidden" name="f1" value="">
-    <input type="hidden" name="f2" value="">
-    <input type="hidden" name="f3" value="">
-    <input type="hidden" name="f4" value="">
-    <input type="hidden" name="f26" value="">
-    <input type="hidden" name="f27" value="">
-
-                                        
-
+        {{!! Form::open(array('route' => 'panelInsert.store')) !!}}
+              <!--<form name="pub" method="get" action="welcome" style="margin: 0px; padding: 0px;">-->             
           <table width=940 cellspacing=0 cellpadding=0 border=0 style="margin:0 auto;">
             <tr>
               <td width=145 style="padding-top:10px" class="pubTitles pubTitlesBlue">Марка</td>
