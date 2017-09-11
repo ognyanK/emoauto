@@ -1,0 +1,23 @@
+// SASS MIXINS
+
+@mixin flexbox($alignself: false, $flexflow: false, $justifycontent: false) {
+    @if $alignself { align-self: $alignself; }
+    display: flex;
+    @if $flexflow { flex-flow: $flexflow; }
+    @if $justifycontent { justify-content: $justifycontent; }
+}
+
+
+@mixin placeholder($color) {
+    &::-webkit-input-placeholder {
+       color: $color;
+    }
+
+    &::-moz-placeholder {
+       color: $color;
+    }
+
+    &:-ms-input-placeholder {
+       color: $color;
+    }
+}
