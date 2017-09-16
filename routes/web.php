@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('panelInsert');
-});
 
-Route::resource('panelInsert', 'PostController');
+Route::get('/', 'LoadController@show');
+
+Route::get('/something/{id}', 'BrandController@show');
 
 //Route::resource('panelInsert', 'PostController');
+
+Route::resource('panelInsert', 'PostController');

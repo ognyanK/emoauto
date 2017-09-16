@@ -39,29 +39,49 @@ class PostController extends Controller
 
         $s = "random";
         $post = new Post();
-        $post->marka = $request->input('f5');
-        $post->model = $s;
-        $post->modifikaciq = $s;
-        $post->tip_dvigatel = $s;
-        $post->sustoqnie = $s;
-        $post->moshtnost = $s;
-        $post->evrostandart = $s;
-        $post->skorostna_kutiq = $s;
-        $post->kategoriq = $s;
-        $post->cena = $s;
-        $post->valuta = $s;
-        $post->data_proizvodstvo = $s;
-        $post->godina_proizvodstvo = $s;
-        $post->probeg = $s;
-        $post->po_dogovarqne = false;
-        $post->cvqt = $s;
+        $post->brand = $s;//$request->input('brand');
+        $post->model = $s;//$request->input('model');
+        $post->modification = $s;
+        $post->engine_type = $s;//$request->input('engine_type');
+        $post->state = $request->input('state');
+
+        $post->power = $s;
+        $post->euro_standard = $s;
+        $post->transmission = $s;
+        $post->category = $s;
+
+        $post->price = $s;
+        $post->currency = $s;
+        $post->date_of_manufacture = $s;
+        $post->year_of_manufacture = $s;
+        $post->mileage = $s;
+
+        $post->negotiable = false;
+
+        $post->color = $s;
         $post->region = $s;
-        $post->naseleno_mqsto = $s;
-        $post->validnost_na_obqvata = $s;
+        $post->populated_place = $s;
+        $post->expiration_date = $s;
+
+        $post->safety = $this->getCheckboxValues($request, "safety", 17);
+        $post->comfort = $this->getCheckboxValues($request, "comfort", 31);
+        $post->other = $this->getCheckboxValues($request, "others", 28);;
+        $post->protection = $this->getCheckboxValues($request, "protection", 14);;
 
         $post->save();
 
-        return var_dump('<pre>' . $request . '</pre>');
+        return "ok";
+    }
+
+    private function getCheckboxValues(Request $request, $category, $range) {
+        $arr = array();
+        for($i = 1; $i<=$range ; $i++) {
+            $value = $request->input($category.$i);
+            if(!is_null($value)){
+                array_push($arr, $i);
+            }
+        }
+        return implode(" ", $arr);
     }
 
     /**

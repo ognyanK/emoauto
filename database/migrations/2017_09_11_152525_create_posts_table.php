@@ -16,29 +16,34 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('marka');
+            $table->string('brand');
             $table->string('model');
-            $table->string('modifikaciq');
-            $table->string('tip_dvigatel');
-            $table->string('sustoqnie');
+            $table->string('modification');
+            $table->string('engine_type');
+            $table->string('state');
 
-            $table->string('moshtnost');
-            $table->string('evrostandart');
-            $table->string('skorostna_kutiq');
-            $table->string('kategoriq');
+            $table->string('power');
+            $table->string('euro_standard');
+            $table->string('transmission');
+            $table->string('category');
 
-            $table->string('cena');
-            $table->string('valuta');
-            $table->string('data_proizvodstvo');
-            $table->string('godina_proizvodstvo');
-            $table->string('probeg');
+            $table->string('price');
+            $table->string('currency');
+            $table->string('date_of_manufacture');
+            $table->string('year_of_manufacture');
+            $table->string('mileage');
 
-            $table->boolean('po_dogovarqne');
+            $table->boolean('negotiable');
 
-            $table->string('cvqt');
+            $table->string('color');
             $table->string('region');
-            $table->string('naseleno_mqsto');
-            $table->string('validnost_na_obqvata');
+            $table->string('populated_place');
+            $table->string('expiration_date');
+
+            $table->string("safety");
+            $table->string("comfort");
+            $table->string("other");
+            $table->string("protection");
         });
     }
 
