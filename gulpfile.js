@@ -83,8 +83,7 @@ gulp.task('img', function() {
 //    del.sync('build');
 //});
 
-gulp.task('watch', ['sass', 'scripts', 'styles'], function() { // 'browser-sync', first if enabled
-    gulp.watch(paths.styles, ['sass', 'styles'])
+gulp.task('watch', ['scripts'], function() { // 'browser-sync', first if enabled
     //gulp.watch(paths.images, ['img'])
     gulp.watch(paths.scripts, ['scripts'])
     //gulp.watch('*.html', browserSync.reload)

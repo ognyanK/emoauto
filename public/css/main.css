@@ -71,35 +71,42 @@ main {
   border: 0;
   margin: 0;
   outline: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 *,
 *:before,
 *:after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 html {
-  font-size: 100%; }
+  font-size: 100%;
+}
 
 body {
   font-size: 1rem;
-  line-height: 1; }
+  line-height: 1;
+}
 
 nav ul {
-  list-style: none; }
+  list-style: none;
+}
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 hr {
   margin: 0;
   padding: 0;
-  text-align: left; }
+  text-align: left;
+}
 
 input,
 select,
@@ -108,12 +115,15 @@ button {
   border: 0;
   background: none;
   margin: 0;
-  padding: 0; }
-  input:focus,
-  select:focus,
-  textarea:focus,
-  button:focus {
-    outline: 0; }
+  padding: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: 0;
+}
 
 h1,
 h2,
@@ -123,14 +133,22 @@ h5,
 h6,
 label,
 th {
-  font-weight: normal; }
+  font-weight: normal;
+}
 
 main {
-  display: block; }
+  display: block;
+}
 
 img {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
 @media only screen and (min-width: 35.5em) {
   form {
-    max-width: 900px; } }
+    max-width: 900px;
+  }
+}
+ 
+
+ /*# sourceMappingURL= main.css.map */
