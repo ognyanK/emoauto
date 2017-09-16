@@ -5,11 +5,11 @@
         @include('partials._nav')
         
         <!-- container -->
-        <div class="container">
+        <main class="site-main">
 
         	@yield('content')
 
-        </div>
+        </main>
         <!-- end of .container -->
 
         @include('partials._scripts')

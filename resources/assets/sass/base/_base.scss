@@ -1,1 +1,9 @@
 // This file contains very basic styles.
+.wrapper {
+    position: relative;
+    margin: 0 auto;
+
+    &.wrapper-1000 {
+        max-width: 1000px;
+    }
+}

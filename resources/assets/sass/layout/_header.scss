@@ -2,7 +2,19 @@
 
 
 // Mobile first >>> put styles outside media query
+.site-header {
+    background: color(red);
+    padding: 20px 30px;
+    position: relative;
 
+    .header {
+        @include flexbox(center, row, space-between);
+    } 
+
+    .hamburger {
+        width: 30px;
+    }
+}
 
 // 568+ 
 @media only screen and (min-width: 568 / 16 * 1em) {
@@ -16,5 +28,18 @@
 
 // 1024+ 
 @media only screen and (min-width: 1024 / 16 * 1em) {
-
+    .site-header {
+        background: color(red);
+        padding: 20px 30px;
+        position: relative;
+    
+        .header {
+            margin: 0 auto;
+            max-width: 1000px;
+        } 
+    
+        .hamburger {
+            display: none;
+        }
+    }
 }

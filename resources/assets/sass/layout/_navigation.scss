@@ -3,6 +3,38 @@
 
 // Mobile first >>> put styles outside media query
 
+.header-menu {
+    display: none;
+}
+
+.header-dropdown {
+    background: color(lightred);
+    display: none;
+    padding: 30px 10px;
+    position: absolute;
+    top: 73px;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+
+    &.active-state {
+        display: block;
+    }
+
+    li {
+        padding-bottom: 15px;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    a {
+        color: color(white);
+        display: block;
+        text-align: center;
+    }
+}
 
 // 568+ 
 @media only screen and (min-width: 568 / 16 * 1em) {
@@ -16,5 +48,20 @@
 
 // 1024+ 
 @media only screen and (min-width: 1024 / 16 * 1em) {
+    .header-menu {
+        display: block;
+        
+        a {
+            color: color(white);
+            padding-right: 15px;
 
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+
+    .header-dropdown {
+        display: none;
+    }
 }

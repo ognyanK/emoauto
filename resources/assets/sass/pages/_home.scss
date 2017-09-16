@@ -4,11 +4,98 @@
 // Mobile first >>> put styles outside media query
 
 
+.slider-container {
+    position: relative;
+
+    .slider-logo {
+        position: absolute;
+        width: 30px;
+        left: 50px;
+        top: 50px;
+        z-index: 1000;
+    }
+
+    .wrap-slider {
+        position: relative;
+        margin: 0 auto;
+        max-width: 800px
+    }
+
+    .bx-pager {
+        font-size: 0;
+        text-align: center !important;
+        width: 100% !important;
+
+        .bx-pager-item {
+            display: inline-block;
+        }
+    }
+
+    .bx-controls-direction {
+        display: none;
+    }
+
+    .bx-controls-auto {
+        display: none;
+    }
+}
+
+.feed {
+    padding: 10px;
+
+    h1 {
+        color: grey;
+        font-size: calculateRem(24px);
+    }
+}
+
+.news-feed {
+    padding: 30px 0;
+
+    img {
+        width: 100%;
+    }
+
+    .item {
+        padding-bottom: 30px;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    .news-content {
+        padding-top: 10px;
+        text-align: center;
+        
+        h2, .miles {
+            color: color(grey);
+            padding-bottom: 10px;
+            font-size: calculateRem(14px);
+        }
+
+        .price {
+            color: color(grey);
+            padding-bottom: 5px;
+            font-size: calculateRem(24px);
+        }
+
+        .city {
+            color: color(grey);
+            padding-bottom: 5px;
+            font-size: calculateRem(18px);
+        }
+
+        .date {
+            color: color(lightgrey);
+            font-size: calculateRem(10px);
+        }
+    }
+}
+
 // 568+
 @media only screen and (min-width: 568 / 16 * 1em) {
-	form{  
-        max-width: 900px; 
-    } 
+
 } 
 
 // 768+
@@ -18,5 +105,45 @@
 
 // 1024+
 @media only screen and (min-width: 1024 / 16 * 1em) {
+    .feed {
+        background: color(lightgrey);
+    }
+    .news-feed {
+        padding: 30px 0;
+    
+        .item {
+            @include flexbox(stretch, row, space-between);
+            padding-bottom: 20px;
+            width: cp(600, 1000);
 
+            .image {
+                width: cp(200, 600);
+            }
+        }
+    
+        .news-content {
+            padding-top: 0;
+            text-align: left;
+            width: cp(350, 600);
+            
+            h2, .miles {
+                padding-bottom: 15px;
+                font-size: calculateRem(18px);
+            }
+    
+            .price {
+                padding-bottom: 10px;
+                font-size: calculateRem(28px);
+            }
+    
+            .city {
+                padding-bottom: 10px;
+                font-size: calculateRem(22px);
+            }
+    
+            .date {
+                font-size: calculateRem(14px);
+            }
+        }
+    }
 }
