@@ -36,41 +36,37 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //var_dump($request);
+        $arr = array('base_category','brand','model','modif','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place');
 
-        $s = "random";
         $post = new Post();
-        $post->brand = $s;//$request->input('brand');
-        $post->model = $s;//$request->input('model');
-        $post->modification = $s;
-        $post->engine_type = $s;//$request->input('engine_type');
-        $post->state = $request->input('state');
+        $s = "random";
 
-        $post->power = $s;
-        $post->euro_standard = $s;
-        $post->transmission = $s;
-        $post->category = $s;
-
-        $post->price = $s;
-        $post->currency = $s;
-        $post->date_of_manufacture = $s;
-        $post->year_of_manufacture = $s;
-        $post->mileage = $s;
-
-        $post->negotiable = false;
-
-        $post->color = $s;
-        $post->region = $s;
-        $post->populated_place = $s;
-        $post->expiration_date = $s;
+        for($i=0;$i<count($arr);$i++){
+            $value = $request->input($arr[$i]);
+            if(!is_null($value)){
+                $post->setAttribute($arr[$i], $value);
+            }
+        }
 
         $post->safety = $this->getCheckboxValues($request, "safety", 17);
         $post->comfort = $this->getCheckboxValues($request, "comfort", 31);
-        $post->other = $this->getCheckboxValues($request, "others", 28);;
-        $post->protection = $this->getCheckboxValues($request, "protection", 14);;
+        $post->other = $this->getCheckboxValues($request, "others", 16);
+        $post->protection = $this->getCheckboxValues($request, "protection", 8);
+
+        $post->exterior = $this->getCheckboxValues($request, "exterior", 14);
+        $post->interior = $this->getCheckboxValues($request, "interior", 3);
+        $post->specialized = $this->getCheckboxValues($request, "specialized", 3);
 
         $post->save();
 
         return "ok";
+    }
+
+    private function set($post, $attr, $value) {
+        if(!is_null($value)){
+            echo $value;
+            $post->attributes[$attr] = $value;
+        }
     }
 
     private function getCheckboxValues(Request $request, $category, $range) {
