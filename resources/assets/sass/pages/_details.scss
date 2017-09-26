@@ -1,3 +1,5 @@
+//Mobile first
+
 .car--details {
     padding: 20px 0;
 }
@@ -29,8 +31,16 @@
     bottom: 0;
     right: 0;
 
+    * {
+        visibility: hidden;
+    }
+
     &.active-state {
         visibility: visible;
+
+        * {
+            visibility: visible;
+        }
     }
 
     .gallery {
@@ -49,6 +59,17 @@
 
         &:hover {
             cursor: pointer;
+        }
+    }
+}
+
+@media only screen and (min-width: 1024 / 16 * 1em) {
+    .the--gallery {
+        .gallery {
+            transform: translate(0, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            left: 50%;
+            max-width: 900px;
         }
     }
 }

@@ -396,7 +396,15 @@ img {
   right: 0;
 }
 
+.the--gallery * {
+  visibility: hidden;
+}
+
 .the--gallery.active-state {
+  visibility: visible;
+}
+
+.the--gallery.active-state * {
   visibility: visible;
 }
 
@@ -417,6 +425,15 @@ img {
 
 .the--gallery .close-gallery:hover {
   cursor: pointer;
+}
+
+@media only screen and (min-width: 64em) {
+  .the--gallery .gallery {
+    transform: translate(0, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    left: 50%;
+    max-width: 900px;
+  }
 }
  
 
