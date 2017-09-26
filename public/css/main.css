@@ -408,7 +408,7 @@ img {
   visibility: visible;
 }
 
-.the--gallery .gallery {
+.the--gallery .gallery-container {
   position: relative;
   top: 50%;
   transform: translate(0, -50%);
@@ -428,8 +428,30 @@ img {
 }
 
 @media only screen and (min-width: 64em) {
-  .the--gallery .gallery {
-    transform: translate(0, -50%);
+  .car--details {
+    align-self: stretch;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+  .car--details .gallery {
+    width: 30%;
+  }
+  .car--details .spec {
+    background: red;
+    width: 65%;
+  }
+  .tumbnails {
+    max-width: none;
+  }
+  .tumbnails .image {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    height: 70px;
+    width: 70px;
+  }
+  .the--gallery .gallery-container {
+    transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     left: 50%;
     max-width: 900px;

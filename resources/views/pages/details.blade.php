@@ -30,7 +30,7 @@
                     <img src="images/menuCloseBtn.png" alt="menuCloseBtn.png">
                 </span>
 
-                <div class="gallery">
+                <div class="gallery-container">
                     <ul id="imageGallery">
                         <li data-thumb="images/example-car.png" data-src="images/example-car.png">
                             <img src="images/example-car.png" />

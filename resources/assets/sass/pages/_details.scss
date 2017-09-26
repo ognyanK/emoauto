@@ -43,7 +43,7 @@
         }
     }
 
-    .gallery {
+    .gallery-container {
         position: relative;
         top: 50%;
         transform: translate(0, -50%);
@@ -64,9 +64,33 @@
 }
 
 @media only screen and (min-width: 1024 / 16 * 1em) {
-    .the--gallery {
+    .car--details {
+        @include flexbox(stretch, row nowrap, space-between);
+    
         .gallery {
-            transform: translate(0, -50%);
+            width: cp(300, 1000);   
+        }
+
+        .spec {
+            background: red;
+            width: cp(650, 1000);   
+        }
+    }
+
+    .tumbnails {
+        max-width: none;
+    
+        .image {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            height: 70px;
+            width: 70px;
+        }
+    }
+
+    .the--gallery {
+        .gallery-container {
+            transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
             left: 50%;
             max-width: 900px;
