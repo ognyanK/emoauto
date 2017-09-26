@@ -24,6 +24,24 @@
 
                 </div>
             </div>
+
+            <div class="the--gallery">
+                <span class="close-gallery">
+                    <img src="images/menuCloseBtn.png" alt="menuCloseBtn.png">
+                </span>
+
+                <div class="gallery">
+                    <ul id="imageGallery">
+                        <li data-thumb="images/example-car.png" data-src="images/example-car.png">
+                            <img src="images/example-car.png" />
+                        </li>
+    
+                        <li data-thumb="images/example-car.png" data-src="images/example-car.png">
+                            <img src="images/example-car.png" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

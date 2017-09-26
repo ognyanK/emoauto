@@ -15,6 +15,7 @@ var paths = {
     scripts: [
                 './resources/assets/js/components/jquery-3.2.1.min.js', 
                 './resources/assets/js/components/jquery.bxslider.min.js',
+                './resources/assets/js/components/lightslider.js',
                 './resources/assets/js/app.js'
             ],
     images: './resources/assets/images/**/*'
@@ -29,9 +30,9 @@ gulp.task('sass', function() {
 });
 
 gulp.task('styles', function () {
-    gulp.src('./resources/assets/css/jquery.bxslider.min.css')
+    gulp.src('./resources/assets/css/lightslider.css')
 	.pipe(concat('libs.min.css'))
-	//.pipe(cssMin())  // Wait to use this pipe just for live
+	.pipe(cssMin())  // Wait to use this pipe just for live
 	.pipe(gulp.dest('./public/css'))
     .on('error', err => {
         console.log(err);
