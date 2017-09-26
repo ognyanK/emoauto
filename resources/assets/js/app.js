@@ -42,6 +42,10 @@ function detailsGallery() {
             $theGallery.removeClass('active-state');
         })
     }
+
+    if ($imageGallery.length < 1) {
+        return;
+    }
     
     $imageGallery.lightSlider({
         gallery:true,
