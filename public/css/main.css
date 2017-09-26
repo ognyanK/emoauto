@@ -362,6 +362,29 @@ img {
     font-size: 0.875rem;
   }
 }
+
+.car--details {
+  padding: 20px 0;
+}
+
+.tumbnails {
+  align-self: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin: 0 auto;
+  max-width: 240px;
+}
+
+.tumbnails .image {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  height: 70px;
+  width: 70px;
+}
  
 
  /*# sourceMappingURL= main.css.map */

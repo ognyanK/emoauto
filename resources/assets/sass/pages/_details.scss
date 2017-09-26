@@ -1,0 +1,21 @@
+.car--details {
+    padding: 20px 0;
+}
+
+.tumbnails {
+    @include flexbox(center, row wrap, flex-start);
+    margin: 0 auto;
+    max-width: 240px;
+
+    .image {
+        background: {
+            size: cover;
+            position: top center;
+            repeat: no-repeat;
+        };
+        margin-left: 10px;
+        margin-bottom: 10px;
+        height: 70px;
+        width: 70px;
+    }
+}

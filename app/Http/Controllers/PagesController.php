@@ -13,6 +13,11 @@ class PagesController extends Controller
 		return view('pages/home');
 	}
 
+	public function getDetails() 
+	{
+		return view('pages/details');
+	}
+
 	public function getAbout() 
 	{
 	

@@ -21,3 +21,4 @@ Route::get('/something/{id}', 'BrandController@show');
 Route::resource('panelInsert', 'PostController');
 
 Route::get('/home', 'PagesController@getIndex');
+Route::get('/details', 'PagesController@getDetails');
