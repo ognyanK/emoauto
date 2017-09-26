@@ -367,6 +367,24 @@ img {
   padding: 20px 0;
 }
 
+.spec table {
+  text-align: center;
+  width: 100%;
+}
+
+.spec table tr {
+  color: #2f2f2f;
+}
+
+.spec table tr:nth-child(even) {
+  background: #2f2f2f;
+  color: #fff;
+}
+
+.spec table td {
+  padding: 5px 10px;
+}
+
 .tumbnails {
   align-self: center;
   display: flex;
@@ -438,7 +456,6 @@ img {
     width: 30%;
   }
   .car--details .spec {
-    background: red;
     width: 65%;
   }
   .tumbnails {

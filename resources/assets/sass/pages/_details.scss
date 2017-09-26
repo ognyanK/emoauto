@@ -4,6 +4,26 @@
     padding: 20px 0;
 }
 
+.spec {
+    table {
+        text-align: center;
+        width: 100%;
+
+        tr {
+            color: color(grey);
+
+            &:nth-child(even) {
+                background: color(grey);
+                color: color(white);
+            }
+        }
+
+        td {
+            padding: 5px 10px;
+        }
+    }
+}
+
 .tumbnails {
     @include flexbox(center, row wrap, flex-start);
     margin: 0 auto;
@@ -72,7 +92,6 @@
         }
 
         .spec {
-            background: red;
             width: cp(650, 1000);   
         }
     }
