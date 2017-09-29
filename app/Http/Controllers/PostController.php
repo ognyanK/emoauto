@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Brand;
 
 class PostController extends Controller
 {
@@ -14,7 +15,9 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        return 'index';
+        $brands = Brand::select('name')->get();
+
+        return view('panelInsert')->with('brands', $brands); //return models
     }
 
     /**
@@ -59,7 +62,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return "ok";
+        return $request->toArray();
     }
 
     private function set($post, $attr, $value) {
@@ -88,7 +91,20 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return 'show';
+        $mainInfoKeys = array('modif','engine_type','state','power','euro_standard','transmission','category','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place');
+
+        $info = Post::where('id','=',$id)->get();
+        $info = $info[0];
+        $mainInfo = array();
+        for($i=0;$i<count($mainInfoKeys);$i++){
+            if($info[$mainInfoKeys[$i]]!=""){
+                $mainInfo[$mainInfoKeys[$i]] = $info[$mainInfoKeys[$i]];
+            }
+        }
+        $price = $info['price']." ".$info['currency'];
+        $title = $info['brand']." ".$info['model'];
+            
+        return view('pages/details')->with('mainInfo',$mainInfo)->with('price',$price)->with('title',$title);
     }
 
     /**

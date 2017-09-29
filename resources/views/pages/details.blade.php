@@ -5,48 +5,59 @@
 @section('content')
     <div class="details-cotainer">
         <div class="wrapper wrapper-1000">
-            <h1>Car title: </h1>
+            <h1>{{ $title }}</h1>
+            <hr style="height:4px;border:0px;background-color:red;border-radius:5px">
             <div class="car--details">
                 <div class="gallery">
                     <div class="current-img">
-                        <img src="images/example-car.png" alt="">
+                        <img src="/images/example-car.png" alt="">
                     </div>
 
                     <div class="tumbnails">
-                        <div class="image" style="background-image: url('images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('images/example-car.png');"></div>
+                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
+                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
+                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
+                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
+                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
+                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
+                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
+                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
                     </div>
                 </div>
-
                 <div class="spec">
-                    <table>
-                        <tr>
-                            <th>Month</th>
-                            <th>Savings</th>
-                        </tr>
-                        <tr>
-                            <td>January</td>
-                            <td>$100</td>
-                        </tr>
-                    </table>
+                        <?php
+                        $keys = array('modif'=>'Модификация','engine_type'=>'Тип двигател','state'=>'Състояние','power'=>'Мощност','euro_standard'=>'Евро стандарт','transmission'=>'Скоростна кутия','category'=>'Категория','year_of_manufacture'=>'Година на производство','date_of_manufacture'=>'Дата на производство','mileage'=>'Пробег','color'=>'Цвят','region'=>'Регион','populated_place'=>'Населено място');
+
+                        echo "<h1>Цена ".$price."</h1><hr style=\"height:2px;border:0px;background-color:red;border-radius:5px\">";
+
+                        foreach ($mainInfo as $key => $value){
+                            echo $keys[$key] . " : <b>".$value. "</b><br>";
+                        }
+
+                        echo "<hr style=\"height:2px;border:0px;background-color:red;border-radius:5px\">";
+                        ?>
+
                 </div>
             </div>
 
             <div class="the--gallery">
                 <span class="close-gallery">
-                    <img src="images/menuCloseBtn.png" alt="menuCloseBtn.png">
+                    <img src="/images/menuCloseBtn.png" alt="menuCloseBtn.png">
                 </span>
 
                 <div class="gallery-container">
                     <ul id="imageGallery">
-                        <li data-thumb="images/example-car.png" data-src="images/example-car.png">
-                            <img src="images/example-car.png" />
+                        <li data-thumb="/images/example-car.png" data-src="/images/example-car.png">
+                            <img src="/images/example-car.png" />
                         </li>
-    
-                        <li data-thumb="images/example-car.png" data-src="images/example-car.png">
-                            <img src="images/example-car.png" />
+                        <li data-thumb="/images/example-car.png" data-src="/images/example-car.png">
+                            <img src="/images/example-car.png" />
+                        </li>
+                        <li data-thumb="/images/example-car.png" data-src="/images/example-car.png">
+                            <img src="/images/example-car.png" />
+                        </li>
+                        <li data-thumb="/images/example-car.png" data-src="/images/example-car.png">
+                            <img src="/images/example-car.png" />
                         </li>
                     </ul>
                 </div>

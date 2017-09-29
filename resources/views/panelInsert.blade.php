@@ -136,7 +136,8 @@
       <body>
         <div id="content">
           <!--content open-->
-          {!! Form::open(array('route' => 'panelInsert.store')) !!}
+          <!--{!! Form::open(array('route' => 'panelInsert.store')) !!}-->
+          <form method="POST" action="panelInsert/store" id="form" accept-charset="UTF-8" enctype="multipart/form-data"><input name="_token" type="hidden" value="Ob1N5KC4PqAk0LoG66hjbQXl9gsloAEAN8fOYRME">
           <div id="header">
             <!--header open-->
             <div id="label">
@@ -874,7 +875,35 @@ window.onload = function(){
 
   $("form").submit(function() {
     if(validate()){
-      return true;
+      var form = $('#form')[0];
+      var fd = new FormData(form);
+
+      alert(allFiles.length);
+      for (var x = 0; x < allFiles.length; x++) {
+          fd.append("fileToUpload[]", allFiles[x]);
+      }
+
+      //var jo = fd.serialize();
+
+      for (var pair of fd.entries()) {
+          alert(pair[0]+ ', ' + pair[1]); 
+      }
+
+       $.ajax({
+           type: "POST",
+           url: "panelInsert",
+           cache: false,
+            contentType: false,
+            processData: false,
+           data: fd, // serializes the form's elements.
+           success: function(data)
+           {
+               alert(data); // show response from the php script.
+           }
+         });
+
+      e.preventDefault(); // avoid to execute the actual submit of the form.
+      return false;
     }else{
       showMissed();
       $('html, body').animate({ scrollTop: 0 }, 'fast');
