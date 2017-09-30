@@ -20,6 +20,7 @@ Route::get('/something/{id}', 'BrandController@show');
 
 Route::get('/panelInsert/edit/{id}', 'PostController@edit');
 Route::resource('panelInsert', 'PostController');
+Route::post('panelInsert/store', 'PostController@store');
 
 Route::get('/home', 'PagesController@getIndex');
 //Route::get('/details', 'PagesController@getDetails');
