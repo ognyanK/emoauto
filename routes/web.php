@@ -22,7 +22,6 @@ Route::get('/panelInsert/edit/{id}', 'PostController@edit');
 Route::resource('panelInsert', 'PostController');
 Route::post('panelInsert/store', 'PostController@store');
 
-Route::get('/home', 'PagesController@getIndex');
 //Route::get('/details', 'PagesController@getDetails');
 Route::get('/details/{id}', 'PostController@show');
 Route::get('/admin_panel', 'AdminPanel@show');

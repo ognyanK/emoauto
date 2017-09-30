@@ -6,9 +6,9 @@
 
         <div class="header-menu">
             <nav>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
 
-                <a href="#">About</a>
+                <a href="/about">About</a>
 
                 <a href="#">Contanct Us</a>
             </nav>

@@ -5,23 +5,7 @@
 }
 
 .spec {
-    table {
-        text-align: center;
-        width: 100%;
-
-        tr {
-            color: color(grey);
-
-            &:nth-child(even) {
-                background: color(grey);
-                color: color(white);
-            }
-        }
-
-        td {
-            padding: 5px 10px;
-        }
-    }
+    padding: 10px;
 }
 
 .tumbnails {
@@ -83,6 +67,22 @@
     }
 }
 
+.more-spec {
+    padding: 10px;
+
+    .item {
+        padding-bottom: 25px;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        h2 {
+            padding-bottom: 15px;
+        }
+    }
+}
+
 @media only screen and (min-width: 1024 / 16 * 1em) {
     .car--details {
         @include flexbox(stretch, row nowrap, space-between);
@@ -113,6 +113,19 @@
             -webkit-transform: translate(-50%, -50%);
             left: 50%;
             max-width: 900px;
+        }
+    }
+
+    .more-spec {   
+        @include flexbox(flex-start, row wrap, space-between); 
+
+        .item {
+            padding-bottom: 25px;
+            width: 33.33%;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
         }
     }
 }
