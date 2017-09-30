@@ -18,9 +18,9 @@ class PagesController extends Controller
 		return view('pages/details');
 	}
 
-	public function getAbout() 
+	public function getFeed() 
 	{
-	
+		return view('pages/feed');
 	}
 
 	public function getContact() 

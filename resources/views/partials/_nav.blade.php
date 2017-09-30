@@ -8,7 +8,7 @@
             <nav>
                 <a href="/">Home</a>
 
-                <a href="/about">About</a>
+                <a href="/feed">Feed</a>
 
                 <a href="#">Contanct Us</a>
             </nav>
