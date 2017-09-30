@@ -40,7 +40,7 @@
     }
 }
 
-.feed {
+.home-feed {
     padding: 10px;
 
     h1 {
@@ -49,48 +49,80 @@
     }
 }
 
-.news-feed {
-    padding: 30px 0;
+.offer {
+    background: color(white);
+    border-top: 5px solid color(red);
+    padding: 10px 20px;
+    text-align: center;
 
-    img {
-        width: 100%;
-    }
+    .head {
+        @include flexbox(center, row nowrap, space-between);
 
-    .item {
-        padding-bottom: 30px;
-
-        &:last-child {
-            padding-bottom: 0;
+        a {
+            color: color(black);
         }
     }
 
-    .news-content {
-        padding-top: 10px;
-        text-align: center;
-        
-        h2, .miles {
-            color: color(grey);
-            padding-bottom: 10px;
-            font-size: calculateRem(14px);
-        }
-
-        .price {
-            color: color(grey);
-            padding-bottom: 5px;
-            font-size: calculateRem(24px);
-        }
-
-        .city {
-            color: color(grey);
-            padding-bottom: 5px;
-            font-size: calculateRem(18px);
-        }
-
-        .date {
-            color: color(lightgrey);
-            font-size: calculateRem(10px);
+    .our-offers {
+        h2 {
+            padding-bottom: 15px;
         }
     }
+}
+
+.feed {
+    background: color(white);
+    padding: 10px;
+
+    .news-feed {
+        padding: 30px 0;
+    
+        img {
+            width: 100%;
+        }
+    
+        .item {
+            padding-bottom: 30px;
+    
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    
+        .news-content {
+            padding-top: 10px;
+            text-align: center;
+            
+            h2, .miles {
+                color: color(grey);
+                padding-bottom: 10px;
+                font-size: calculateRem(14px);
+            }
+    
+            .price {
+                color: color(grey);
+                padding-bottom: 5px;
+                font-size: calculateRem(24px);
+            }
+    
+            .city {
+                color: color(grey);
+                padding-bottom: 5px;
+                font-size: calculateRem(18px);
+            }
+    
+            .date {
+                color: color(lightgrey);
+                font-size: calculateRem(10px);
+            }
+        }
+    }
+}
+
+.other {
+    background: green;
+    height: 200px;
+    width: 200px;
 }
 
 // 568+
@@ -105,26 +137,38 @@
 
 // 1024+
 @media only screen and (min-width: 1024 / 16 * 1em) {
-    .feed {
+    .home-feed  {
         background: color(lightgrey);
+
+        .flex-layout {
+            @include flexbox(flex-start, row nowrap, space-between);
+
+            .offer {
+                width: 30%;
+            }
+
+            .feed {
+                width: 40%;
+            }
+        }
     }
+
     .news-feed {
         padding: 30px 0;
     
         .item {
             @include flexbox(stretch, row, space-between);
             padding-bottom: 20px;
-            width: cp(600, 1000);
 
             .image {
-                width: cp(200, 600);
+                width: cp(200, 400);
             }
         }
     
         .news-content {
             padding-top: 0;
             text-align: left;
-            width: cp(350, 600);
+            width: cp(350, 400);
             
             h2, .miles {
                 padding-bottom: 15px;

@@ -160,7 +160,7 @@ img {
 }
 
 .site-header .header {
-  align-self: center;
+  align-items: center;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -270,81 +270,125 @@ img {
   display: none;
 }
 
-.feed {
+.home-feed {
   padding: 10px;
 }
 
-.feed h1 {
+.home-feed h1 {
   color: grey;
   font-size: 1.5rem;
 }
 
-.news-feed {
+.offer {
+  background: #fff;
+  border-top: 5px solid #8e0f0f;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.offer .head {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.offer .head a {
+  color: #000;
+}
+
+.offer .our-offers h2 {
+  padding-bottom: 15px;
+}
+
+.feed {
+  background: #fff;
+  padding: 10px;
+}
+
+.feed .news-feed {
   padding: 30px 0;
 }
 
-.news-feed img {
+.feed .news-feed img {
   width: 100%;
 }
 
-.news-feed .item {
+.feed .news-feed .item {
   padding-bottom: 30px;
 }
 
-.news-feed .item:last-child {
+.feed .news-feed .item:last-child {
   padding-bottom: 0;
 }
 
-.news-feed .news-content {
+.feed .news-feed .news-content {
   padding-top: 10px;
   text-align: center;
 }
 
-.news-feed .news-content h2, .news-feed .news-content .miles {
+.feed .news-feed .news-content h2, .feed .news-feed .news-content .miles {
   color: #2f2f2f;
   padding-bottom: 10px;
   font-size: 0.875rem;
 }
 
-.news-feed .news-content .price {
+.feed .news-feed .news-content .price {
   color: #2f2f2f;
   padding-bottom: 5px;
   font-size: 1.5rem;
 }
 
-.news-feed .news-content .city {
+.feed .news-feed .news-content .city {
   color: #2f2f2f;
   padding-bottom: 5px;
   font-size: 1.125rem;
 }
 
-.news-feed .news-content .date {
+.feed .news-feed .news-content .date {
   color: #f5f5f5;
   font-size: 0.625rem;
 }
 
+.other {
+  background: green;
+  height: 200px;
+  width: 200px;
+}
+
 @media only screen and (min-width: 64em) {
-  .feed {
+  .home-feed {
     background: #f5f5f5;
+  }
+  .home-feed .flex-layout {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+  .home-feed .flex-layout .offer {
+    width: 30%;
+  }
+  .home-feed .flex-layout .feed {
+    width: 40%;
   }
   .news-feed {
     padding: 30px 0;
   }
   .news-feed .item {
-    align-self: stretch;
+    align-items: stretch;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
     padding-bottom: 20px;
-    width: 60%;
   }
   .news-feed .item .image {
-    width: 33.33333%;
+    width: 50%;
   }
   .news-feed .news-content {
     padding-top: 0;
     text-align: left;
-    width: 58.33333%;
+    width: 87.5%;
   }
   .news-feed .news-content h2, .news-feed .news-content .miles {
     padding-bottom: 15px;
@@ -386,7 +430,7 @@ img {
 }
 
 .tumbnails {
-  align-self: center;
+  align-items: center;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -447,7 +491,7 @@ img {
 
 @media only screen and (min-width: 64em) {
   .car--details {
-    align-self: stretch;
+    align-items: stretch;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
