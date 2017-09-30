@@ -136,7 +136,9 @@
       <body>
         <div id="content">
           <!--content open-->
-          {!! Form::open(array('route' => 'panelInsert.store')) !!}
+          <!--{!! Form::open(array('route' => 'panelInsert.store')) !!}-->
+          <form method="POST" action="panelInsert/store" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
+          {{ csrf_field() }}
           <div id="header">
             <!--header open-->
             <div id="label">
@@ -144,23 +146,22 @@
             </div>
             <div id="input">
               <select id="base_category" name="base_category" style="width:220px;">
-                <option value="Автомобили">Автомобили</option>
-                <option value="Джипове">Джипове</option>
-                <option value="Бусове">Бусове</option>
-                <option value="Камиони">Камиони</option>
-                <option value="Мотоциклети">Мотоциклети</option>
-                <option value="Селскостопански">Селскостопански</option>
-                <option value="Индустриални">Индустриални</option>
-                <option value="Кари">Кари</option>
-                <option value="Каравани">Каравани</option>
-                <option value="Яхти и Лодки">Яхти и Лодки</option>
-                <option value="Ремаркета">Ремаркета</option>
-                <option value="Велосипеди">Велосипеди</option>
-                <option value="Части">Части</option>
-                <option value="Аксесоари">Аксесоари</option>
-                <option value="Гуми и джанти">Гуми и джанти</option>
-                <option value="Купува">Купува</option>
-                <option value="Услуги">Услуги</option>
+                <?php 
+                  $base_cats = array("Автомобили","Джипове","Бусове","Камиони","Мотоциклети","Селскостопански","Индустриални");
+                  if(isset($base_category)){
+                    for($i=0;$i<count($base_cats);$i++){
+                      $add = "";
+                      if($base_category == $base_cats[$i]){
+                        $add = " selected=\"selected\"";
+                      }
+                      echo "<option value=\"".$base_cats[$i]."\"".$add.">".$base_cats[$i]."</option>";
+                    }
+                  }else{
+                    for($i = 0;$i<count($base_cats);$i++){
+                      echo "<option value=\"".$base_cats[$i]."\">".$base_cats[$i]."</option>";
+                    }
+                  }
+                ?>
               </select>
             </div>
           </div><!--header close-->
@@ -173,9 +174,21 @@
                 <div class="input_value">
                   <select class="brands" name="brand">
                     <option selected="" value=""></option>
-                    @foreach ($brands as $brand)
-                    <option value="{{$brand->name}}"> {{$brand->name}} </option>
-                    @endforeach
+                    <?php
+                      if(isset($brandValue)){
+                        for($i=0;$i<count($brands);$i++){
+                          $add = "";
+                          if($brandValue == $brands[$i]->name){
+                            $add = " selected=\"selected\"";
+                          }
+                          echo "<option value=\"".$brands[$i]->name."\"".$add.">".$brands[$i]->name."</option>";
+                        }
+                      }else{
+                        for($i=0;$i<count($brands);$i++){
+                          echo "<option value=\"".$brands[$i]->name."\">".$brands[$i]->name."</option>";
+                        }
+                      }
+                    ?>
                   </select>
                 </div>
               </div>
@@ -197,7 +210,13 @@
                   Модификация
                 </div>
                 <div class="input_value">
-                  <input type="text" name="modif"></input>
+                <?php 
+                  if(isset($modification)){
+                    echo "<input type=\"text\" name=\"modification\" value=\"".$modification."\"></input>";
+                  }else{
+                    echo "<input type=\"text\" name=\"modification\"></input>";
+                  }
+                ?>
                 </div>
               </div>
               <div class="under_header_comp50" id="engine_type">
@@ -207,10 +226,22 @@
                 <div class="input_value">
                   <select class="engine_types" name="engine_type">
                     <option value=""> </option>
-                    <option value="Бензинов">Бензинов</option>
-                    <option value="Дизелов">Дизелов</option>
-                    <option value="Електрически">Електрически</option>
-                    <option value="Хибриден">Хибриден</option>
+                      <?php
+                        $engine_types = array("Бензинов","Дизелов","Електрически","Хибриден");
+                        if(isset($engine_type)){
+                          for($i=0;$i<count($engine_types);$i++){
+                            $add = "";
+                            if($engine_type == $engine_types[$i]){
+                              $add = " selected=\"selected\"";
+                            }
+                            echo "<option value=\"".$engine_types[$i]."\"".$add.">".$engine_types[$i]."</option>";
+                          }
+                        }else{
+                          for($i=0;$i<count($engine_types);$i++){
+                            echo "<option value=\"".$engine_types[$i]."\">".$engine_types[$i]."</option>";
+                          }
+                        }
+                      ?>
                   </select>
                 </div>
               </div>
@@ -221,9 +252,26 @@
                   Състояние
                 </div>
                 <div class="input_value">
-                  <input type="radio" name="state" value="1">Нов</input>
-                  <input type="radio" name="state" value="0" checked="">Употребяван</input>
-                  <input type="radio" name="state" value="2">За части</input>
+                      <?php
+                        $stateTypes = array("Нов","Употребяван","За части");
+                        if(isset($state)){
+                          for($i=0;$i<count($stateTypes);$i++){
+                            $add = "";
+                            if($state == $stateTypes[$i]){
+                              $add = " checked=\"\"";
+                            }
+                            echo "<input type=\"radio\" name=\"state\" value=\"".$stateTypes[$i]."\"".$add.">".$stateTypes[$i]."</input>";
+                          }
+                        }else{
+                          for($i=0;$i<count($stateTypes);$i++){
+                            if($i == 0){
+                               echo "<input type=\"radio\" name=\"state\" value=\"".$stateTypes[$i]."\" checked=\"\">".$stateTypes[$i]."</input>";
+                               continue;
+                            }
+                            echo "<input type=\"radio\" name=\"state\" value=\"".$stateTypes[$i]."\">".$stateTypes[$i]."</input>";
+                          }
+                        }
+                      ?>
                 </div>
               </div>
             </div>
@@ -236,7 +284,13 @@
                   Мощност [к.с.]
                 </div>
                 <div class="input_value">
-                  <input type="text" name="power"></input>
+                  <?php 
+                  if(isset($power)){
+                    echo "<input type=\"text\" name=\"power\" value=\"".$power."\"></input>";
+                  }else{
+                    echo "<input type=\"text\" name=\"power\"></input>";
+                  }
+                ?>
                 </div>
               </div>
               <div class="under_header_comp50" id="brand">
@@ -246,12 +300,21 @@
                 <div class="input_value">
                   <select class="euro_standard" name="euro_standard">
                     <option value=""> </option>
-                    <option value="1">Евро 1</option>
-                    <option value="2">Евро 2</option>
-                    <option value="3">Евро 3</option>
-                    <option value="4">Евро 4</option>
-                    <option value="5">Евро 5</option>
-                    <option value="6">Евро 6</option>
+                    <?php
+                        if(isset($euro_standard)){
+                          for($i=1;$i<=6;$i++){
+                            $add = "";
+                            if($euro_standard == $i){
+                              $add = " selected=\"selected\"";
+                            }
+                            echo "<option value=\"".$i."\"".$add.">Евро ".$i."</option>";
+                          }
+                        }else{
+                          for($i=1;$i<=6;$i++){
+                            echo "<option value=\"".$i."\">Евро ".$i."</option>";
+                          }
+                        }
+                      ?>
                   </select>
                 </div>
               </div>
@@ -264,9 +327,22 @@
                 <div class="input_value">
                   <select class="transmission" name="transmission">
                     <option value=""> </option>
-                    <option value="Ръчна">Ръчна</option>
-                    <option value="Автоматична">Автоматична</option>
-                    <option value="Полуавтоматична">Полуавтоматична</option>
+                    <?php
+                      $transmissionValues = array("Ръчна","Автоматична","Полуавтоматична");
+                        if(isset($transmission)){
+                          for($i=0;$i<count($transmissionValues);$i++){
+                            $add = "";
+                            if($transmission == $transmissionValues[$i]){
+                              $add = " selected=\"selected\"";
+                            }
+                            echo "<option value=\"".$transmissionValues[$i]."\"".$add.">".$transmissionValues[$i]."</option>";
+                          }
+                        }else{
+                          for($i=0;$i<count($transmissionValues);$i++){
+                            echo "<option value=\"".$transmissionValues[$i]."\">".$transmissionValues[$i]."</option>";
+                          }
+                        }
+                      ?>
                   </select>
                 </div>
               </div>
@@ -279,17 +355,23 @@
                 <div class="input_value">
                   <select class="category" name="category">
                     <option value=""> </option>
-                    <option value="Ван">Ван</option>
-                    <option value="Кабрио">Кабрио</option>
-                    <option value="Катафалка">Катафалка</option>
-                    <option value="Комби">Комби</option>
-                    <option value="Купе">Купе</option>
-                    <option value="Линейка">Линейка</option>
-                    <option value="Миниван">Миниван</option>
-                    <option value="Пикап">Пикап</option>
-                    <option value="Седан">Седан</option>
-                    <option value="Стреч лимузина">Стреч лимузина</option>
-                    <option value="Хечбек">Хечбек</option>
+                    <?php
+                      $categoryValues = array("Ван","Кабрио","Катафалка","Комби","Купе","Линейка","Миниван","Пикап","Седан",
+                        "Стреч лимузина","Хечбек");
+                        if(isset($category)){
+                          for($i=0;$i<count($categoryValues);$i++){
+                            $add = "";
+                            if($category == $categoryValues[$i]){
+                              $add = " selected=\"selected\"";
+                            }
+                            echo "<option value=\"".$categoryValues[$i]."\"".$add.">".$categoryValues[$i]."</option>";
+                          }
+                        }else{
+                          for($i=0;$i<count($transmissionValues);$i++){
+                            echo "<option value=\"".$categoryValues[$i]."\">".$categoryValues[$i]."</option>";
+                          }
+                        }
+                      ?>
                   </select>
                 </div>
               </div>
@@ -302,7 +384,13 @@
                   Цена
                 </div>
                 <div class="input_value">
-                  <input class="price" type="text" name="price"> </input>
+                  <?php 
+                  if(isset($price)){
+                    echo "<input class=\"price\" type=\"text\" name=\"price\" value=\"".$price."\"></input>";
+                  }else{
+                    echo "<input class=\"price\" type=\"text\" name=\"price\"></input>";
+                  }
+                ?>
                 </div>
               </div>
               <div class="under_header_comp50" id="model">
@@ -311,11 +399,22 @@
                 </div>
                 <div class="input_value">
                   <select class="currency" name="currency">
-                    <option value="лв.">
-                      лв.
-                    </option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
+                    <?php
+                      $currencyValues = array("лв.","USD","EUR");
+                        if(isset($currency)){
+                          for($i=0;$i<count($currencyValues);$i++){
+                            $add = "";
+                            if($category == $currencyValues[$i]){
+                              $add = " selected=\"selected\"";
+                            }
+                            echo "<option value=\"".$currencyValues[$i]."\"".$add.">".$currencyValues[$i]."</option>";
+                          }
+                        }else{
+                          for($i=0;$i<count($currencyValues);$i++){
+                            echo "<option value=\"".$currencyValues[$i]."\">".$currencyValues[$i]."</option>";
+                          }
+                        }
+                      ?>
                   </select>
                 </div>
               </div>
@@ -328,6 +427,31 @@
                 <div class="input_value">
                   <select class="year_of_manufacture" name="year_of_manufacture">
                     <option value=""></option>
+                    <?php
+                    if(isset($year_of_manufacture)){
+                      for($i = 2017;$i>=1930;$i--){
+                        $add = "";
+                        if($year_of_manufacture == $i){
+                        $add = " selected=\"selected\"";
+                        }
+                        echo "<option value=\"".$i."\"".$add."> ".$i." </option>";
+                      }
+                    }else{
+                      for($i = 2017;$i>=1930;$i--){
+                        echo "<option value=\"".$i."\"> ".$i." </option>";
+                      }
+                    }
+                    ?>
+                  </select>
+                </div>
+              </div>
+              <div class="under_header_comp50" id="engine_type">
+                <div class="label">
+                  Дата на производство
+                </div>
+                <div class="input_value">
+                  <select class="date_of_manufacture" name="date_of_manufacture">
+                    <option value=""> </option>
                     <option value="януари">
                       януари
                     </option>
@@ -365,19 +489,6 @@
                   </select>
                 </div>
               </div>
-              <div class="under_header_comp50" id="engine_type">
-                <div class="label">
-                  Дата на производство
-                </div>
-                <div class="input_value">
-                  <select class="date_of_manufacture" name="date_of_manufacture">
-                    <option value=""> </option>
-                    @for ($i = 2017; $i >= 1930; $i--)
-                    <option value="{{$i}}"> {{$i}} </option>
-                    @endfor
-                  </select>
-                </div>
-              </div>
             </div>
             <div class="row">
               <div class="under_header_comp100" id="state">
@@ -385,7 +496,13 @@
                   Пробег в километри
                 </div>
                 <div class="input_value">
-                  <input class="mileage" type="text" name="mileage"> </input>
+                  <?php 
+                  if(isset($mileage)){
+                    echo "<input class=\"mileage\" type=\"text\" name=\"mileage\" value=\"".$mileage."\"> </input>";
+                  }else{
+                    echo "<input class=\"mileage\" type=\"text\" name=\"mileage\"> </input>";
+                  }
+                ?>
                 </div>
               </div>
             </div>
@@ -400,47 +517,22 @@
                 <div class="input_value">
                   <select class="color" name="color">
                     <option value=""> </option>
-                    <option value="Tъмно син">Tъмно син</option>
-                    <option value="Банан">Банан</option>
-                    <option value="Беата">Беата</option>
-                    <option value="Бежов">Бежов</option>
-                    <option value="Бордо">Бордо</option>
-                    <option value="Бронз">Бронз</option>
-                    <option value="Бял">Бял</option>
-                    <option value="Винен">Винен</option>
-                    <option value="Виолетов">Виолетов</option>
-                    <option value="Вишнев">Вишнев</option>
-                    <option value="Графит">Графит</option>
-                    <option value="Жълт">Жълт</option>
-                    <option value="Зелен">Зелен</option>
-                    <option value="Златист">Златист</option>
-                    <option value="Кафяв">Кафяв</option>
-                    <option value="Керемиден">Керемиден</option>
-                    <option value="Кремав">Кремав</option>
-                    <option value="Лилав">Лилав</option>
-                    <option value="Металик">Металик</option>
-                    <option value="Оранжев">Оранжев</option>
-                    <option value="Охра">Охра</option>
-                    <option value="Пепеляв">Пепеляв</option>
-                    <option value="Перла">Перла</option>
-                    <option value="Пясъчен">Пясъчен</option>
-                    <option value="Резидав">Резидав</option>
-                    <option value="Розов">Розов</option>
-                    <option value="Сахара">Сахара</option>
-                    <option value="Светло сив">Светло сив</option>
-                    <option value="Светло син">Светло син</option>
-                    <option value="Сив">Сив</option>
-                    <option value="Син">Син</option>
-                    <option value="Слонова кост">Слонова кост</option>
-                    <option value="Сребърен">Сребърен</option>
-                    <option value="Т.зелен">Т.зелен</option>
-                    <option value="Тъмно сив">Тъмно сив</option>
-                    <option value="Тъмно син мет.">Тъмно син мет.</option>
-                    <option value="Тъмно червен">Тъмно червен</option>
-                    <option value="Тютюн">Тютюн</option>
-                    <option value="Хамелеон">Хамелеон</option>
-                    <option value="Червен">Червен</option>
-                    <option value="Черен">Черен</option>
+                    <?php
+                      $colorValues = array("Tъмно син","Банан","Беата","Бежов","Бордо","Бронз","Бял","Винен","Виолетов","Вишнев","Графит","Жълт","Зелен","Златист","Кафяв","Керемиден","Кремав","Лилав","Металик","Оранжев","Охра","Пепеляв","Перла","Пясъчен","Резидав","Розов","Сахара","Светло сив","Светло син","Сив","Син","Слонова кост","Сребърен","Т.зелен","Тъмно сив","Тъмно син мет.","Тъмно червен","Тютюн","Хамелеон","Червен","Черен");
+                        if(isset($color)){
+                          for($i=0;$i<count($colorValues);$i++){
+                            $add = "";
+                            if($color == $colorValues[$i]){
+                              $add = " selected=\"selected\"";
+                            }
+                            echo "<option value=\"".$colorValues[$i]."\"".$add.">".$colorValues[$i]."</option>";
+                          }
+                        }else{
+                          for($i=0;$i<count($currencyValues);$i++){
+                            echo "<option value=\"".$colorValues[$i]."\">".$colorValues[$i]."</option>";
+                          }
+                        }
+                      ?>
                   </select>
                 </div>
               </div>
@@ -453,35 +545,22 @@
                 <div class="input_value">
                   <select class="region" name="region">
                     <option value=""> </option>
-                    <option value="Благоевград">Благоевград</option>
-                    <option value="Бургас">Бургас</option>
-                    <option value="Варна">Варна</option>
-                    <option value="Велико Търново">Велико Търново</option>
-                    <option value="Видин">Видин</option>
-                    <option value="Враца">Враца</option>
-                    <option value="Габрово">Габрово</option>
-                    <option value="Добрич">Добрич</option>
-                    <option value="Дупница">Дупница</option>
-                    <option value="Кърджали">Кърджали</option>
-                    <option value="Кюстендил">Кюстендил</option>
-                    <option value="Ловеч">Ловеч</option>
-                    <option value="Монтана">Монтана</option>
-                    <option value="Пазарджик">Пазарджик</option>
-                    <option value="Перник">Перник</option>
-                    <option value="Плевен">Плевен</option>
-                    <option value="Пловдив">Пловдив</option>
-                    <option value="Разград">Разград</option>
-                    <option value="Русе">Русе</option>
-                    <option value="Силистра">Силистра</option>
-                    <option value="Сливен">Сливен</option>
-                    <option value="Смолян">Смолян</option>
-                    <option value="София">София</option>
-                    <option value="Стара Загора">Стара Загора</option>
-                    <option value="Търговище">Търговище</option>
-                    <option value="Хасково">Хасково</option>
-                    <option value="Шумен">Шумен</option>
-                    <option value="Ямбол">Ямбол</option>
-                    <option value="Извън страната">Извън страната</option>
+                     <?php
+                      $regionValues = array("Благоевград","Бургас","Варна","Велико Търново","Видин","Враца","Габрово","Добрич","Дупница","Кърджали","Кюстендил","Ловеч","Монтана","Пазарджик","Перник","Плевен","Пловдив","Разград","Русе","Силистра","Сливен","Смолян","София","Стара Загора","Търговище","Хасково","Шумен","Ямбол","Извън страната");
+                        if(isset($region)){
+                          for($i=0;$i<count($regionValues);$i++){
+                            $add = "";
+                            if($region == $regionValues[$i]){
+                              $add = " selected=\"selected\"";
+                            }
+                            echo "<option value=\"".$regionValues[$i]."\"".$add.">".$regionValues[$i]."</option>";
+                          }
+                        }else{
+                          for($i=0;$i<count($regionValues);$i++){
+                            echo "<option value=\"".$regionValues[$i]."\">".$regionValues[$i]."</option>";
+                          }
+                        }
+                      ?>
                   </select>
                 </div>
               </div>
@@ -490,7 +569,13 @@
                   Населено място
                 </div>
                 <div class="input_value">
-                  <input class="populated_place" type="text" name="populated_place"></input>
+                  <?php 
+                  if(isset($populated_place)){
+                    echo "<input class=\"populated_place\" type=\"text\" name=\"populated_place\" value=\"".$populated_place."\"> </input>";
+                  }else{
+                    echo "<input class=\"populated_place\" type=\"text\" name=\"populated_place\"> </input>";
+                  }
+                ?>
                 </div>
               </div>
             </div>
@@ -874,6 +959,25 @@ window.onload = function(){
 
   $("form").submit(function() {
     if(validate()){
+      /*var fd = new FormData();
+
+      for (var x = 0; x < allFiles.length; x++) {
+          fd.append("fileToUpload[]", allFiles[x]);
+      }
+
+      //var jo = fd.serialize();
+      alert("zdr");
+       $.ajax({
+           type: "POST",
+           url: "panelInsert/store",
+           data: fd.serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+               alert(data); // show response from the php script.
+           }
+         });
+
+      e.preventDefault(); // avoid to execute the actual submit of the form.*/
       return true;
     }else{
       showMissed();

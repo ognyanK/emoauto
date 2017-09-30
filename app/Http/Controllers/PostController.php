@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Brand;
 
 class PostController extends Controller
 {
@@ -14,7 +15,9 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        return 'index';
+        $brands = Brand::select('name')->get();
+
+        return view('panelInsert')->with('brands', $brands); //return models
     }
 
     /**
@@ -28,6 +31,27 @@ class PostController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $brands = Brand::select('name')->get();
+        $info = Post::where('id','=',$id)->get();
+        $info = $info[0];
+
+        return view('panelInsert')->with('brands', $brands)->with('base_category', $info['base_category'])
+        ->with('brandValue', $info['brand'])->with('modification',$info['modification'])->with('engine_type',$info['engine_type'])
+        ->with('state',$info['state'])->with('power',$info['power'])->with('euro_standard',$info['euro_standard'])
+        ->with('transmission', $info['transmission'])->with('category', $info['category'])->with('price', $info['price'])
+        ->with('currency', $info['currency'])->with('year_of_manufacture', $info['year_of_manufacture'])
+        ->with('mileage',$info['mileage'])->with('color',$info['color'])->with('region',$info['region'])
+        ->with('populated_place',$info['populated_place']); //return models
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -36,7 +60,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //var_dump($request);
-        $arr = array('base_category','brand','model','modif','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place');
+        $arr = array('base_category','brand','model','modification','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place');
 
         $post = new Post();
         $s = "random";
@@ -59,7 +83,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return "ok";
+        return $request->toArray();
     }
 
     private function set($post, $attr, $value) {
@@ -88,18 +112,20 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return 'show';
-    }
+        $mainInfoKeys = array('modif','engine_type','state','power','euro_standard','transmission','category','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return 'edit';
+        $info = Post::where('id','=',$id)->get();
+        $info = $info[0];
+        $mainInfo = array();
+        for($i=0;$i<count($mainInfoKeys);$i++){
+            if($info[$mainInfoKeys[$i]]!=""){
+                $mainInfo[$mainInfoKeys[$i]] = $info[$mainInfoKeys[$i]];
+            }
+        }
+        $price = $info['price']." ".$info['currency'];
+        $title = $info['brand']." ".$info['model'];
+            
+        return view('pages/details')->with('mainInfo',$mainInfo)->with('price',$price)->with('title',$title);
     }
 
     /**
