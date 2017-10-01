@@ -139,7 +139,7 @@ class PostController extends Controller
         $price = $info['price']." ".$info['currency'];
         $title = $info['brand']." ".$info['model'];
             
-        return view('pages/details')->with('mainInfo',$mainInfo)->with('price',$price)->with('title',$title);
+        return view('pages/details')->with('mainInfo',$mainInfo)->with('price',$price)->with('title',$title)->with('pictures',$info['pictures']);
     }
 
     /**

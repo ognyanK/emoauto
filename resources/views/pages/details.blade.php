@@ -10,18 +10,19 @@
             <div class="car--details">
                 <div class="gallery">
                     <div class="current-img">
-                        <img src="/images/example-car.png" alt="">
+                    <?php 
+                        $pics = explode(",", $pictures);
+                        echo "<img src='/uploads/".$pics[0]."' >";
+                    ?>
+                        
                     </div>
 
                     <div class="tumbnails">
-                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
-                        <div class="image" style="background-image: url('/images/example-car.png');"></div>
+                    <?php 
+                        foreach ($pics as $key) {
+                            echo "<div class=\"image\" style=\"background-image: url('/uploads/".$key."');\"></div>";
+                        }
+                    ?>
                     </div>
                 </div>
                 <div class="spec">
@@ -47,18 +48,13 @@
 
                 <div class="gallery-container">
                     <ul id="imageGallery">
-                        <li data-thumb="/images/example-car.png" data-src="/images/example-car.png">
-                            <img src="/images/example-car.png" />
-                        </li>
-                        <li data-thumb="/images/example-car.png" data-src="/images/example-car.png">
-                            <img src="/images/example-car.png" />
-                        </li>
-                        <li data-thumb="/images/example-car.png" data-src="/images/example-car.png">
-                            <img src="/images/example-car.png" />
-                        </li>
-                        <li data-thumb="/images/example-car.png" data-src="/images/example-car.png">
-                            <img src="/images/example-car.png" />
-                        </li>
+                    <?php 
+                        foreach ($pics as $key) {
+                            echo "<li data-thumb='/uploads/".$key."' data-src='/uploads/".$key."'>
+                                        <img src='/uploads/".$key."' />
+                                    </li>";
+                        }
+                    ?>
                     </ul>
                 </div>
             </div>
