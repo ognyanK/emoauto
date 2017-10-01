@@ -11,7 +11,6 @@ class AdminPanel extends Controller
     {
 
         $cars = Post::get();
-
         return view('admin_panel')->with('cars', $cars); //return models
     }
 }

@@ -26,4 +26,4 @@ Route::post('panelInsert/store', 'PostController@store');
 Route::get('/details/{id}', 'PostController@show');
 Route::get('/admin_panel', 'AdminPanel@show');
 
-Route::get('/feed', 'PagesController@getFeed');
+Route::get('/feed', 'FeedController@index');

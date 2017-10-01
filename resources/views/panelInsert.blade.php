@@ -870,7 +870,7 @@
       <div id="containerImg">
             <div id="result">
             </div>
-            <input id="files" type="file" multiple=""/>
+            <input id="files" type="file" name="files[]" multiple>
             <input type="submit" name="subm" style="width:230px; height:40px; font-weight:bold;" value="ПУБЛИКУВАЙ ОБЯВАТА">
       </div>
     </div>
@@ -911,7 +911,7 @@ window.onload = function(){
             var imgclass = "image"+at;
             var remImgId = at;
             at = at + 1;
-            $("#result").append("<div class=\"picture\"><div id=\""+remImgId+"\" class=\"remImg\">X</div><img style=\"display:none;\" class='"+imgclass+"' src='" + picFile.result + "'title='" + picFile.name + "'/></div>");
+            $("#result").append("<div class=\"picture\"><img style=\"display:none;\" class='"+imgclass+"' src='" + picFile.result + "'title='" + picFile.name + "'/></div>");
             var $img = $("."+imgclass+"");
 
             $img.on('load',function(){
@@ -959,25 +959,6 @@ window.onload = function(){
 
   $("form").submit(function() {
     if(validate()){
-      /*var fd = new FormData();
-
-      for (var x = 0; x < allFiles.length; x++) {
-          fd.append("fileToUpload[]", allFiles[x]);
-      }
-
-      //var jo = fd.serialize();
-      alert("zdr");
-       $.ajax({
-           type: "POST",
-           url: "panelInsert/store",
-           data: fd.serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-               alert(data); // show response from the php script.
-           }
-         });
-
-      e.preventDefault(); // avoid to execute the actual submit of the form.*/
       return true;
     }else{
       showMissed();

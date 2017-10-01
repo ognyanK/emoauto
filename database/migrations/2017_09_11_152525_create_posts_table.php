@@ -48,6 +48,8 @@ class CreatePostsTable extends Migration
             $table->string("exterior")->default($value);
             $table->string("interior")->default($value);
             $table->string("specialized")->default($value);
+
+            $table->text("pictures");
         });
     }
 
