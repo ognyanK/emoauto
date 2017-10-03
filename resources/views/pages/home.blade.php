@@ -6,7 +6,7 @@
     <div class="slider-container">
         <div class="wrap-slider">
             <span class="slider-logo">
-                <img src="images/yourLogo_icon_red.png" alt="">
+                <img src="images/logo.png" alt="">
             </span>
 
             <ul class="bxslider">

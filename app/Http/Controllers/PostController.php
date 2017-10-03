@@ -48,7 +48,7 @@ class PostController extends Controller
         ->with('transmission', $info['transmission'])->with('category', $info['category'])->with('price', $info['price'])
         ->with('currency', $info['currency'])->with('year_of_manufacture', $info['year_of_manufacture'])
         ->with('mileage',$info['mileage'])->with('color',$info['color'])->with('region',$info['region'])
-        ->with('populated_place',$info['populated_place'])->with('pictures', $info['pictures']); //return models
+        ->with('populated_place',$info['populated_place'])->with('pictures', $info['pictures'])->with('id',$info['id']); //return models
     }
 
     /**
@@ -62,15 +62,21 @@ class PostController extends Controller
         //var_dump($request);
         //return file_get_contents($request->file('files')[0]);
 
-        $files = array();
+        $filenames = array_filter(explode(",", $request->filenames));
+
+        $edit = $request->id != "-1";
+
+        if($edit){
+            $created_at = Post::where('id','=',$request->id)->value('created_at');
+            Post::where('id','=',$request->id)->delete();
+        }
 
         for($i = 0;$i<count($request->file('files'));$i++){
             $newfilename = $request->file('files')[$i]->getClientOriginalName();
             $request->file('files')[$i]->move(public_path("/uploads"), $newfilename);
-            array_push($files, $newfilename);
         }
 
-        $pictures = implode(",", $files);
+        $pictures = implode(",", $filenames);
 
         $arr = array('base_category','brand','model','modification','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place');
 
@@ -94,6 +100,10 @@ class PostController extends Controller
         $post->specialized = $this->getCheckboxValues($request, "specialized", 3);
 
         $post->pictures = $pictures;
+
+        if($edit){
+            $post->created_at = $created_at;
+        }
 
         $post->save();
 

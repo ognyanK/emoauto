@@ -1,7 +1,7 @@
 <header class="site-header">
     <div class="header">
         <div class="logo">
-            <img src="" alt="logo"/>
+            <img src="images/logo.png" alt="" width="60px">
         </div>
 
         <div class="header-menu">

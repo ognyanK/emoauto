@@ -137,7 +137,7 @@
         <div id="content">
           <!--content open-->
           <!--{!! Form::open(array('route' => 'panelInsert.store')) !!}-->
-          <form method="POST" action="panelInsert/store" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
+          <form method="POST" action="/panelInsert/store" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
           {{ csrf_field() }}
           <div id="header">
             <!--header open-->
@@ -869,8 +869,26 @@
     <div class="under_header">
       <div id="containerImg">
             <div id="result">
+              <?php 
+                if(isset($pictures)){
+                  $pics = explode(",", $pictures);
+                  $i = 0;
+                  foreach ($pics as $pic) {
+                    echo "<div class=\"picture\"><img style=\"display:none;\" class='image' src='/uploads/".$pic."' title=\"".$pic."\"/><div class=\"remImg\" id=\"".$i."\">X</div></div>";
+                    $i++;
+                  }
+                }
+              ?>
             </div>
             <input id="files" type="file" name="files[]" multiple>
+            <input id="filenames" name="filenames" type="text" style="display:none;">
+            <?php 
+            if(isset($id)){
+              echo "<input id=\"id\" name=\"id\" type=\"text\" style=\"display:none;\" value=\"".$id."\">";
+            }else{
+              echo "<input id=\"id\" name=\"id\" type=\"text\" style=\"display:none;\" value=\"-1\">";
+            }
+            ?>
             <input type="submit" name="subm" style="width:230px; height:40px; font-weight:bold;" value="ПУБЛИКУВАЙ ОБЯВАТА">
       </div>
     </div>
@@ -881,6 +899,25 @@ window.onload = function(){
   var at = 0;
   var allFiles = new Array();
   var maxImages = 16;
+
+  var images = new Array();
+
+  $('.image').each(function(){
+    images.push($(this).attr('title'));
+
+    var width = $(this).width();
+    var height = $(this).height();
+
+    if(width > height) {
+       $(this).width('100%');
+    }else if(height > width){
+      $(this).height('100%');
+    }else{
+      $(this).width('100%');
+      $(this).height('100%');
+    };
+    $(this).css("display","block");
+  });
 
   //Check File API support
   if(window.File && window.FileList && window.FileReader)
@@ -894,6 +931,7 @@ window.onload = function(){
       for(var i = 0; i< files.length; i++)
       {
 
+        $("#result").html("");
         var file = files[i];
           //Only pics
           if(!file.type.match('image'))
@@ -903,7 +941,7 @@ window.onload = function(){
             alert("You can't post more than "+maxImages+" images!");
             break;
           }
-          allFiles.push(file);
+          allFiles.push(file.name);
       
        var picReader = new FileReader();
           picReader.addEventListener("load",function(event){
@@ -911,7 +949,8 @@ window.onload = function(){
             var imgclass = "image"+at;
             var remImgId = at;
             at = at + 1;
-            $("#result").append("<div class=\"picture\"><img style=\"display:none;\" class='"+imgclass+"' src='" + picFile.result + "'title='" + picFile.name + "'/></div>");
+            $("#result").append("<div class=\"picture\"><img style=\"display:none;\" class='"+imgclass+"' src='" + picFile.result +"'/><div class=\"remImg\" id=\""+remImgId+"\">X</div></div>");
+
             var $img = $("."+imgclass+"");
 
             $img.on('load',function(){
@@ -935,6 +974,9 @@ window.onload = function(){
         //Read the image
         picReader.readAsDataURL(file);
       }
+      images = allFiles;
+      allFiles = new Array();
+      at = 0;
     });
   }
   else
@@ -943,7 +985,8 @@ window.onload = function(){
   }
 
   $("#result").on("click",".remImg", function(){
-    allFiles.splice(parseInt($(this).attr('id')), 1);
+    alert(parseInt($(this).attr('id')));
+    images[parseInt($(this).attr('id'))] = "";
     $(this).parent().remove();
   });
 
@@ -959,6 +1002,13 @@ window.onload = function(){
 
   $("form").submit(function() {
     if(validate()){
+      var pics_final = new Array();
+      for(var i=0;i<images.length;i++){
+        if(images[i]!=""){
+          pics_final.push(images[i]);
+        }
+      }
+      $('#filenames').val(pics_final);
       return true;
     }else{
       showMissed();
