@@ -48,7 +48,10 @@ class PostController extends Controller
         ->with('transmission', $info['transmission'])->with('category', $info['category'])->with('price', $info['price'])
         ->with('currency', $info['currency'])->with('year_of_manufacture', $info['year_of_manufacture'])
         ->with('mileage',$info['mileage'])->with('color',$info['color'])->with('region',$info['region'])
-        ->with('populated_place',$info['populated_place'])->with('pictures', $info['pictures'])->with('id',$info['id']); //return models
+        ->with('populated_place',$info['populated_place'])->with('pictures', $info['pictures'])->with('id',$info['id'])
+        ->with('safety',$info['safety'])->with('comfort',$info['comfort'])->with('other',$info['other'])
+        ->with('exterior',$info['exterior'])->with('protection',$info['protection'])->with('interior',$info['interior'])
+        ->with('specialized',$info['specialized']); //return models
     }
 
     /**
@@ -68,6 +71,7 @@ class PostController extends Controller
 
         if($edit){
             $created_at = Post::where('id','=',$request->id)->value('created_at');
+            if(!isset($created_at))return redirect('admin_panel');
             Post::where('id','=',$request->id)->delete();
         }
 
@@ -92,7 +96,7 @@ class PostController extends Controller
 
         $post->safety = $this->getCheckboxValues($request, "safety", 17);
         $post->comfort = $this->getCheckboxValues($request, "comfort", 31);
-        $post->other = $this->getCheckboxValues($request, "others", 16);
+        $post->other = $this->getCheckboxValues($request, "other", 16);
         $post->protection = $this->getCheckboxValues($request, "protection", 8);
 
         $post->exterior = $this->getCheckboxValues($request, "exterior", 14);
@@ -119,7 +123,7 @@ class PostController extends Controller
 
     private function getCheckboxValues(Request $request, $category, $range) {
         $arr = array();
-        for($i = 1; $i<=$range ; $i++) {
+        for($i = 0; $i<$range ; $i++) {
             $value = $request->input($category.$i);
             if(!is_null($value)){
                 array_push($arr, $i);
@@ -136,20 +140,20 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $mainInfoKeys = array('modif','engine_type','state','power','euro_standard','transmission','category','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place');
-
+        $brands = Brand::select('name')->get();
         $info = Post::where('id','=',$id)->get();
         $info = $info[0];
-        $mainInfo = array();
-        for($i=0;$i<count($mainInfoKeys);$i++){
-            if($info[$mainInfoKeys[$i]]!=""){
-                $mainInfo[$mainInfoKeys[$i]] = $info[$mainInfoKeys[$i]];
-            }
-        }
-        $price = $info['price']." ".$info['currency'];
-        $title = $info['brand']." ".$info['model'];
-            
-        return view('pages/details')->with('mainInfo',$mainInfo)->with('price',$price)->with('title',$title)->with('pictures',$info['pictures']);
+
+        return view('pages/details')->with('brands', $brands)->with('base_category', $info['base_category'])
+        ->with('brandValue', $info['brand'])->with('modification',$info['modification'])->with('engine_type',$info['engine_type'])
+        ->with('state',$info['state'])->with('power',$info['power'])->with('euro_standard',$info['euro_standard'])
+        ->with('transmission', $info['transmission'])->with('category', $info['category'])->with('price', $info['price'])
+        ->with('currency', $info['currency'])->with('year_of_manufacture', $info['year_of_manufacture'])
+        ->with('mileage',$info['mileage'])->with('color',$info['color'])->with('region',$info['region'])
+        ->with('populated_place',$info['populated_place'])->with('pictures', $info['pictures'])->with('id',$info['id'])
+        ->with('safety',$info['safety'])->with('comfort',$info['comfort'])->with('other',$info['other'])
+        ->with('exterior',$info['exterior'])->with('protection',$info['protection'])->with('interior',$info['interior'])
+        ->with('specialized',$info['specialized']); //return models
     }
 
     /**

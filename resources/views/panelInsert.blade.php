@@ -594,273 +594,183 @@
             <div class="row2">
               <div class="under_header_comp100_long" id="brand">
                 <div class="label">
-                  Безопасност
+                  <b>Безопасност</b>
                 </div>
                 <div class="input_value">
-                  <input type="checkbox" value="GPS система за проследяване" name="safety1">
-                  GPS система за проследяване
-                </input>
-                <br>
-                <input type="checkbox" value="Автоматичен контрол на стабилността" name="safety2">
-                Автоматичен контрол на стабилността
-              </input>
-              <br>
-              <input type="checkbox" value="Адаптивни предни светлини" name="safety3">
-              Адаптивни предни светлини
-            </input>
-            <br>
-            <input type="checkbox" value="Антиблокираща система" name="safety4">
-            Антиблокираща система
-          </input>
-          <br>
-          <input type="checkbox" value="Въздушни възглавници - Задни" name="safety5">
-          Въздушни възглавници - Задни
-        </input>
-        <br>
-        <input type="checkbox" value="Въздушни възглавници - Предни" name="safety6">
-        Въздушни възглавници - Предни
-      </input>
-      <br>
-      <input type="checkbox" value="Въздушни възглавници - Странични" name="safety7">
-      Въздушни възглавници - Странични
-    </input>
-    <br>
-    <input type="checkbox" value="Ел. разпределяне на спирачното усилие" name="safety8">
-    Ел. разпределяне на спирачното усилие
-  </input>
-  <br>
-  <input type="checkbox" value="Електронна програма за стабилизиране" name="safety9">
-  Електронна програма за стабилизиране
-</input>
-<br>
-<input type="checkbox" value="Контрол на налягането на гумите" name="safety10">
-Контрол на налягането на гумите
-</input>
-<br>
-<input type="checkbox" value="Парктроник" name="safety11">
-Парктроник
-</input>
-<br>
-<input type="checkbox" value="Система ISOFIX" name="safety12">
-Система ISOFIX
-</input>
-<br>
-<input type="checkbox" value="Система за динамична устойчивост" name="safety13">
-Система за динамична устойчивост
-</input>
-<br>
-<input type="checkbox" value="Система за защита от пробуксуване" name="safety14">
-Система за защита от пробуксуване
-</input>
-<br>
-<input type="checkbox" value="Система за изсушаване на накладките" name="safety15">
-Система за изсушаване на накладките
-</input>
-<br>
-<input type="checkbox" value="Система за контрол на дистанцията" name="safety16">
-Система за контрол на дистанцията
-</input>
-<br>
-<input type="checkbox" value="Система за подпомагане на спирането" name="safety17">
-Система за подпомагане на спирането
-</input>
-<br>
-</div>
-</div>
-</div>
+                  <?php 
+                    $values = array("GPS система за проследяване","Автоматичен контрол на стабилността","Адаптивни предни светлини","Антиблокираща система","Въздушни възглавници - Задни","Въздушни възглавници - Предни","Въздушни възглавници - Странични","Ел. разпределяне на спирачното усилие","Електронна програма за стабилизиране","Контрол на налягането на гумите","Парктроник","Система ISOFIX","Система за динамична устойчивост","Система за защита от пробуксуване","Система за изсушаване на накладките","Система за контрол на дистанцията","Система за подпомагане на спирането");
+                    
+                    if(isset($safety)){
+                      $checked = explode(" ", $safety);
+                      for($i = 0;$i<count($values);$i++){
+                        $add = "";
+                        if(in_array ((string)$i, $checked)){
+                          $add = " checked=\"\"";
+                        }
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\"".$add." name=\"safety".$i."\">".$values[$i]."<br>";
+                      }
+                    }else{
+                      for($i = 0;$i<count($values);$i++){
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\" name=\"safety".$i."\">".$values[$i]."<br>";
+                      }
+                    }
+                  ?>
+                </div>
+              </div>
+            </div>
             <div class="row2">
               <div class="under_header_comp100_long" id="modification">
                 <div class="label">
-                  Комфорт
+                  <b>Комфорт</b>
                 </div>
                 <div class="input_value">
-                  <input type="checkbox" value="Auto Start Stop function" name="comfort1">
-                  Auto Start Stop function<br>
-                  <input type="checkbox" value="Bluetooth \ handsfree система" name="comfort2">
-                  Bluetooth \ handsfree система<br>
-                  <input type="checkbox" value="DVD, TV" name="comfort3">
-                  DVD, TV<br>
-                  <input type="checkbox" value="Steptronic, Tiptronic" name="comfort4">
-                  Steptronic, Tiptronic<br>
-                  <input type="checkbox" value="USB, audio\video, IN\AUX изводи" name="comfort5">
-                  USB, audio\video, IN\AUX изводи<br>
-                  <input type="checkbox" value="Адаптивно въздушно окачване" name="comfort6">
-                  Адаптивно въздушно окачване<br>
-                  <input type="checkbox" value="Безключово палене " name="comfort7">
-                  Безключово палене<br>
-                  <input type="checkbox" value="Блокаж на диференциала" name="comfort8">
-                  Блокаж на диференциала<br>
-                  <input type="checkbox" value="Бордкомпютър" name="comfort9">
-                  Бордкомпютър<br>
-                  <input type="checkbox" value="Датчик за светлина" name="comfort10">
-                  Датчик за светлина<br>
-                  <input type="checkbox" value="Ел. Огледала" name="comfort11">
-                  Ел. Огледала<br>
-                  <input type="checkbox" value="Ел. Стъкла" name="comfort12">
-                  Ел. Стъкла<br>
-                  <input type="checkbox" value="Ел. регулиране на окачването" name="comfort13">
-                  Ел. регулиране на окачването<br>
-                  <input type="checkbox" value="Ел. регулиране на седалките" name="comfort14">
-                  Ел. регулиране на седалките<br>
-                  <input type="checkbox" value="Ел. усилвател на волана" name="comfort15">
-                  Ел. усилвател на волана<br>
-                  <input type="checkbox" value="Климатик" name="comfort16" id='klimatik'">Климатик<br>
-                  <input type="checkbox" value="Климатроник" name="comfort17" id='klimatronik'">Климатроник<br>
-                  <input type="checkbox" value="Мултифункционален волан" name="comfort18">
-                  Мултифункционален волан<br>
-                  <input type="checkbox" value="Навигация" name="comfort19">
-                  Навигация<br>
-                  <input type="checkbox" value="Отопление на волана" name="comfort20">
-                  Отопление на волана<br>
-                  <input type="checkbox" value="Печка" name="comfort21">
-                  Печка<br>
-                  <input type="checkbox" value="Подгряване на предното стъкло" name="comfort22">
-                  Подгряване на предното стъкло<br>
-                  <input type="checkbox" value="Подгряване на седалките" name="comfort23">
-                  Подгряване на седалките<br>
-                  <input type="checkbox" value="Регулиране на волана" name="comfort24">
-                  Регулиране на волана<br>
-                  <input type="checkbox" value="Сензор за дъжд" name="comfort25">
-                  Сензор за дъжд<br>
-                  <input type="checkbox" value="Серво усилвател на волана" name="comfort26">
-                  Серво усилвател на волана<br>
-                  <input type="checkbox" value="Система за измиване на фаровете" name="comfort27">
-                  Система за измиване на фаровете<br>
-                  <input type="checkbox" value="Система за контрол на скоростта (автопилот)" name="comfort28">
-                  Система за контрол на скоростта (автопилот)<br>
-                  <input type="checkbox" value="Стерео уредба" name="comfort29">
-                  Стерео уредба<br>
-                  <input type="checkbox" value="Филтър за твърди частици" name="comfort30">
-                  Филтър за твърди частици<br>
-                  <input type="checkbox" value="Хладилна жабка" name="comfort31">
-                  Хладилна жабка<br>
+                <?php
+                  $values = array("Auto Start Stop function","Bluetooth \ handsfree система","DVD, TV","Steptronic, Tiptronic","USB, audio\video, IN\AUX изводи","Адаптивно въздушно окачване","Безключово палене ","Блокаж на диференциала","Бордкомпютър","Датчик за светлина","Ел. Огледала","Ел. Стъкла","Ел. регулиране на окачването","Ел. регулиране на седалките","Ел. усилвател на волана","Климатик","Климатроник","Мултифункционален волан","Навигация","Отопление на волана","Печка","Подгряване на предното стъкло","Подгряване на седалките","Регулиране на волана","Сензор за дъжд","Серво усилвател на волана","Система за измиване на фаровете","Система за контрол на скоростта (автопилот)","Стерео уредба","Филтър за твърди частици","Хладилна жабка");
+
+                  if(isset($comfort)){
+                      $checked = explode(" ", $comfort);
+                      for($i = 0;$i<count($values);$i++){
+                        $add = "";
+                        if(in_array ((string)$i, $checked)){
+                          $add = " checked=\"\"";
+                        }
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\"".$add." name=\"comfort".$i."\">".$values[$i]."<br>";
+                      }
+                    }else{
+                      for($i = 0;$i<count($values);$i++){
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\" name=\"comfort".$i."\">".$values[$i]."<br>";
+                      }
+                    }
+                ?>
                 </div>
               </div>
             </div>
             <div class="row2">
               <div class="under_header_comp100_long" id="state">
                 <div class="label">
-                  Други
+                  <b>Други</b>
                 </div>
                 <div class="input_value">
-                  <input type="checkbox" value="4x4" name="others1">
-                  4x4<br>
-                  <input type="checkbox" value="7 места" name="others2">
-                  7 места<br>
-                  <input type="checkbox" value="Buy back" name="others3">
-                  Buy back<br>
-                  <input type="checkbox" value="Бартер" name="others4">
-                  Бартер<br>
-                  <input type="checkbox" value="Газова уредба" name="others5">
-                  Газова уредба<br>
-                  <input type="checkbox" value="Капариран\Продаден" name="others6">
-                  Капариран\Продаден<br>
-                  <input type="checkbox" value="Катастрофирал" name="others7">
-                  Катастрофирал<br>
-                  <input type="checkbox" value="Лизинг" name="others8">
-                  Лизинг<br>
-                  <input type="checkbox" value="Метанова уредба" name="others9">
-                  Метанова уредба<br>
-                  <input type="checkbox" value="На части" name="others10">
-                  На части<br>
-                  <input type="checkbox" value="Напълно обслужен" name="others11">
-                  Напълно обслужен<br>
-                  <input type="checkbox" value="Нов внос" name="others12">
-                  Нов внос<br>
-                  <input type="checkbox" value="С право на дан.к-т" name="others13">
-                  С право на дан.к-т<br>
-                  <input type="checkbox" value="С регистрация" name="others14">
-                  С регистрация<br>
-                  <input type="checkbox" value="Сервизна книжка" name="others15">
-                  Сервизна книжка<br>
-                  <input type="checkbox" value="Тунинг" name="others16">
-                  Тунинг<br>
+                <?php
+                  $values = array("4x4","7 места","Buy back","Бартер","Газова уредба","Капариран\Продаден","Катастрофирал","Лизинг","Метанова уредба","На части","Напълно обслужен","Нов внос","С право на дан.к-т","С регистрация","Сервизна книжка","Тунинг");
+
+                  if(isset($other)){
+                      $checked = explode(" ", $other);
+                      for($i = 0;$i<count($values);$i++){
+                        $add = "";
+                        if(in_array ((string)$i, $checked)){
+                          $add = " checked=\"\"";
+                        }
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\"".$add." name=\"other".$i."\">".$values[$i]."<br>";
+                      }
+                    }else{
+                      for($i = 0;$i<count($values);$i++){
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\" name=\"other".$i."\">".$values[$i]."<br>";
+                      }
+                    }
+                ?>
                 </div>
               </div>
               <div class="under_header_comp100_long" id="state">
                 <div class="label">
-                  Екстериор
+                  <b>Екстериор</b>
                 </div>
                 <div class="input_value">
-                  <input type="checkbox" value="2(3) Врати" name="exterior1">
-                  2(3) Врати<br>
-                  <input type="checkbox" value="4(5) Врати" name="exterior2">
-                  4(5) Врати<br>
-                  <input type="checkbox" value="LED фарове" name="exterior3">
-                  LED фарове<br>
-                  <input type="checkbox" value="Ксенонови фарове" name="exterior4">
-                  Ксенонови фарове<br>
-                  <input type="checkbox" value="Лети джанти" name="exterior5">
-                  Лети джанти<br>
-                  <input type="checkbox" value="Металик" name="exterior6">
-                  Металик<br>
-                  <input type="checkbox" value="Отопляеми чистачки" name="exterior7">
-                  Отопляеми чистачки<br>
-                  <input type="checkbox" value="Панорамен люк" name="exterior8">
-                  Панорамен люк<br>
-                  <input type="checkbox" value="Рейлинг на покрива" name="exterior9">
-                  Рейлинг на покрива<br>
-                  <input type="checkbox" value="Ролбари" name="exterior10">
-                  Ролбари<br>
-                  <input type="checkbox" value="Спойлери" name="exterior11">
-                  Спойлери<br>
-                  <input type="checkbox" value="Теглич" name="exterior12">
-                  Теглич<br>
-                  <input type="checkbox" value="Халогенни фарове" name="exterior13">
-                  Халогенни фарове<br>
-                  <input type="checkbox" value="Шибедах" name="exterior14">
-                  Шибедах<br>
+                <?php
+                  $values = array("2(3) Врати","4(5) Врати","LED фарове","Ксенонови фарове","Лети джанти","Металик","Отопляеми чистачки","Панорамен люк","Рейлинг на покрива","Ролбари","Спойлери","Теглич","Халогенни фарове","Шибедах");
+
+                  if(isset($exterior)){
+                      $checked = explode(" ", $exterior);
+                      for($i = 0;$i<count($values);$i++){
+                        $add = "";
+                        if(in_array ((string)$i, $checked)){
+                          $add = " checked=\"\"";
+                        }
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\"".$add." name=\"exterior".$i."\">".$values[$i]."<br>";
+                      }
+                    }else{
+                      for($i = 0;$i<count($values);$i++){
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\" name=\"exterior".$i."\">".$values[$i]."<br>";
+                      }
+                    }
+                ?>
                 </div>
               </div>
             </div>
             <div class="row2">
               <div class="under_header_comp100_long" id="state">
                 <div class="label">
-                  Защита
+                  <b>Защита</b>
                 </div>
                 <div class="input_value">
-                  <input type="checkbox" value="Аларма" name="protection1">
-                  OFFROAD пакет<br>
-                  <input type="checkbox" value="Аларма" name="protection2">
-                  Аларма<br>
-                  <input type="checkbox" value="Брониран" name="protection3">
-                  Брониран<br>
-                  <input type="checkbox" value="Имобилайзер" name="protection4">
-                  Имобилайзер<br>
-                  <input type="checkbox" value="Каско" name="protection5">
-                  Каско<br>
-                  <input type="checkbox" value="Лебедка" name="protection6">
-                  Лебедка<br>
-                  <input type="checkbox" value="Подсилени стъкла" name="protection7">
-                  Подсилени стъкла<br>
-                  <input type="checkbox" value="Централно заключване" name="protection8">
-                  Централно заключване<br>
+                <?php
+                  $values = array("OFFROAD пакет","Аларма","Брониран","Имобилайзер","Каско","Лебедка","Подсилени стъкла","Централно заключване");
+
+                  if(isset($protection)){
+                      $checked = explode(" ", $protection);
+                      for($i = 0;$i<count($values);$i++){
+                        $add = "";
+                        if(in_array ((string)$i, $checked)){
+                          $add = " checked=\"\"";
+                        }
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\"".$add." name=\"protection".$i."\">".$values[$i]."<br>";
+                      }
+                    }else{
+                      for($i = 0;$i<count($values);$i++){
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\" name=\"protection".$i."\">".$values[$i]."<br>";
+                      }
+                    }
+                ?>
                 </div>
               </div>
               <div class="under_header_comp100_long" id="state">
                 <div class="label">
-                  Интериор
+                  <b>Интериор</b>
                 </div>
                 <div class="input_value">
-                  <input type="checkbox" value="Велурен салон" name="interior1">
-                  Велурен салон<br>
-                  <input type="checkbox" value="Десен волан" name="interior2">
-                  Десен волан<br>
-                  <input type="checkbox" value="Кожен салон" name="interior3">
-                  Кожен салон<br>
+                <?php
+                  $values = array("Велурен салон","Десен волан","Кожен салон");
+
+                  if(isset($interior)){
+                      $checked = explode(" ", $interior);
+                      for($i = 0;$i<count($values);$i++){
+                        $add = "";
+                        if(in_array ((string)$i, $checked)){
+                          $add = " checked=\"\"";
+                        }
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\"".$add." name=\"interior".$i."\">".$values[$i]."<br>";
+                      }
+                    }else{
+                      for($i = 0;$i<count($values);$i++){
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\" name=\"interior".$i."\">".$values[$i]."<br>";
+                      }
+                    }
+                ?>
                 </div>
               </div>
               <div class="under_header_comp100_long" id="state">
                 <div class="label">
-                  Специализирани
+                  <b>Специализирани</b>
                 </div>
                 <div class="input_value">
-                  <input type="checkbox" value="TAXI" name="specialized1">
-                  TAXI<br>
-                  <input type="checkbox" value="За хора с увреждания" name="specialized2">
-                  За хора с увреждания<br>
-                  <input type="checkbox" value="Учебен" name="specialized3">
-                  Учебен<br>
+                <?php
+                  $values = array("TAXI","За хора с увреждания","Учебен");
+
+                  if(isset($specialized)){
+                      $checked = explode(" ", $specialized);
+                      for($i = 0;$i<count($values);$i++){
+                        $add = "";
+                        if(in_array ((string)$i, $checked)){
+                          $add = " checked=\"\"";
+                        }
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\"".$add." name=\"specialized".$i."\">".$values[$i]."<br>";
+                      }
+                    }else{
+                      for($i = 0;$i<count($values);$i++){
+                        echo "<input type=\"checkbox\" value=\"".$values[$i]."\" name=\"specialized".$i."\">".$values[$i]."<br>";
+                      }
+                    }
+                ?>
                 </div>
               </div>
           </div>
@@ -872,6 +782,7 @@
               <?php 
                 if(isset($pictures)){
                   $pics = explode(",", $pictures);
+                  $pics = array_filter($pics);
                   $i = 0;
                   foreach ($pics as $pic) {
                     echo "<div class=\"picture\"><img style=\"display:none;\" class='image' src='/uploads/".$pic."' title=\"".$pic."\"/><div class=\"remImg\" id=\"".$i."\">X</div></div>";
