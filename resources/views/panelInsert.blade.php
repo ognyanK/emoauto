@@ -447,7 +447,7 @@
               </div>
               <div class="under_header_comp50" id="engine_type">
                 <div class="label">
-                  Дата на производство
+                  Месец на производство
                 </div>
                 <div class="input_value">
                   <select class="date_of_manufacture" name="date_of_manufacture">

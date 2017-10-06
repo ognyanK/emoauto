@@ -5,20 +5,20 @@
 @section('content')
     <div class="details-cotainer">
         <div class="wrapper wrapper-1000">
-            <h1><!-- /*$title*/ --></h1>
-            <hr style="height:4px;border:0px;background-color:red;border-radius:5px">
+            <h1><?php echo $brandValue." ".$model ?></h1>
+            <hr style="height:3px;border:0px;background-color:#8e0f0f;border-radius:5px">
             <div class="car--details">
-                <div class="gallery">
+                <div class="gallery-redo">
                     <?php 
                         $pics = explode(",", $pictures);
                         $i = 0;
                         foreach ($pics as $key) {
                             if($i==0){
-                                echo "<div class=\"current-img\">";
-                                echo "<img src='/uploads/".$pics[0]."' >";
-                                echo "</div><div class=\"tumbnails\">";
+                                echo "<div class=\"current-img-redo\">";
+                                echo "<img class=\"pic\" src='/uploads/".$pics[0]."' >";
+                                echo "</div><div class=\"tumbnails-redo\">";
                             }else{
-                                echo "<div class=\"image\" style=\"background-image: url('/uploads/".$key."');\"></div>";
+                                echo "<div class=\"image-redo\"><img class=\"pic\" src='/uploads/".$key."' ></div>";
                             }
                         $i++;
                         }
@@ -27,75 +27,78 @@
                 </div>
                 <div class="spec">
                         <?php
-                        /*$keys = array('modif'=>'Модификация','engine_type'=>'Тип двигател','state'=>'Състояние','power'=>'Мощност','euro_standard'=>'Евро стандарт','transmission'=>'Скоростна кутия','category'=>'Категория','year_of_manufacture'=>'Година на производство','date_of_manufacture'=>'Дата на производство','mileage'=>'Пробег','color'=>'Цвят','region'=>'Регион','populated_place'=>'Населено място');
+                        $keys = array('Тип двигател','Мощност','Eвростандарт','Модификация','Състояние','Скоростна кутия','Категория','Пробег','Регион','Населено място','Цвят');
+                        $values = array($engine_type,$power,$euro_standard,$modification,$state,$transmission,$category,$mileage,$region,$populated_place,$color);
 
-                        echo "<h1>Цена ".$price."</h1><hr style=\"height:2px;border:0px;background-color:red;border-radius:5px\">";
+                        
 
-                        foreach ($mainInfo as $key => $value){
-                            echo $keys[$key] . " : <b>".$value. "</b><br>";
+                        echo "<table style=\"width:100%\">";
+                        echo "<tr style=\"border-bottom:2px solid #8e0f0f;\"><td><h2>Цена:</h2></td><td><b><h2>".$price." ".$currency."</h2></b></td></tr>";
+                        echo "<tr><td>Дата на производство:</td><td><b>".$date_of_manufacture." ".$year_of_manufacture."г.</b></td></tr>";
+
+                        for($i = 0;$i<count($keys);$i++){
+                            if(isset($values[$i]) && $values[$i] != ""){
+                                if($keys[$i] == 'Пробег'){
+                                    echo "<tr><td>".$keys[$i].":</td><td><b>".$values[$i]." км.</b></td></tr>";
+                                    continue;
+                                }
+                                echo "<tr><td>".$keys[$i].":</td><td><b>".$values[$i]."</b></td></tr>";
+                            }
                         }
+                        echo "<tr style=\"border-top:2px solid #8e0f0f;\"><td></td><td></td><tr>";
 
-                        echo "<hr style=\"height:2px;border:0px;background-color:red;border-radius:5px\">";*/
+                        echo "</table>";
+
+
                         ?>
 
                 </div>
             </div>
 
             <div class="more-spec">
-                <div class="item">
-                    <h2>Безопасност</h2>
+                <?php
+                    $values = array("GPS система за проследяване","Автоматичен контрол на стабилността","Адаптивни предни светлини","Антиблокираща система","Въздушни възглавници - Задни","Въздушни възглавници - Предни","Въздушни възглавници - Странични","Ел. разпределяне на спирачното усилие","Електронна програма за стабилизиране","Контрол на налягането на гумите","Парктроник","Система ISOFIX","Система за динамична устойчивост","Система за защита от пробуксуване","Система за изсушаване на накладките","Система за контрол на дистанцията","Система за подпомагане на спирането");
 
-                    <ul>
-                        <li>Антиблокираща система</li>
-                        <li>Въздушни възглавници - Предни</li>
-                        <li>Въздушни възглавници - Странични</li>
-                        <li>Система за защита от пробуксуване</li>
-                    </ul>
-                </div>
+                    echoList($safety, "Безопасност", $values);
 
-                <div class="item">
-                    <h2>Безопасност</h2>
-                    
-                    <ul>
-                        <li>Антиблокираща система</li>
-                        <li>Въздушни възглавници - Предни</li>
-                        <li>Въздушни възглавници - Странични</li>
-                        <li>Система за защита от пробуксуване</li>
-                    </ul>
-                </div>
 
-                <div class="item">
-                    <h2>Безопасност</h2>
-                    
-                    <ul>
-                        <li>Антиблокираща система</li>
-                        <li>Въздушни възглавници - Предни</li>
-                        <li>Въздушни възглавници - Странични</li>
-                        <li>Система за защита от пробуксуване</li>
-                    </ul>
-                </div>
+                   $values = array("Auto Start Stop function","Bluetooth \ handsfree система","DVD, TV","Steptronic, Tiptronic","USB, audio\video, IN\AUX изводи","Адаптивно въздушно окачване","Безключово палене ","Блокаж на диференциала","Бордкомпютър","Датчик за светлина","Ел. Огледала","Ел. Стъкла","Ел. регулиране на окачването","Ел. регулиране на седалките","Ел. усилвател на волана","Климатик","Климатроник","Мултифункционален волан","Навигация","Отопление на волана","Печка","Подгряване на предното стъкло","Подгряване на седалките","Регулиране на волана","Сензор за дъжд","Серво усилвател на волана","Система за измиване на фаровете","Система за контрол на скоростта (автопилот)","Стерео уредба","Филтър за твърди частици","Хладилна жабка");
 
-                <div class="item">
-                    <h2>Безопасност</h2>
-                    
-                    <ul>
-                        <li>Антиблокираща система</li>
-                        <li>Въздушни възглавници - Предни</li>
-                        <li>Въздушни възглавници - Странични</li>
-                        <li>Система за защита от пробуксуване</li>
-                    </ul>
-                </div>
+                   echoList($comfort, "Комфорт", $values);
 
-                <div class="item">
-                    <h2>Безопасност</h2>
-                    
-                    <ul>
-                        <li>Антиблокираща система</li>
-                        <li>Въздушни възглавници - Предни</li>
-                        <li>Въздушни възглавници - Странични</li>
-                        <li>Система за защита от пробуксуване</li>
-                    </ul>
-                </div>
+                  $values = array("4x4","7 места","Buy back","Бартер","Газова уредба","Капариран\Продаден","Катастрофирал","Лизинг","Метанова уредба","На части","Напълно обслужен","Нов внос","С право на дан.к-т","С регистрация","Сервизна книжка","Тунинг");
+
+                  echoList($other, "Други", $values);
+
+                  $values = array("2(3) Врати","4(5) Врати","LED фарове","Ксенонови фарове","Лети джанти","Металик","Отопляеми чистачки","Панорамен люк","Рейлинг на покрива","Ролбари","Спойлери","Теглич","Халогенни фарове","Шибедах");
+
+                  echoList($exterior, "Екстериор", $values);
+
+                  $values = array("OFFROAD пакет","Аларма","Брониран","Имобилайзер","Каско","Лебедка","Подсилени стъкла","Централно заключване");
+
+                  echoList($protection, "Защита", $values);
+
+                  $values = array("Велурен салон","Десен волан","Кожен салон");
+
+                  echoList($interior, "Интериор", $values);
+
+                  $values = array("TAXI","За хора с увреждания","Учебен");
+
+                  echoList($specialized, "Специализирани", $values);
+
+                  function echoList($var, $header, $values){
+                    if(isset($var) && $var != ""){
+                      $checked = explode(" ", $var);
+                      if(count($checked)>0){
+                        echo "<div class=\"item\"><h2>".$header."</h2><ul>";
+                        for($i = 0;$i<count($checked);$i++){
+                            echo "<li>".$values[$checked[$i]]."</li>"; 
+                        }
+                        echo "</ul></div>";
+                      } 
+                    }
+                  }
+                ?>
             </div>
         </div>
     </div>

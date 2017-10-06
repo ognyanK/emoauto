@@ -43,7 +43,8 @@ class PostController extends Controller
         $info = $info[0];
 
         return view('panelInsert')->with('brands', $brands)->with('base_category', $info['base_category'])
-        ->with('brandValue', $info['brand'])->with('modification',$info['modification'])->with('engine_type',$info['engine_type'])
+        ->with('brandValue', $info['brand'])->with('model',$info['model'])->with('modification',$info['modification'])
+        ->with('engine_type',$info['engine_type'])
         ->with('state',$info['state'])->with('power',$info['power'])->with('euro_standard',$info['euro_standard'])
         ->with('transmission', $info['transmission'])->with('category', $info['category'])->with('price', $info['price'])
         ->with('currency', $info['currency'])->with('year_of_manufacture', $info['year_of_manufacture'])
@@ -145,7 +146,8 @@ class PostController extends Controller
         $info = $info[0];
 
         return view('pages/details')->with('brands', $brands)->with('base_category', $info['base_category'])
-        ->with('brandValue', $info['brand'])->with('modification',$info['modification'])->with('engine_type',$info['engine_type'])
+        ->with('brandValue', $info['brand'])->with('model',$info['model'])->with('modification',$info['modification'])
+        ->with('engine_type',$info['engine_type'])->with('date_of_manufacture',$info['date_of_manufacture'])
         ->with('state',$info['state'])->with('power',$info['power'])->with('euro_standard',$info['euro_standard'])
         ->with('transmission', $info['transmission'])->with('category', $info['category'])->with('price', $info['price'])
         ->with('currency', $info['currency'])->with('year_of_manufacture', $info['year_of_manufacture'])
