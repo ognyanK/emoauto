@@ -29,7 +29,9 @@
                     </div>
 
                     <div class="desc">
-                        <p>Desc here...</p>
+                    <?php
+                        echo "<p>".$i['additional_info']."</p>";
+                    ?>
                     </div>
                 </div>
             </div>

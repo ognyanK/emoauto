@@ -53,6 +53,34 @@
                         ?>
 
                 </div>
+                <div class="contacts">
+                    <table>
+                        <tr>
+                            <td>Отправете запитване</td>
+                        </tr>
+                        <tr colspan="3">
+                            <td colspan="2"><textarea></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Вашето име:</td><td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="contacts_name"></td><td>captcha</td>
+                        </tr>
+                        <tr>
+                            <td>Вашия E-mail:</td><td>Въведете кода:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="contacts_email"></td><td><input type="text" name="contacts_captcha"></td>
+                        </tr>
+                        <tr>
+                            <td>Вашия телефон:</td><td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="contacts_phone"></td><td><input type="submit" value="Изпрати"></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
             <div class="more-spec">
@@ -100,34 +128,6 @@
                   }
                 ?>
             </div>
-            <div class="contacts">
-                    <table>
-                        <tr>
-                            <td>Отправете запитване</td>
-                        </tr>
-                        <tr colspan="3">
-                            <td colspan="2"><textarea></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Вашето име:</td><td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="contacts_name"></td><td>captcha</td>
-                        </tr>
-                        <tr>
-                            <td>Вашия E-mail:</td><td>Въведете кода:</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="contacts_email"></td><td><input type="text" name="contacts_captcha"></td>
-                        </tr>
-                        <tr>
-                            <td>Вашия телефон:</td><td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="contacts_phone"></td><td><input type="submit" value="Изпрати"></td>
-                        </tr>
-                    </table>
-                </div>
         </div>
     </div>
 @endsection
