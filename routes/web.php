@@ -19,6 +19,7 @@ Route::get('/something/{id}', 'BrandController@show');
 //Route::resource('panelInsert', 'PostController');
 
 Route::get('/panelInsert/edit/{id}', 'PostController@edit');
+Route::get('/panelInsert/destroy/{id}', 'PostController@destroy');
 Route::resource('panelInsert', 'PostController');
 Route::post('panelInsert/store', 'PostController@store');
 

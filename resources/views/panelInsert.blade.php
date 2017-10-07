@@ -841,11 +841,12 @@
             <?php 
             if(isset($id)){
               echo "<input id=\"id\" name=\"id\" type=\"text\" style=\"display:none;\" value=\"".$id."\">";
+              echo "<input type=\"submit\" name=\"subm\" style=\"width:230px; height:40px; font-weight:bold;\" value=\"ЗАПИШИ ПРОМЕНИТЕ\">";
             }else{
               echo "<input id=\"id\" name=\"id\" type=\"text\" style=\"display:none;\" value=\"-1\">";
+              echo "<input type=\"submit\" name=\"subm\" style=\"width:230px; height:40px; font-weight:bold;\" value=\"ПУБЛИКУВАЙ ОБЯВАТА\">";
             }
             ?>
-            <input type="submit" name="subm" style="width:230px; height:40px; font-weight:bold;" value="ПУБЛИКУВАЙ ОБЯВАТА">
       </div>
     </div>
 </div>

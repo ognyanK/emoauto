@@ -74,7 +74,7 @@ class PostController extends Controller
         if($edit){
             $created_at = Post::where('id','=',$request->id)->value('created_at');
             if(!isset($created_at))return redirect('admin_panel');
-            Post::where('id','=',$request->id)->delete();
+            destroy($request->id);
         }
 
         for($i = 0;$i<count($request->file('files'));$i++){
@@ -180,6 +180,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        return 'destroy';
+         Post::where('id','=',$id)->delete();
     }
 }
