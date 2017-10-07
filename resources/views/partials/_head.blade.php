@@ -79,8 +79,11 @@
 		border:0;
 	}
 	.contacts .flex-layout .info{
-		width: 39%;
 		padding: 0;
+	}
+	.car--details {
+		border-top:4px solid #8e0f0f;
+		border-radius:8px;
 	}
 
 	.contacts .flex-layout .info .contactsI{
@@ -119,7 +122,6 @@
 		border-top:4px solid #8e0f0f;
 		border-radius:8px;
 		background-color: #e6e8ed;
-		width: 60%;
 		font-size: 13px;
 	}
 	.contacts .flex-layout .form input,textarea{

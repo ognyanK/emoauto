@@ -6,7 +6,6 @@
     <div class="details-cotainer">
         <div class="wrapper wrapper-1000">
             <h1><?php echo $brandValue." ".$model ?></h1>
-            <hr style="height:3px;border:0px;background-color:#8e0f0f;border-radius:5px">
             <div class="car--details">
                 <div class="gallery-redo">
                     <?php 
