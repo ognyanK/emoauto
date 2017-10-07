@@ -622,7 +622,7 @@ img {
   }
   .more-spec .item li {
     display: inline-block;
-    padding-right: 10px;
+    padding-right: 20px;
     font-size: 1rem;
     vertical-align: top;
     width: 25%;
