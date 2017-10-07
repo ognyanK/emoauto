@@ -565,6 +565,7 @@ img {
 .contacts .info p {
   color: #2f2f2f;
   font-size: 1.125rem;
+  line-height: 1.5rem;
 }
 
 .contacts .more-info {
@@ -641,10 +642,10 @@ img {
   .contacts .form {
     border-right: 2px solid #8e0f0f;
     padding-right: 20px;
-    width: 51.6129%;
+    width: 70.96774%;
   }
   .contacts .info {
-    width: 48.3871%;
+    width: 29.03226%;
   }
   .contacts .info p {
     font-size: 1rem;

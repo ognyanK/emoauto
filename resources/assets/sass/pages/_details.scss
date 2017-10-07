@@ -162,6 +162,7 @@
         p {
             color: color(grey);
             font-size: calculateRem(18px);
+            line-height: calculateRem(24px);
         }
     }
 
@@ -251,11 +252,11 @@
         .form {
             border-right: 2px solid color(red);
             padding-right: 20px;
-            width: cp(320, 620);
+            width: cp(440, 620);
         }
     
         .info {
-            width: cp(300, 620);
+            width: cp(180, 620);
 
             p {
                 font-size: calculateRem(16px);
