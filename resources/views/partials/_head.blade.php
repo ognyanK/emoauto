@@ -19,7 +19,7 @@
 	/*details*/
 
 	.gallery-redo{
-		background-color: gray;
+		background-color: #e6e8ed;
 		width: 300px;
 		float: left;
 	}
@@ -72,7 +72,72 @@
 	#spec_table td{
 		padding: 3px;
 	}
+	.contacts {
+		border:0;
+	}
+	.contacts .flex-layout{
+		border:0;
+	}
+	.contacts .flex-layout .info{
+		width: 39%;
+		padding: 0;
+	}
 
+	.contacts .flex-layout .info .contactsI{
+		border-top:4px solid #8e0f0f;
+		border-radius:8px;
+		background-color: #e6e8ed;
+		width: 100%;
+		padding: 10px;
+	}
+	.contacts .flex-layout .info .contactsI p, .contacts .flex-layout .info .timeI p{
+		font-size: 14px;
+	}
+	.contacts .flex-layout .info .timeI{
+		border-top:4px solid #8e0f0f;
+		border-radius:8px;
+		background-color: #e6e8ed;
+		width: 100%;
+		padding: 10px;
+		margin-top:5px;
+	}
+
+	.contacts .more-info{
+		width: 100%;
+		padding: 10px;
+		border-top:4px solid #8e0f0f;
+		border-radius:8px;
+	}
+
+	.contacts .more-info p{
+		padding-top:5px;
+		font-size: 14px;
+	}
+
+	.contacts .flex-layout .form{
+		border:1px solid #8e0f0f;
+		border-top:4px solid #8e0f0f;
+		border-radius:8px;
+		background-color: #e6e8ed;
+		width: 60%;
+		font-size: 13px;
+	}
+	.contacts .flex-layout .form input,textarea{
+		background-color: white;
+	}
+
+	.more-spec{
+		width: 100%;
+		float: left;
+		box-sizing: border-box;
+		padding: 0;
+	}
+	.more-spec .item{
+		width: 100%;
+		padding: 10px;
+		border-top:4px solid #8e0f0f;
+		border-radius:8px;
+	}
 	/*feed*/
 	.feed-item{
 		margin:0;

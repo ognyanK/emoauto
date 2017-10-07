@@ -43,7 +43,7 @@ class CreatePostsTable extends Migration
 
             $table->string('phone');
             $table->string('e-mail');
-            $table->string('additional_info');
+            $table->text('additional_info');
 
             $table->string("safety")->default($value);
             $table->string("comfort")->default($value);

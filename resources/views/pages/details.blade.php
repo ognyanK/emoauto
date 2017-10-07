@@ -53,26 +53,48 @@
                         ?>
                     
                     <div class="contacts">
+                        <div class="more-info">
+                            <b>Допълнителна информация</b>
+
+                            <p><?php echo $additional_info?></p>
+                        </div>
                         <div class="flex-layout">
+                            <div class="info">
+                                <div class="contactsI">
+                                    <b> За контакти: </b>
+                                    <p>Телефон:<br /> <?php echo $phone?><br />
+                                    Е-майл:<br /><?php echo $email?></p>
+                                </div>
+                                <div class="timeI">
+                                    <p>Телефон:<br /> <?php echo $phone?><br />
+                                    Е-майл:<br /><?php echo $email?></p>
+                                </div>
+                            </div>
                             <div class="form">
+                                <form method="POST" id="form_contacts" action="/storeQuestion" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+
+                                <?php
+                                echo "<input type=\"text\" name=\"post_id\" style=\"display:none\" value=\"".$id."\">";
+                                ?>
                                 <table>
                                     <tr>
                                         <td>Отправете запитване</td>
                                     </tr>
                                     <tr colspan="3">
-                                        <td colspan="2"><textarea></textarea></td>
+                                        <td colspan="2"><textarea name="contacts_question" required></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>Вашето име:</td><td></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" name="contacts_name"></td><td>captcha</td>
+                                        <td><input type="text" name="contacts_name" required></td><td>captcha</td>
                                     </tr>
                                     <tr>
                                         <td>Вашия E-mail:</td><td>Въведете кода:</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" name="contacts_email"></td><td><input type="text" name="contacts_captcha"></td>
+                                        <td><input type="text" name="contacts_email" required></td><td><input type="text" name="contacts_captcha"></td>
                                     </tr>
                                     <tr>
                                         <td>Вашия телефон:</td><td></td>
@@ -81,18 +103,8 @@
                                         <td><input type="text" name="contacts_phone"></td><td><input type="submit" value="Изпрати"></td>
                                     </tr>
                                 </table>
+                                </form>
                             </div>
-                                
-                            <div class="info">
-                                <p>За контакти:<br /> Принти нещо...</p>
-                                <p>Е-майл:<br /> Принти нещо...</p>
-                            </div>
-                        </div>
-
-                        <div class="more-info">
-                            <h2>Heading...</h2>
-
-                            <p>Description....</p>
                         </div>
                     </div>
                 </div>
@@ -100,6 +112,7 @@
 
             <div class="more-spec">
                 <?php
+                echo "<div class=\"item\"><b>Особености:</b><br>";
                     $values = array("GPS система за проследяване","Автоматичен контрол на стабилността","Адаптивни предни светлини","Антиблокираща система","Въздушни възглавници - Задни","Въздушни възглавници - Предни","Въздушни възглавници - Странични","Ел. разпределяне на спирачното усилие","Електронна програма за стабилизиране","Контрол на налягането на гумите","Парктроник","Система ISOFIX","Система за динамична устойчивост","Система за защита от пробуксуване","Система за изсушаване на накладките","Система за контрол на дистанцията","Система за подпомагане на спирането");
 
                     echoList($safety, "Безопасност", $values);
@@ -129,15 +142,20 @@
 
                   echoList($specialized, "Специализирани", $values);
 
+                   echo "</div>";
+
                   function echoList($var, $header, $values){
                     if(isset($var) && $var != ""){
                       $checked = explode(" ", $var);
                       if(count($checked)>0){
-                        echo "<div class=\"item\"><h2>".$header."</h2><ul>";
+                        echo "<b style=\"font-size:15px\">".$header.": </b>";
+                        $comma =",";
                         for($i = 0;$i<count($checked);$i++){
-                            echo "<li>".$values[$checked[$i]]."</li>"; 
+                            if($i == count($checked)-1){
+                                $comma ="";
+                            }
+                            echo "<span style=\"font-size:14px\">".$values[$checked[$i]]."".$comma." </span>"; 
                         }
-                        echo "</ul></div>";
                       } 
                     }
                   }

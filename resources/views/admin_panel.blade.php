@@ -8,24 +8,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
         <!-- Styles -->
     <style>
-        .car {
-            border:1px solid black;
-            width: 100%;
-            height: 100px;
-        }
 
+    .whole_content{
+        width: 1200px;
+        margin:0 auto;
+    }
+    .ap_nav{
+        width: 100%;
+        float: left;
+    }
+    .feed-container{
+        width: 65%;
+        float: left;
+    }
+    .right_side_container{
+        width: 34%;
+        height: 500px;
+        background-color: white;
+        float: left;
+        border:1px solid #8e0f0f;
+        border-top:4px solid #8e0f0f;
+        border-radius: 8px;
+        box-sizing: border-box;
+        margin-left: 1%;
+        padding: 15px;
+    }
     .feed-item{
         margin:0;
         padding: 10px;
         border-top:4px solid #8e0f0f;
-        border-radius: 5px;
+        border-radius: 8px;
         border-bottom: 0px;
         margin-top:5px;
         box-sizing: border-box;
         height: 120px;
-        width: 820px;
+        width: 100%;
         float: left;
     }
 
@@ -50,75 +70,81 @@
         bottom: 0;
         display: none;
     }
-
-    .feed-item .content{
-        height: 100px;
-        width: 700px;
-        float: right;
+    .feed-item .desc{
         float: left;
-    }
-    .feed-item .content .desc{
-        float: left;
-        width: 70%;
+        padding: 15px;
         box-sizing: border-box;
     }
 
-    .feed-item .content .options{
+    .feed-item .options{
         float: right;
-        width: 30%;
     }
     </style>
     </head>
     <body>
-    <a href="/panelInsert">new car</a>
-    <div class="feed-container">
-        <div class="feed-items">
-        @foreach($cars as $i)
-            <div class="feed-item" id="<?php 
-                echo $i['id'];
-            ?>">
-                <div class="left">
-                    <div class="image">
-                        <a href="#">
-                            <?php
-                            $pics = explode(",", $i['pictures']);
+    <div class="whole_content">
+        <div class="ap_nav">
+            <a href="/panelInsert">new car</a>
+        </div>
+        <div class="feed-container">
+            <div class="feed-items">
+            @foreach($cars as $i)
+                <div class="feed-item" id="<?php 
+                    echo $i['id'];
+                ?>">
+                    <div class="left">
+                        <div class="image">
+                            <a href="#">
+                                <?php
+                                $pics = explode(",", $i['pictures']);
 
-                            echo " <img class=\"pic\" src=\"/uploads/".$pics[0]."\">";
-                            ?>
-                        </a>
+                                echo " <img class=\"pic\" src=\"/uploads/".$pics[0]."\">";
+                                ?>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="content">
                     <div class="desc">
-                    <?php
-                        $pics = explode(",", $i['pictures']);
-                        $title = $i['brand']." ".$i['model'];
-                        echo $title.", ";
-                        echo $i['price']." ".$i['currency'].", ";
-                        echo $i['additional_info'];
-                    ?>
+                        <?php
+                            $pics = explode(",", $i['pictures']);
+                            $title = $i['brand']." ".$i['model'];
+                            echo $title.", ";
+                            echo $i['price']." ".$i['currency'].", ";
+                            echo $i['additional_info'];
+                        ?>
                     </div>
                     <div class="options">
-                    <?php
-                        echo "<a href=\"/panelInsert/edit/".$i['id']."\">edit</a>, ";
-                        echo "<a id=\"delete\" href=\"/panelInsert/destroy/".$i['id']."\">delete</a>, ";
-                        echo "<a href=\"/panelInsert/edit/".$i['id']."\">view messeges(0)</a>";
-                    ?>
+                        <?php
+                            echo "<a href=\"/panelInsert/edit/".$i['id']."\">edit</a>, ";
+                            echo "<a id=\"delete\" href=\"/panelInsert/destroy/".$i['id']."\">delete</a>, ";
+                            echo "<span class=\"messege\" id=\"".$i['id']."\">messeges(".$questions_array[$i['id']].")</span>";
+                        ?>
                     </div>
                 </div>
+            @endforeach
             </div>
-        @endforeach
+            {{ $cars->links() }}
+        </div>
+        <div class="right_side_container">
+
         </div>
     </div>
-        <?php 
-            /*for($i = 0;$i<count($cars);$i++){
-                echo "<div class=\"car\">".$cars[$i]['brand']."<a href=\"/panelInsert/edit/".$cars[$i]['id']."\">edit</a></div>";
-            }*/
-        ?>
-    </body>
+</body>
 
     <script type="text/javascript">
     $(document).ready(function(){
+        $(".options").on('click', '.messege',function(){
+
+            var URL = "/admin_panel/loadQuestions/"+$(this).attr('id');
+            $.ajax({
+              type: "GET",
+              url: URL
+            }).done(function( msg ) {
+                for(var i=0;i<msg.length;i++){
+                    alert(msg[i].pictures);
+                }
+            });
+        });
+
         $(".options").on('click', '#delete',function(){
             if(!confirm("Are you sure you want to delete this car?")){
                 return false;
