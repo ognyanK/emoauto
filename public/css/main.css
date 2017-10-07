@@ -78,6 +78,7 @@ main {
 *:before,
 *:after {
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 html {
@@ -497,11 +498,44 @@ img {
 
 .more-spec .item h2 {
   padding-bottom: 15px;
+  text-align: center;
+}
+
+.more-spec .item li {
+  margin-bottom: 5px;
+}
+
+.contacts {
+  background: #fff;
+  border-bottom: 2px solid #8e0f0f;
+  padding: 5px;
+  width: 100%;
+}
+
+.contacts table, .contacts textarea {
+  width: 100%;
+}
+
+.contacts td {
+  padding-bottom: 5px;
+}
+
+.contacts textarea, .contacts input {
+  border: 1px solid #000;
+}
+
+.contacts textarea {
+  min-height: 70px;
+}
+
+.contacts input {
+  width: 90%;
+  padding: 5px 15px;
 }
 
 @media only screen and (min-width: 64em) {
   .car--details {
-    align-items: stretch;
+    align-items: flex-start;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -527,18 +561,29 @@ img {
     left: 50%;
     max-width: 900px;
   }
-  .more-spec {
-    align-items: flex-start;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+  .more-spec .item h2 {
+    text-align: left;
   }
-  .more-spec .item {
-    padding-bottom: 25px;
-    width: 33.33%;
+  .more-spec .item ul {
+    font-size: 0;
   }
-  .more-spec .item:last-child {
-    padding-bottom: 0;
+  .more-spec .item li {
+    display: inline-block;
+    padding-right: 10px;
+    position: relative;
+    font-size: 1rem;
+    vertical-align: top;
+    width: 25%;
+  }
+  .more-spec .item li:before {
+    background: #000;
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -10px;
+    height: 5px;
+    width: 5px;
   }
 }
 

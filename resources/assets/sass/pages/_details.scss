@@ -89,13 +89,46 @@
 
         h2 {
             padding-bottom: 15px;
+            text-align: center;
         }
+
+        li {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.contacts {
+    background: color(white);
+    border-bottom: 2px solid color(red);
+    padding: 5px;
+    width: 100%;
+
+    table, textarea {
+        width: 100%;
+    }
+
+    td {
+        padding-bottom: 5px; 
+    }
+
+    textarea, input {
+        border: 1px solid color(black);
+    }
+
+    textarea {
+        min-height: 70px;
+    }
+
+    input {
+        width: 90%;
+        padding: 5px 15px;
     }
 }
 
 @media only screen and (min-width: 1024 / 16 * 1em) {
     .car--details {
-        @include flexbox(stretch, row nowrap, space-between);
+        @include flexbox(flex-start, row nowrap, space-between);
     
         .gallery {
             width: cp(330, 1000);   
@@ -126,15 +159,34 @@
         }
     }
 
-    .more-spec {   
-        @include flexbox(flex-start, row wrap, space-between); 
-
+    .more-spec {
         .item {
-            padding-bottom: 25px;
-            width: 33.33%;
+            h2 {
+                text-align: left;
+            }
 
-            &:last-child {
-                padding-bottom: 0;
+            ul {
+                font-size: 0;
+            }
+
+            li {
+                display: inline-block;
+                padding-right: 10px;
+                position: relative;
+                font-size: calculateRem(16px);
+                vertical-align: top;
+                width: cp(245, 980);
+
+                &:before {
+                    background: color(black);
+                    border-radius: 50%;
+                    content: "";
+                    position: absolute;
+                    top: 5px; 
+                    left: -10px;
+                    height: 5px;
+                    width: 5px;
+                }
             }
         }
     }

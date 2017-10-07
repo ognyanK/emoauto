@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>@yield('title')</title>
@@ -73,32 +74,6 @@
 		padding: 3px;
 	}
 
-	.contacts{
-		width: 350px;
-		height: 190px;
-		background-color: lightgray;
-		border-top:4px solid #8e0f0f;
-		border-bottom:4px solid #8e0f0f;
-		padding: 5px;
-		box-sizing: border-box;
-		border-radius: 5px;
-	}
-	.contacts table{
-		width: 100%;
-	}
-	.contacts textarea{
-		border:1px solid black;
-		width: 260px;
-	}
-	.contacts table tr{
-		width: 100%;
-	}
-	.contacts input{
-		border:1px solid black;
-		width: 100%;
-		box-sizing: border-box;
-		padding: 0;
-	}
 	/*feed*/
 	.feed-item{
 		margin:0;
