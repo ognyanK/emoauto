@@ -78,7 +78,7 @@
 }
 
 .more-spec {
-    padding: 10px;
+    padding: 20px;
 
     .item {
         padding-bottom: 25px;
@@ -90,45 +90,103 @@
         h2 {
             padding-bottom: 15px;
             text-align: center;
+            font-size: calculateRem(22px);
+        }
+
+        ul {
+            list-style: none;
         }
 
         li {
             margin-bottom: 5px;
+            position: relative;
+
+            &:before {
+                background: color(black);
+                border-radius: 50%;
+                content: "";
+                position: absolute;
+                top: 5px; 
+                left: -10px;
+                height: 5px;
+                width: 5px;
+            }
         }
     }
 }
 
 .contacts {
     background: color(white);
-    border-bottom: 2px solid color(red);
+    border-top: 2px solid color(red);
     padding: 5px;
     width: 100%;
 
-    table, textarea {
-        width: 100%;
+    .flex-layout {
+        border-bottom: 2px solid color(red);
     }
 
-    td {
-        padding-bottom: 5px; 
+    .form {
+        padding-bottom: 20px;
+
+        table, textarea {
+            width: 100%;
+        }
+        
+        tr {
+            td {
+                padding-bottom: 5px; 
+            }
+
+            &:last-child {
+                td {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    
+        textarea, input {
+            border: 1px solid color(black);
+        }
+    
+        textarea {
+            min-height: 70px;
+        }
+    
+        input {
+            width: 90%;
+            padding: 5px 15px;
+        }
     }
 
-    textarea, input {
-        border: 1px solid color(black);
+    .info {
+        p {
+            color: color(grey);
+            font-size: calculateRem(18px);
+        }
     }
 
-    textarea {
-        min-height: 70px;
-    }
+    .more-info {
+        padding-top: 30px;
 
-    input {
-        width: 90%;
-        padding: 5px 15px;
+        h2, p {
+            color: color(grey);
+        }
+
+        h2 {
+            font-size: calculateRem(19px);
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: calculateRem(16px);
+        }
     }
 }
 
 @media only screen and (min-width: 1024 / 16 * 1em) {
     .car--details {
-        @include flexbox(flex-start, row nowrap, space-between);
+        @include flexbox(stretch, row nowrap, space-between);
     
         .gallery {
             width: cp(330, 1000);   
@@ -172,20 +230,39 @@
             li {
                 display: inline-block;
                 padding-right: 10px;
-                position: relative;
                 font-size: calculateRem(16px);
                 vertical-align: top;
                 width: cp(245, 980);
+            }
+        }
+    }
 
-                &:before {
-                    background: color(black);
-                    border-radius: 50%;
-                    content: "";
-                    position: absolute;
-                    top: 5px; 
-                    left: -10px;
-                    height: 5px;
-                    width: 5px;
+    .contacts {
+        padding: 0;
+
+        .flex-layout {
+            @include flexbox(center, row nowrap, space-between);
+        }
+
+        .form, .info {
+            padding: 10px;
+        }
+
+        .form {
+            border-right: 2px solid color(red);
+            padding-right: 20px;
+            width: cp(320, 620);
+        }
+    
+        .info {
+            width: cp(300, 620);
+
+            p {
+                font-size: calculateRem(16px);
+                padding-bottom: 20px;
+
+                &:last-child {
+                    padding-bottom: 0;
                 }
             }
         }

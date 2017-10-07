@@ -19,15 +19,15 @@
             
             <ul class="header-dropdown">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                 </li>
 
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="/feed">Feed</a>
                 </li>
 
                 <li>
-                    <a href="#">About</a>
+                    <a href="#">Contanct Us</a>
                 </li>
             </ul>
         </div>

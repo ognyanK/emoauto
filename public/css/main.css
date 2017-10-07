@@ -485,7 +485,7 @@ img {
 }
 
 .more-spec {
-  padding: 10px;
+  padding: 20px;
 }
 
 .more-spec .item {
@@ -499,43 +499,95 @@ img {
 .more-spec .item h2 {
   padding-bottom: 15px;
   text-align: center;
+  font-size: 1.375rem;
+}
+
+.more-spec .item ul {
+  list-style: none;
 }
 
 .more-spec .item li {
   margin-bottom: 5px;
+  position: relative;
+}
+
+.more-spec .item li:before {
+  background: #000;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -10px;
+  height: 5px;
+  width: 5px;
 }
 
 .contacts {
   background: #fff;
-  border-bottom: 2px solid #8e0f0f;
+  border-top: 2px solid #8e0f0f;
   padding: 5px;
   width: 100%;
 }
 
-.contacts table, .contacts textarea {
+.contacts .flex-layout {
+  border-bottom: 2px solid #8e0f0f;
+}
+
+.contacts .form {
+  padding-bottom: 20px;
+}
+
+.contacts .form table, .contacts .form textarea {
   width: 100%;
 }
 
-.contacts td {
+.contacts .form tr td {
   padding-bottom: 5px;
 }
 
-.contacts textarea, .contacts input {
+.contacts .form tr:last-child td {
+  padding-bottom: 0;
+}
+
+.contacts .form textarea, .contacts .form input {
   border: 1px solid #000;
 }
 
-.contacts textarea {
+.contacts .form textarea {
   min-height: 70px;
 }
 
-.contacts input {
+.contacts .form input {
   width: 90%;
   padding: 5px 15px;
 }
 
+.contacts .info p {
+  color: #2f2f2f;
+  font-size: 1.125rem;
+}
+
+.contacts .more-info {
+  padding-top: 30px;
+}
+
+.contacts .more-info h2, .contacts .more-info p {
+  color: #2f2f2f;
+}
+
+.contacts .more-info h2 {
+  font-size: 1.1875rem;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.contacts .more-info p {
+  font-size: 1rem;
+}
+
 @media only screen and (min-width: 64em) {
   .car--details {
-    align-items: flex-start;
+    align-items: stretch;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -570,20 +622,36 @@ img {
   .more-spec .item li {
     display: inline-block;
     padding-right: 10px;
-    position: relative;
     font-size: 1rem;
     vertical-align: top;
     width: 25%;
   }
-  .more-spec .item li:before {
-    background: #000;
-    border-radius: 50%;
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: -10px;
-    height: 5px;
-    width: 5px;
+  .contacts {
+    padding: 0;
+  }
+  .contacts .flex-layout {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+  .contacts .form, .contacts .info {
+    padding: 10px;
+  }
+  .contacts .form {
+    border-right: 2px solid #8e0f0f;
+    padding-right: 20px;
+    width: 51.6129%;
+  }
+  .contacts .info {
+    width: 48.3871%;
+  }
+  .contacts .info p {
+    font-size: 1rem;
+    padding-bottom: 20px;
+  }
+  .contacts .info p:last-child {
+    padding-bottom: 0;
   }
 }
 

@@ -19,8 +19,8 @@
 	/*details*/
 
 	.gallery-redo{
+		background-color: gray;
 		width: 300px;
-		height: 600px;
 		float: left;
 	}
 	.gallery-redo .current-img-redo{
@@ -47,7 +47,6 @@
 		width: 100%;
 		height: 50%;
 		float: left;
-		background-color: gray;
 	}
 	.gallery-redo .tumbnails-redo .image-redo{
 		width: 25%;
