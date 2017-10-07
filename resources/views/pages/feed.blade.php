@@ -14,7 +14,7 @@
                         <?php
                         $pics = explode(",", $i['pictures']);
 
-                        echo " <img src=\"/uploads/".$pics[0]."\">";
+                        echo " <img class=\"pic\" src=\"/uploads/".$pics[0]."\">";
                         ?>
                     </a>
                 </div>

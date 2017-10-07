@@ -32,7 +32,7 @@
 
                         
 
-                        echo "<table style=\"width:100%\">";
+                        echo "<table id=\"spec_table\" style=\"width:100%\">";
                         echo "<tr style=\"border-bottom:2px solid #8e0f0f;\"><td><h2>Цена:</h2></td><td><b><h2>".$price." ".$currency."</h2></b></td></tr>";
                         echo "<tr><td>Дата на производство:</td><td><b>".$date_of_manufacture." ".$year_of_manufacture."г.</b></td></tr>";
 
@@ -100,6 +100,34 @@
                   }
                 ?>
             </div>
+            <div class="contacts">
+                    <table>
+                        <tr>
+                            <td>Отправете запитване</td>
+                        </tr>
+                        <tr colspan="3">
+                            <td colspan="2"><textarea></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Вашето име:</td><td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="contacts_name"></td><td>captcha</td>
+                        </tr>
+                        <tr>
+                            <td>Вашия E-mail:</td><td>Въведете кода:</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="contacts_email"></td><td><input type="text" name="contacts_captcha"></td>
+                        </tr>
+                        <tr>
+                            <td>Вашия телефон:</td><td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="contacts_phone"></td><td><input type="submit" value="Изпрати"></td>
+                        </tr>
+                    </table>
+                </div>
         </div>
     </div>
 @endsection

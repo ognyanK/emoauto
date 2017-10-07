@@ -44,7 +44,7 @@ class PostController extends Controller
 
         return view('panelInsert')->with('brands', $brands)->with('base_category', $info['base_category'])
         ->with('brandValue', $info['brand'])->with('model',$info['model'])->with('modification',$info['modification'])
-        ->with('engine_type',$info['engine_type'])
+        ->with('engine_type',$info['engine_type'])->with('date_of_manufacture',$info['date_of_manufacture'])
         ->with('state',$info['state'])->with('power',$info['power'])->with('euro_standard',$info['euro_standard'])
         ->with('transmission', $info['transmission'])->with('category', $info['category'])->with('price', $info['price'])
         ->with('currency', $info['currency'])->with('year_of_manufacture', $info['year_of_manufacture'])
@@ -52,7 +52,8 @@ class PostController extends Controller
         ->with('populated_place',$info['populated_place'])->with('pictures', $info['pictures'])->with('id',$info['id'])
         ->with('safety',$info['safety'])->with('comfort',$info['comfort'])->with('other',$info['other'])
         ->with('exterior',$info['exterior'])->with('protection',$info['protection'])->with('interior',$info['interior'])
-        ->with('specialized',$info['specialized']); //return models
+        ->with('specialized',$info['specialized'])->with('phone',$info['phone'])->with('email',$info['e-mail'])
+        ->with('additional_info',$info['additional_info']);
     }
 
     /**
@@ -83,7 +84,7 @@ class PostController extends Controller
 
         $pictures = implode(",", $filenames);
 
-        $arr = array('base_category','brand','model','modification','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place');
+        $arr = array('base_category','brand','model','modification','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place','phone','e-mail','additional_info');
 
         $post = new Post();
         $s = "random";
@@ -155,7 +156,8 @@ class PostController extends Controller
         ->with('populated_place',$info['populated_place'])->with('pictures', $info['pictures'])->with('id',$info['id'])
         ->with('safety',$info['safety'])->with('comfort',$info['comfort'])->with('other',$info['other'])
         ->with('exterior',$info['exterior'])->with('protection',$info['protection'])->with('interior',$info['interior'])
-        ->with('specialized',$info['specialized']); //return models
+        ->with('specialized',$info['specialized'])->with('phone',$info['phone'])->with('email',$info['e-mail'])
+        ->with('additional_info',$info['additional_info']); //return models
     }
 
     /**

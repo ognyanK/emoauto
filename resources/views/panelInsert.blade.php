@@ -21,7 +21,7 @@
 
           #content {
             width: 1200px;
-            height:1500px;
+            height:1650px;
             margin: 0 auto;
             box-sizing: border-box;
             background-color: lightgray;
@@ -38,6 +38,19 @@
             float: center;
             box-sizing: border-box;
           }
+
+          #content .under_header #additional_info{
+            width: 60%;
+            height: 120px;
+            float: center;
+            margin:0 auto;
+          }
+          #content .under_header #additional_info textarea{
+            width: 100%;
+            height: 100px;
+            resize: none;
+          }
+
           #content .under_header .row{
             width: 33.3%;
             float: left;
@@ -197,10 +210,7 @@
                   Модел
                 </div>
                 <div class="input_value">
-                  <select class="models" name="model">
-                    <option value=""></option>
-
-                  </select>
+                  <input class="models" type="text" name="models"></input>
                 </div>
               </div>
             </div>
@@ -286,9 +296,9 @@
                 <div class="input_value">
                   <?php 
                   if(isset($power)){
-                    echo "<input type=\"text\" name=\"power\" value=\"".$power."\"></input>";
+                    echo "<input class=\"power\" type=\"text\" name=\"power\" value=\"".$power."\"></input>";
                   }else{
-                    echo "<input type=\"text\" name=\"power\"></input>";
+                    echo "<input class=\"power\" type=\"text\" name=\"power\"></input>";
                   }
                 ?>
                 </div>
@@ -367,7 +377,7 @@
                             echo "<option value=\"".$categoryValues[$i]."\"".$add.">".$categoryValues[$i]."</option>";
                           }
                         }else{
-                          for($i=0;$i<count($transmissionValues);$i++){
+                          for($i=0;$i<count($categoryValues);$i++){
                             echo "<option value=\"".$categoryValues[$i]."\">".$categoryValues[$i]."</option>";
                           }
                         }
@@ -580,16 +590,51 @@
               </div>
             </div>
             <div class="row">
-              <div class="under_header_comp100" id="state">
+              <div class="under_header_comp50" id="modification">
                 <div class="label">
+                  Мобилен телефон
                 </div>
                 <div class="input_value">
+                  <?php
+                    if(isset($phone)){
+                      echo "<input type=\"text\" class=\"phone\" name=\"phone\" value=\"".$phone."\"> </input>";
+                    }else{
+                      echo "<input type=\"text\" class=\"phone\" name=\"phone\"> </input>";
+                    }
+                  ?>
+                </div>
+              </div>
+              <div class="under_header_comp50" id="engine_type">
+                <div class="label">
+                  E-mail
+                </div>
+                <div class="input_value">
+                <?php
+                    if(isset($email)){
+                      echo "<input type=\"text\" class=\"e-mail\" name=\"e-mail\" value=\"".$email."\"> </input>";
+                    }else{
+                      echo "<input type=\"text\" class=\"e-mail\" name=\"e-mail\"> </input>";
+                    }
+                  ?>
                 </div>
               </div>
             </div>
           </div>
           <!--start2-->
           <hr>
+              <div class="under_header">
+                <div id="additional_info">
+                <b>Допълнителна информация</b>
+                <?php
+                    if(isset($additional_info)){
+                      echo "<textarea name=\"additional_info\">".$additional_info."</textarea>";
+                    }else{
+                      echo "<textarea name=\"additional_info\"></textarea>";
+                    }
+                  ?>
+                </div>
+              </div>
+    <hr style="margin-top:15px">
           <div class="under_header">
             <div class="row2">
               <div class="under_header_comp100_long" id="brand">
@@ -929,7 +974,7 @@ window.onload = function(){
     }
   });
 
-  var for_validation = ['.brands','.engine_types','.transmission','.category','.price','.date_of_manufacture','.year_of_manufacture','.mileage','.region'];
+  var for_validation = ['.brands','.engine_types','.transmission','.category','.price','.date_of_manufacture','.year_of_manufacture','.mileage','.region','.phone','.e-mail','.power','.models'];
 
   function validate(){
     for(var i=0;i<for_validation.length;i++){

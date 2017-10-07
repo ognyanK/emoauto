@@ -41,6 +41,10 @@ class CreatePostsTable extends Migration
             $table->string('region');
             $table->string('populated_place')->default($value);
 
+            $table->string('phone');
+            $table->string('e-mail');
+            $table->string('additional_info');
+
             $table->string("safety")->default($value);
             $table->string("comfort")->default($value);
             $table->string("other")->default($value);
@@ -48,6 +52,7 @@ class CreatePostsTable extends Migration
             $table->string("exterior")->default($value);
             $table->string("interior")->default($value);
             $table->string("specialized")->default($value);
+
 
             $table->text("pictures");
         });
