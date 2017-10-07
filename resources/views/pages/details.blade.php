@@ -65,8 +65,8 @@
                                     Е-майл:<br /><?php echo $email?></p>
                                 </div>
                                 <div class="timeI">
-                                    <p>Телефон:<br /> <?php echo $phone?><br />
-                                    Е-майл:<br /><?php echo $email?></p>
+                                    <p>Дата на публикуване:<br /> <?php echo $created_at?><br />
+                                    Последна промяна:<br /><?php echo $updated_at?></p>
                                 </div>
                             </div>
                             <div class="form">

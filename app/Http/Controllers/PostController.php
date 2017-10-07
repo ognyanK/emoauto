@@ -157,7 +157,7 @@ class PostController extends Controller
         ->with('safety',$info['safety'])->with('comfort',$info['comfort'])->with('other',$info['other'])
         ->with('exterior',$info['exterior'])->with('protection',$info['protection'])->with('interior',$info['interior'])
         ->with('specialized',$info['specialized'])->with('phone',$info['phone'])->with('email',$info['e-mail'])
-        ->with('additional_info',$info['additional_info']); //return models
+        ->with('additional_info',$info['additional_info'])->with('created_at',$info['created_at'])->with('updated_at',$info['updated_at']); //return models
     }
 
     /**
