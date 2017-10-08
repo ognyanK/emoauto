@@ -167,10 +167,7 @@
         bottom: 0;
         display: none;
 	}
-
-	.feed-item .content{
-		float: left;
-	}
+	
 	.feed-item .content .head{
 		padding: 0;
 		margin:0;

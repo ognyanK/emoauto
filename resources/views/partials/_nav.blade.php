@@ -1,7 +1,7 @@
 <header class="site-header">
     <div class="header">
         <div class="logo">
-            <img src="images/logo.png" alt="" width="60px">
+            <img src="http://localhost:8000/images/logo.png" alt="" width="60px">
         </div>
 
         <div class="header-menu">
@@ -12,12 +12,13 @@
         </div>
 
         <div class="hamburger">
-            <img src="images/hamburger.png" alt="">
+            <img src="http://localhost:8000/images/hamburger.png" alt="">
             
             <ul class="header-dropdown">
                 <li>
                     <a id="home_ham" href="/">Начало</a>
                 </li>
+
                 <li>
                     <a href="#">Contanct Us</a>
                 </li>
@@ -34,7 +35,7 @@ $(document).ready(function(){
     }).done(function( msg ) {
         for(var i=0;i<msg.length;i++){
             $( "<a href=\"/feed/"+msg[i]+"\">"+msg[i]+"</a>" ).insertAfter( "#home" );
-            $( "<li><a href=\"/feed/"+msg[i]+"\">"+msg[i]+"</a></li>" ).insertAfter( "#home_ham" );
+            $( "<li><a href=\"/feed/"+msg[i]+"\">"+msg[i]+"</a></li>" ).appendTo( ".header-dropdown" );
         }
     });
 });
