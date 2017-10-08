@@ -18,7 +18,7 @@
     .wrap-slider {
         position: relative;
         margin: 0 auto;
-        max-width: 800px
+        max-width: 900px
     }
 
     .bx-pager {
@@ -44,7 +44,6 @@
     padding: 10px;
 
     h1 {
-        color: grey;
         font-size: calculateRem(24px);
     }
 }
@@ -72,6 +71,7 @@
 
 .feed {
     background: color(white);
+    border-top: 5px solid color(red);
     padding: 10px;
 
     .news-feed {
@@ -120,9 +120,9 @@
 }
 
 .other {
-    background: green;
+    background: color(white);
+    border-top: 5px solid color(red);
     height: 200px;
-    width: 200px;
 }
 
 // 568+
@@ -149,6 +149,10 @@
 
             .feed {
                 width: 40%;
+            }
+
+            .other {
+                width: 25%;
             }
         }
     }

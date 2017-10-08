@@ -1,11 +1,22 @@
 //Mobile first
 
+.details-cotainer {
+    padding-top: 15px;
+}
+
 .car--details {
+    border-top: 4px solid color(red);
     padding: 20px 0;
 }
 
 .spec {
     padding: 10px;
+
+    table {
+        td {
+            padding: 3px;
+        }
+    }
 }
 
 .tumbnails {
@@ -78,6 +89,8 @@
 }
 
 .more-spec {
+    border-top: 4px solid color(red);
+    border-radius:8px;
     padding: 20px;
 
     .item {
@@ -118,15 +131,13 @@
 
 .contacts {
     background: color(white);
-    border-top: 2px solid color(red);
+    border-top: 4px solid color(red);
     padding: 5px;
     width: 100%;
 
-    .flex-layout {
-        border-bottom: 2px solid color(red);
-    }
-
     .form {
+        border-top: 4px solid color(red);
+        border-radius: 8px;
         padding-bottom: 20px;
 
         table, textarea {
@@ -160,9 +171,15 @@
     }
 
     .info {
+        .contactsI, .timeI {
+            border-top: 4px solid color(red);
+            border-radius: 8px;
+            padding: 10px;
+        }
+        
         p {
             color: color(grey);
-            font-size: calculateRem(18px);
+            font-size: calculateRem(14px);
             line-height: calculateRem(24px);
         }
     }
@@ -246,13 +263,7 @@
             @include flexbox(center, row nowrap, space-between);
         }
 
-        .form, .info {
-            padding: 10px;
-        }
-
         .form {
-            border-right: 2px solid color(red);
-            padding-right: 20px;
             width: cp(410, 620);
         }
     

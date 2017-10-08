@@ -154,8 +154,12 @@ img {
   max-width: 1000px;
 }
 
+.txt-red {
+  color: #EF3B3A;
+}
+
 .site-header {
-  background: #8e0f0f;
+  background: #EF3B3A;
   padding: 20px 30px;
   position: relative;
 }
@@ -173,7 +177,7 @@ img {
 
 @media only screen and (min-width: 64em) {
   .site-header {
-    background: #8e0f0f;
+    background: #EF3B3A;
     padding: 20px 30px;
     position: relative;
   }
@@ -250,7 +254,7 @@ img {
 .slider-container .wrap-slider {
   position: relative;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .slider-container .bx-pager {
@@ -276,13 +280,12 @@ img {
 }
 
 .home-feed h1 {
-  color: grey;
   font-size: 1.5rem;
 }
 
 .offer {
   background: #fff;
-  border-top: 5px solid #8e0f0f;
+  border-top: 5px solid #EF3B3A;
   padding: 10px 20px;
   text-align: center;
 }
@@ -304,6 +307,7 @@ img {
 
 .feed {
   background: #fff;
+  border-top: 5px solid #EF3B3A;
   padding: 10px;
 }
 
@@ -352,9 +356,9 @@ img {
 }
 
 .other {
-  background: green;
+  background: #fff;
+  border-top: 5px solid #EF3B3A;
   height: 200px;
-  width: 200px;
 }
 
 @media only screen and (min-width: 64em) {
@@ -372,6 +376,9 @@ img {
   }
   .home-feed .flex-layout .feed {
     width: 40%;
+  }
+  .home-feed .flex-layout .other {
+    width: 25%;
   }
   .news-feed {
     padding: 30px 0;
@@ -408,12 +415,21 @@ img {
   }
 }
 
+.details-cotainer {
+  padding-top: 15px;
+}
+
 .car--details {
+  border-top: 4px solid #EF3B3A;
   padding: 20px 0;
 }
 
 .spec {
   padding: 10px;
+}
+
+.spec table td {
+  padding: 3px;
 }
 
 .tumbnails {
@@ -485,6 +501,8 @@ img {
 }
 
 .more-spec {
+  border-top: 4px solid #EF3B3A;
+  border-radius: 8px;
   padding: 20px;
 }
 
@@ -524,16 +542,14 @@ img {
 
 .contacts {
   background: #fff;
-  border-top: 2px solid #8e0f0f;
+  border-top: 4px solid #EF3B3A;
   padding: 5px;
   width: 100%;
 }
 
-.contacts .flex-layout {
-  border-bottom: 2px solid #8e0f0f;
-}
-
 .contacts .form {
+  border-top: 4px solid #EF3B3A;
+  border-radius: 8px;
   padding-bottom: 20px;
 }
 
@@ -562,9 +578,15 @@ img {
   padding: 5px 15px;
 }
 
+.contacts .info .contactsI, .contacts .info .timeI {
+  border-top: 4px solid #EF3B3A;
+  border-radius: 8px;
+  padding: 10px;
+}
+
 .contacts .info p {
   color: #2f2f2f;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   line-height: 1.5rem;
 }
 
@@ -636,12 +658,7 @@ img {
     flex-flow: row nowrap;
     justify-content: space-between;
   }
-  .contacts .form, .contacts .info {
-    padding: 10px;
-  }
   .contacts .form {
-    border-right: 2px solid #8e0f0f;
-    padding-right: 20px;
     width: 66.12903%;
   }
   .contacts .info {
@@ -666,7 +683,7 @@ img {
 }
 
 .paginate .page {
-  border: 1px solid #8e0f0f;
+  border: 1px solid #EF3B3A;
   border-radius: 50%;
   display: inline-block;
   vertical-align: middle;
@@ -676,36 +693,65 @@ img {
 }
 
 .paginate .page a {
-  color: #8e0f0f;
+  color: #EF3B3A;
   display: inline-block;
   vertical-align: middle;
 }
 
-.feed-item {
-  border-bottom: 5px solid #8e0f0f;
+.feed-items {
+  padding-top: 15px;
+}
+
+.feed-items .feed-item {
+  border-top: 5px solid #EF3B3A;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
 
-.feed-item:last-child {
+.feed-items .feed-item:last-child {
   margin-bottom: 0;
 }
 
-.feed-item .content {
+.feed-items .feed-item .image {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  position: relative;
+}
+
+.feed-items .feed-item .image img {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+.feed-items .feed-item .content {
   padding-top: 20px;
   text-align: left;
 }
 
-.feed-item .content .head {
+.feed-items .feed-item .content .head {
   padding-bottom: 15px;
 }
 
-.feed-item .content .head p {
-  color: #8e0f0f;
+.feed-items .feed-item .content .head a {
+  color: #000;
+}
+
+.feed-items .feed-item .content .head a:hover {
+  color: #EF3B3A;
+}
+
+.feed-items .feed-item .content .head p {
+  color: #EF3B3A;
   font-size: 1.5625rem;
 }
 
-.feed-item .content h3 {
+.feed-items .feed-item .content h3 {
   padding-bottom: 10px;
 }
 
@@ -720,9 +766,6 @@ img {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-  }
-  .feed-item .image {
-    width: 22.22222%;
   }
   .feed-item .content {
     width: 72.22222%;

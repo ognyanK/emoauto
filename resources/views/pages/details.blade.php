@@ -32,7 +32,7 @@
                         
 
                         echo "<table id=\"spec_table\" style=\"width:100%\">";
-                        echo "<tr><td><h2>Цена:</h2></td><td><b><h2>".$price." ".$currency."</h2></b></td></tr>";
+                        echo "<tr><td><h2>Цена:</h2></td><td><b><h2 class=\"txt-red\">".$price." ".$currency."</h2></b></td></tr>";
                         echo "<tr><td>Дата на производство:</td><td><b>".$date_of_manufacture." ".$year_of_manufacture."г.</b></td></tr>";
 
                         for($i = 0;$i<count($keys);$i++){
