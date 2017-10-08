@@ -942,7 +942,6 @@ window.onload = function(){
   }
 
   $("#result").on("click",".remImg", function(){
-    alert(parseInt($(this).attr('id')));
     images[parseInt($(this).attr('id'))] = "";
     $(this).parent().remove();
   });
@@ -953,7 +952,6 @@ window.onload = function(){
       type: "GET",
       url: URL
     }).done(function( msg ) {
-      alert( msg );
     });
   });
 

@@ -6,10 +6,7 @@
 
         <div class="header-menu">
             <nav>
-                <a href="/">Home</a>
-
-                <a href="/feed">Feed</a>
-
+                <a id="home" href="/">Начало</a>
                 <a href="#">Contanct Us</a>
             </nav>
         </div>
@@ -19,13 +16,8 @@
             
             <ul class="header-dropdown">
                 <li>
-                    <a href="/">Home</a>
+                    <a id="home_ham" href="/">Начало</a>
                 </li>
-
-                <li>
-                    <a href="/feed">Feed</a>
-                </li>
-
                 <li>
                     <a href="#">Contanct Us</a>
                 </li>
@@ -33,3 +25,17 @@
         </div>
     </div>  
 </header>
+<script>
+$(document).ready(function(){
+    var URL = "/loadCategories";
+    $.ajax({
+      type: "GET",
+      url: URL
+    }).done(function( msg ) {
+        for(var i=0;i<msg.length;i++){
+            $( "<a href=\"/feed/"+msg[i]+"\">"+msg[i]+"</a>" ).insertAfter( "#home" );
+            $( "<li><a href=\"/feed/"+msg[i]+"\">"+msg[i]+"</a></li>" ).insertAfter( "#home_ham" );
+        }
+    });
+});
+</script>

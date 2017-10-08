@@ -8,9 +8,9 @@ use App\Question;
 
 class FeedController extends Controller
 {
-    public function index()
+    public function index($category)
     {
-        $info = Post::where('base_category','=','Автомобили')->paginate(10);
+        $info = Post::where('base_category','=',$category)->paginate(10);
 
         return view('pages/feed', ['info' => $info]); //return models
     }

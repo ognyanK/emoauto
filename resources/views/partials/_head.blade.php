@@ -149,7 +149,6 @@
 		border-bottom: 0px;
 		margin-top:5px;
 		box-sizing: border-box;
-		height: 120px;
 		width: 100%;
 	}
 	.feed-item .image{
@@ -169,17 +168,25 @@
         display: none;
 	}
 
-	.feed-item .content-new {
-		width: 500px;
-		float: center;
+	.feed-item .content{
+		float: left;
 	}
 	.feed-item .content .head{
 		padding: 0;
 		margin:0;
 	}
+	.feed-item .content .head a{
+		color:black;
+	}
+	.feed-item .content .head a:hover{
+		color:#8e0f0f;
+	}
 	.feed-item .content .desc{
 		padding: 0;
 		margin:0;
+	}
+	.feed-item .content .desc p {
+		font-size: 14px;
 	}
 
 </style>

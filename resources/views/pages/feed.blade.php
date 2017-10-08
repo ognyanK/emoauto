@@ -22,12 +22,17 @@
                     <div class="head">
                         <?php
                         $pics = explode(",", $i['pictures']);
-                        $title = $i['brand']." ".$i['model'];
-                        echo "<h3>".$title."</h3>";
+                        $title = $i['brand']." ".$i['model']." ".$i['modification']; 
+                        echo "<a href=\"/details/".$i['id']."\" id=\"car_link\"><b>".$title."</b></a>";
                         echo "<p>".$i['price']." ".$i['currency']."</p>"
                         ?>
                     </div>
-
+                    <div class="desc">
+                    <?php
+                        echo "<p> дата на произв. - ".$i['date_of_manufacture']." ".$i['year_of_manufacture']." г.,
+                        пробег - ".$i['mileage'].", цвят - ".$i['color']."</p>";
+                    ?>
+                    </div>
                     <div class="desc">
                     <?php
                         echo "<p>".$i['additional_info']."</p>";
@@ -40,10 +45,10 @@
     {{ $info->links() }}
     </div>
     <script>
-     $(document).ready(function(){
+     /*$(document).ready(function(){
         $(".feed-items").on("click",".feed-item",function(){
             window.location.href = '/details/'+$(this).attr('id');
         });
-     });
+     });*/
     </script>
 @endsection

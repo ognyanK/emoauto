@@ -27,4 +27,14 @@ class PagesController extends Controller
 	{
 		
 	}
+
+	public function loadCategories(){
+		$unique = array();
+		$categories = Post::select('base_category')->get();
+		for($i=0;$i<count($categories);$i++){
+			array_push($unique, $categories[$i]->base_category);
+		}
+		$new_array = array_values(array_unique($unique));
+		return $new_array;
+	}
 }
