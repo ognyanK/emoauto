@@ -171,6 +171,8 @@
     }
 
     .info {
+        padding-top: 15px;
+
         .contactsI, .timeI {
             border-top: 4px solid color(red);
             border-radius: 8px;
@@ -268,6 +270,7 @@
         }
     
         .info {
+            padding-top: 0;
             width: cp(195, 620);
 
             p {

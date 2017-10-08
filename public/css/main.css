@@ -195,7 +195,7 @@ img {
 }
 
 .header-dropdown {
-  background: #730e0e;
+  background: #da2727;
   display: none;
   padding: 30px 10px;
   position: absolute;
@@ -578,6 +578,10 @@ img {
   padding: 5px 15px;
 }
 
+.contacts .info {
+  padding-top: 15px;
+}
+
 .contacts .info .contactsI, .contacts .info .timeI {
   border-top: 4px solid #EF3B3A;
   border-radius: 8px;
@@ -662,6 +666,7 @@ img {
     width: 66.12903%;
   }
   .contacts .info {
+    padding-top: 0;
     width: 31.45161%;
   }
   .contacts .info p {
