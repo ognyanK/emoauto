@@ -28,6 +28,9 @@ Route::get('/loadCategories', 'PagesController@loadCategories');
 Route::get('/details/{id}', 'PostController@show');
 Route::get('/admin_panel', 'AdminPanel@show');
 Route::get('/admin_panel/loadQuestions/{id}', 'AdminPanel@loadQuestions');
+Route::get('/aplog', 'AdminPanel@getAdminPanelLogin');
+Route::post('/login','AdminPanel@login');
+Route::get('/logout','AdminPanel@logout');
 
 Route::get('/feed/{category}', 'FeedController@index');
 Route::post('/storeQuestion','FeedController@storeQuestion');

@@ -23,11 +23,6 @@ class PagesController extends Controller
 		return view('pages/feed');
 	}
 
-	public function getContact() 
-	{
-		
-	}
-
 	public function loadCategories(){
 		$unique = array();
 		$categories = Post::select('base_category')->get();

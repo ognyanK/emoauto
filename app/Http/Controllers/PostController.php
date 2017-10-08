@@ -15,19 +15,16 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        session_start();
+        ob_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect('/aplog');
+        }
+
         $brands = Brand::select('name')->get();
 
         return view('panelInsert')->with('brands', $brands); //return models
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return 'create';
     }
 
     /**
@@ -38,6 +35,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        session_start();
+        ob_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect('/aplog');
+        }
+
         $brands = Brand::select('name')->get();
         $info = Post::where('id','=',$id)->get();
         $info = $info[0];
@@ -64,8 +68,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //var_dump($request);
-        //return file_get_contents($request->file('files')[0]);
+        session_start();
+        ob_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect('/aplog');
+        }
 
         $filenames = array_filter(explode(",", $request->filenames));
 
@@ -142,6 +150,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        session_start();
+        ob_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect('/aplog');
+        }
+
         $brands = Brand::select('name')->get();
         $info = Post::where('id','=',$id)->get();
         $info = $info[0];
@@ -180,6 +195,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        session_start();
+        ob_start();
+        if(!isset($_SESSION['user']))
+        {
+            return redirect('/aplog');
+        }
+
          Post::where('id','=',$id)->delete();
     }
 }
