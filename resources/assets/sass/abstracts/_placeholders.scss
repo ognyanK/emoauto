@@ -1,0 +1,18 @@
+%tumbnail {
+    background: {
+        position: top center;
+        size: 100% 100%;
+    };
+    position: relative;
+    margin-right: 1px;
+    height: 70px;
+    width: 70px;
+}
+
+%unKnownCentering {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}

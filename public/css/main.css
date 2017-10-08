@@ -158,6 +158,31 @@ img {
   color: #EF3B3A;
 }
 
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.gallery .tumbnails .image, .gallerySlideShow .tumbnails .image {
+  background-position: top center;
+  background-size: 100% 100%;
+  position: relative;
+  margin-right: 1px;
+  height: 70px;
+  width: 70px;
+}
+
+.gallerySlideShow .close-btn img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
 .site-header {
   background: #EF3B3A;
   padding: 20px 30px;
@@ -432,71 +457,81 @@ img {
   padding: 3px;
 }
 
-.tumbnails {
-  align-items: center;
+.gallery .tumbnails {
+  align-items: flex-start;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin: 0 auto;
-  max-width: 240px;
-}
-
-.tumbnails .image {
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  margin-left: 10px;
-  margin-bottom: 10px;
-  height: 70px;
-  width: 70px;
-}
-
-.the--gallery {
   background: #2f2f2f;
-  visibility: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  margin: 0 auto;
+  min-height: 100px;
 }
 
-.the--gallery * {
-  visibility: hidden;
+.gallery .tumbnails .image:hover {
+  cursor: pointer;
 }
 
-.the--gallery.active-state {
-  visibility: visible;
-}
-
-.the--gallery.active-state * {
-  visibility: visible;
-}
-
-.the--gallery .lSPager.lSGallery li {
-  height: 45px !important;
-}
-
-.the--gallery .lSPager.lSGallery li img {
-  height: 100% !important;
-}
-
-.the--gallery .gallery-container {
-  position: relative;
-  top: 50%;
-  transform: translate(0, -50%);
-  -webkit-transform: translate(0, -50%);
-}
-
-.the--gallery .close-gallery {
+.gallerySlideShow {
+  display: none;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
+  top: 100px;
+  left: 50%;
+  max-width: 660px;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
   z-index: 9999;
 }
 
-.the--gallery .close-gallery:hover {
+.gallerySlideShow.active-state {
+  display: block;
+}
+
+.gallerySlideShow .close-btn {
+  background: #EF3B3A;
+  border-radius: 50%;
+  display: table;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  height: 30px;
+  width: 30px;
+  z-index: 1;
+}
+
+.gallerySlideShow .close-btn:hover {
+  cursor: pointer;
+}
+
+.gallerySlideShow .close-btn img {
+  width: 17px;
+}
+
+.gallerySlideShow .current-img {
+  width: 500px;
+  height: 500px;
+  background-color: black;
+  position: relative;
+}
+
+.gallerySlideShow .current-img img {
+  position: absolute;
+  margin: 0 auto;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translate(0, -50%);
+  max-height: 100%;
+}
+
+.gallerySlideShow .tumbnails {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+.gallerySlideShow .tumbnails .image:hover {
   cursor: pointer;
 }
 
@@ -625,15 +660,6 @@ img {
   .car--details .spec {
     width: 65%;
   }
-  .tumbnails {
-    max-width: none;
-  }
-  .tumbnails .image {
-    margin-left: 10px;
-    margin-bottom: 10px;
-    height: 70px;
-    width: 70px;
-  }
   .the--gallery .gallery-container {
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
@@ -657,10 +683,11 @@ img {
     padding: 0;
   }
   .contacts .flex-layout {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    padding-top: 15px;
   }
   .contacts .form {
     width: 66.12903%;
@@ -731,7 +758,6 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  display: none;
 }
 
 .feed-items .feed-item .content {

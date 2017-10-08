@@ -4,20 +4,52 @@
 
 @section('content')
     <div class="details-cotainer">
+        <div class="gallerySlideShow">
+            <span class="close-btn">
+                <img src="http://localhost:8000/images/Close-Icon_White.png" alt="">
+            </span>
+
+            <div class="navigation">
+                <!-- <span class="prev">
+                    <img src="http://localhost:8000/images/arrow.png" alt="">
+                </span>
+
+                <span class="next">
+                    <img src="http://localhost:8000/images/arrow.png" alt="">
+                </span> -->
+            </div>
+
+            <?php 
+                $pics = explode(",", $pictures);
+                $i = 0;
+                foreach ($pics as $key) {
+                    if($i==0){
+                        echo "<div class=\"current-img\">";
+                        echo "<img class=\"pic\" src='/uploads/".$key."' >";
+                        echo "</div><div class=\"tumbnails\">";
+                    }else{
+                        echo "<div data-imageUrl='/uploads/".$key."' class=\"image\" style=\"background-image: url('/uploads/".$key."');\"></div>";
+                    }
+                $i++;
+                }
+                echo "</div>";
+            ?>
+        </div>
+
         <div class="wrapper wrapper-1000">
             <h1><?php echo $brandValue." ".$model ?></h1>
             <div class="car--details">
-                <div class="gallery-redo">
+                <div class="gallery">
                     <?php 
                         $pics = explode(",", $pictures);
                         $i = 0;
                         foreach ($pics as $key) {
                             if($i==0){
-                                echo "<div class=\"current-img-redo\">";
+                                echo "<div class=\"current-img\">";
                                 echo "<img class=\"pic\" src='/uploads/".$pics[0]."' >";
-                                echo "</div><div class=\"tumbnails-redo\">";
+                                echo "</div><div class=\"tumbnails\">";
                             }else{
-                                echo "<div class=\"image-redo\"><img class=\"pic\" src='/uploads/".$key."' ></div>";
+                                echo "<div data-imageUrl='/uploads/".$key."' class=\"image\" style=\"background-image: url('/uploads/".$key."');\"></div>";
                             }
                         $i++;
                         }

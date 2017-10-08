@@ -24,44 +24,65 @@ function homeSlider() {
 }
 
 function detailsGallery() {
-    var $imageGallery = $('#imageGallery');
-    var $target = $('.tumbnails, .current-img');
-    var $theGallery = $('.the--gallery');
-    var $closeGallery = $('.close-gallery');
+    //Static gallery
+    var $currentImg = $(".current-img .pic");
+    var $tumbnails = $(".tumbnails div");
+    var $close = $(".close-btn");
+    var overlay = document.createElement('div');
 
-    function toggleGallery() {
-        $target.click(function(e) {
-            e.preventDefault();
+    //Main gallery
+    var $mainGallery = $(".gallerySlideShow");
+    var $startingImg = $(".gallerySlideShow .current-img .pic");
 
-            $theGallery.addClass('active-state');
+    function setOverlay() {
+        overlay.className = "overlay";
+        document.body.appendChild(overlay);
+    }
+
+    function closeGallery() {
+        document.body.removeChild(overlay);
+        $mainGallery.removeClass("active-state");
+    }
+
+    function openGallery(imageUrl) {
+        setOverlay();
+        $mainGallery.addClass("active-state");
+        setTheFirstImage(imageUrl);
+        navigate();
+    }
+
+    function setTheFirstImage(imageUrl) {
+        $startingImg[0].setAttribute("src", imageUrl);
+    }
+
+    function navigate() {
+
+    }
+
+    function interactDOM() {
+        $tumbnails.on("click", function(e) {
+            var imageUrl = this.getAttribute("data-imageurl");
+            openGallery(imageUrl);
         });
 
-        $closeGallery.click(function(e){
-            e.preventDefault();
-
-            $theGallery.removeClass('active-state');
-        })
+        $close.on("click", function() {
+            closeGallery();
+        });
     }
 
-    if ($imageGallery.length < 1) {
-        return;
+    function initGallery() {
+        interactDOM();
     }
+
+    //console.log($tumbnails);
     
-    $imageGallery.lightSlider({
-        gallery:true,
-        item:1,
-        loop:true,
-        thumbItem:9,
-        slideMargin:0,
-        enableDrag: false,
-        currentPagerPosition:'left'
-    });  
-
-    toggleGallery();
+    return {
+        initGallery: initGallery
+    }
 }
 
 $(document).ready(function(){
     mobileNav().handleClick();
     homeSlider();
-    detailsGallery();
+    detailsGallery().initGallery();
 }); 
