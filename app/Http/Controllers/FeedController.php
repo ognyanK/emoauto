@@ -10,7 +10,7 @@ class FeedController extends Controller
 {
     public function index($category)
     {
-        $info = Post::where('base_category','=',$category)->paginate(10);
+        $info = Post::where('base_category','=',$category)->paginate(5);
 
         return view('pages/feed', ['info' => $info]); //return models
     }

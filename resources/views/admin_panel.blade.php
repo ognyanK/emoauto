@@ -84,7 +84,7 @@
     <body>
     <div class="whole_content">
         <div class="ap_nav">
-            <a href="/panelInsert">new car</a>
+            <a href="/panelInsert">new car</a>, 
             <a href="/logout">logout</a>
         </div>
         <div class="feed-container">

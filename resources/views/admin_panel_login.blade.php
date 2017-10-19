@@ -158,7 +158,7 @@ body:before {
   
 <div class="container">
   <div class="info">
-    <h1>Flat Login Form</h1><span>Made with <i class="fa fa-heart"></i> by Ognyan Tsvetkov</span>
+    <h1>Flat Login Form</h1><span>Administration login for emoauto <i class="fa fa-heart"></i></span>
   </div>
 </div>
 <div class="form">

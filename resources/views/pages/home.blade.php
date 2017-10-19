@@ -32,7 +32,7 @@
                     <h2>Какво предлагаме?</h2>
     
                     <div class="head">
-                        <div class="image">
+                        <div class="image_2">
                             <img src="images/keys.jpg" alt="keys">
                         </div>
     
@@ -57,7 +57,7 @@
                 </div>
     
                 <div class="feed">
-                    <h1>Най-новите обяви за Автомобили</h1>
+                    <h1>Най-новите обяви</h1>
     
                     <div class="news-feed">
                         <div class="item">

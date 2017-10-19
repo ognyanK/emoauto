@@ -150,13 +150,6 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        session_start();
-        ob_start();
-        if(!isset($_SESSION['user']))
-        {
-            return redirect('/aplog');
-        }
-
         $brands = Brand::select('name')->get();
         $info = Post::where('id','=',$id)->get();
         $info = $info[0];

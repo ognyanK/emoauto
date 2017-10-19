@@ -45,10 +45,21 @@
     {{ $info->links() }}
     </div>
     <script>
-     /*$(document).ready(function(){
-        $(".feed-items").on("click",".feed-item",function(){
-            window.location.href = '/details/'+$(this).attr('id');
+    $(".pic").each(function(){
+        $(this).on('load', function(){
+            var width = $(this).width();
+            var height = $(this).height();
+
+            if(width > height) {
+               $(this).width('100%');
+            }else if(height > width){
+              $(this).height('100%');
+            }else{
+              $(this).width('100%');
+              $(this).height('100%');
+            };
+            $(this).css("display","block");
+            });
         });
-     });*/
     </script>
 @endsection
