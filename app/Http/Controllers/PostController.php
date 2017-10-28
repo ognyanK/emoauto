@@ -82,7 +82,7 @@ class PostController extends Controller
         if($edit){
             $created_at = Post::where('id','=',$request->id)->value('created_at');
             if(!isset($created_at))return redirect('admin_panel');
-            destroy($request->id);
+            $this->destroy($request->id);
         }
 
         for($i = 0;$i<count($request->file('files'));$i++){
@@ -188,13 +188,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        session_start();
-        ob_start();
+
         if(!isset($_SESSION['user']))
         {
             return redirect('/aplog');
         }
 
-         Post::where('id','=',$id)->delete();
+        Post::where('id','=',$id)->delete();
+        return redirect('admin_panel');
     }
 }

@@ -830,7 +830,11 @@
                   $pics = array_filter($pics);
                   $i = 0;
                   foreach ($pics as $pic) {
-                    echo "<div class=\"picture\"><img style=\"display:none;\" class='image' src='/uploads/".$pic."' title=\"".$pic."\"/><div class=\"remImg\" id=\"".$i."\">X</div></div>";
+                    $style = "";
+                    if($i == 0){
+                      $style = " style=\"border:3px solid orange\"";
+                    }
+                    echo "<div class=\"picture\" id=\"".$pic."\"".$style."><img style=\"display:none;\" class='image' src='/uploads/".$pic."' title=\"".$pic."\"/><div class=\"remImg\" id=\"".$i."\">X</div></div>";
                     $i++;
                   }
                 }
@@ -838,6 +842,7 @@
             </div>
             <input id="files" type="file" name="files[]" multiple>
             <input id="filenames" name="filenames" type="text" style="display:none;">
+            <input id="main_pic" name="main_pic" type="text" style="display:none;">
             <?php 
             if(isset($id)){
               echo "<input id=\"id\" name=\"id\" type=\"text\" style=\"display:none;\" value=\"".$id."\">";
@@ -859,6 +864,11 @@ window.onload = function(){
 
   var images = new Array();
 
+  $('#result').on('click', '.picture', function(){
+      $('.picture').css("border","1px solid gray")
+      $(this).css("border","3px solid orange");
+      $('#main_pic').val($(this).attr("id"));
+  });
   $('.image').each(function(){
     images.push($(this).attr('title'));
 
@@ -958,12 +968,16 @@ window.onload = function(){
   $("form").submit(function() {
     if(validate()){
       var pics_final = new Array();
+      var main_pic = new Array();
       for(var i=0;i<images.length;i++){
-        if(images[i]!=""){
+        if(images[i].localeCompare($('#main_pic').val())){
+          main_pic.push(images[i]);
+        }
+        else if(images[i]!=""){
           pics_final.push(images[i]);
         }
       }
-      $('#filenames').val(pics_final);
+      $('#filenames').val(pics_final.concat(main_pic));
       return true;
     }else{
       showMissed();

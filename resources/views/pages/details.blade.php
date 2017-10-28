@@ -119,7 +119,7 @@
                                         <td>Вашето име:</td><td></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" name="contacts_name" required></td><td>captcha</td>
+                                        <td><input type="text" name="contacts_name" required></td><td><img src="http://localhost:8000/images/captcha.gif" width="100px"></td>
                                     </tr>
                                     <tr>
                                         <td>Вашия E-mail:</td><td>Въведете кода:</td>
