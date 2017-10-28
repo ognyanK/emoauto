@@ -15,11 +15,20 @@
         z-index: 1000;
     }
 
+    .slides {
+        max-height: 370px;
+
+        img {
+            display: block;
+            margin: 0 auto;
+            max-height: 370px;
+        }
+    }
+
     .wrap-slider {
         position: relative;
         margin: 0 auto;
         max-width: 900px;
-        max-height: 370px;
     }
 
     .bx-pager {
@@ -30,10 +39,6 @@
         .bx-pager-item {
             display: inline-block;
         }
-    }
-
-    .bx-viewport {
-        max-height: 370px;
     }
 
     .bx-controls-direction {

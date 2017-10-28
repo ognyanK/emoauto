@@ -275,11 +275,20 @@ img {
   z-index: 1000;
 }
 
+.slider-container .slides {
+  max-height: 370px;
+}
+
+.slider-container .slides img {
+  display: block;
+  margin: 0 auto;
+  max-height: 370px;
+}
+
 .slider-container .wrap-slider {
   position: relative;
   margin: 0 auto;
   max-width: 900px;
-  max-height: 370px;
 }
 
 .slider-container .bx-pager {
@@ -290,10 +299,6 @@ img {
 
 .slider-container .bx-pager .bx-pager-item {
   display: inline-block;
-}
-
-.slider-container .bx-viewport {
-  max-height: 370px;
 }
 
 .slider-container .bx-controls-direction {
