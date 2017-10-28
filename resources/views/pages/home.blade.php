@@ -76,7 +76,7 @@
                         foreach ($info as $i) {
                             echo "<div class=\"item\">
                                     <div class=\"image\">";
-                            echo "<img src=\"images/example-car.png\" alt=\"example\">";
+                            echo "<img src=\"/uploads/".$i['pictures']."\" alt=\"example\">";
                             echo "</div>"; 
                             echo "<div class=\"news-content\">
                                     <h2>".$i['brand']." ".$i['model']."</h2>

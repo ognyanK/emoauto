@@ -10,7 +10,11 @@ class PagesController extends Controller
 
 	public function getIndex()
 	{
-		$info = Post::select('model','brand','price','currency')->take(3)->get(); 
+		$info = Post::select('model','brand','price','currency','pictures')->take(3)->get(); 
+		for($i=0;$i<count($info);$i++){
+			$pics = explode(",",$info[$i]['pictures']);
+			$info[$i]['pictures'] = $pics[0];
+		}
 		return view('pages/home')->with("info", $info);
 	}
 
