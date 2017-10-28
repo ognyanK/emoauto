@@ -170,7 +170,6 @@ img {
   background-position: top center;
   background-size: 100% 100%;
   position: relative;
-  margin-right: 1px;
   height: 70px;
   width: 70px;
 }
@@ -495,6 +494,11 @@ img {
   min-height: 100px;
 }
 
+.gallery .tumbnails .image {
+  border: 1px solid #2f2f2f;
+  width: 25%;
+}
+
 .gallery .tumbnails .image:hover {
   cursor: pointer;
 }
@@ -504,9 +508,10 @@ img {
   position: absolute;
   top: 100px;
   left: 50%;
-  max-width: 660px;
   transform: translate(-50%, 0);
   -webkit-transform: translate(-50%, 0);
+  width: 100%;
+  max-width: 250px;
   z-index: 9999;
 }
 
@@ -535,10 +540,10 @@ img {
 }
 
 .gallerySlideShow .current-img {
-  width: 500px;
-  height: 500px;
   background-color: black;
   position: relative;
+  height: 300px;
+  width: 100%;
 }
 
 .gallerySlideShow .current-img img {
@@ -557,6 +562,12 @@ img {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+}
+
+.gallerySlideShow .tumbnails .image {
+  margin-right: 0;
+  border: 1px solid #000;
+  width: 25%;
 }
 
 .gallerySlideShow .tumbnails .image:hover {
@@ -693,6 +704,16 @@ img {
     -webkit-transform: translate(-50%, -50%);
     left: 50%;
     max-width: 900px;
+  }
+  .gallerySlideShow {
+    max-width: 660px;
+  }
+  .gallerySlideShow .current-img {
+    height: 500px;
+  }
+  .gallerySlideShow .tumbnails .image {
+    height: 94.28571px;
+    width: 14.28571%;
   }
   .more-spec .item h2 {
     text-align: left;

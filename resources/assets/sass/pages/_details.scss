@@ -28,6 +28,8 @@
 
         .image {
             @extend %tumbnail;
+            border: 1px solid color(grey);
+            width: cp(320 / 4, 320);
 
             &:hover {
                 cursor: pointer;
@@ -41,9 +43,10 @@
     position: absolute;
     top: 100px;
     left: 50%;
-    max-width: 660px;
     transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0);
+    width: 100%;
+    max-width: 250px;
     z-index: 9999;
 
     &.active-state {
@@ -72,10 +75,10 @@
     }
 
     .current-img {
-        width: 500px;
-        height: 500px;
         background-color: black;
         position: relative;
+        height: 300px;
+        width: 100%;
 
         img {
             position: absolute;
@@ -94,6 +97,9 @@
 
         .image {
             @extend %tumbnail;
+            margin-right: 0;
+            border: 1px solid color(black);
+            width: cp(250 / 4, 250);
 
             &:hover {
                 cursor: pointer;
@@ -238,6 +244,21 @@
             -webkit-transform: translate(-50%, -50%);
             left: 50%;
             max-width: 900px;
+        }
+    }
+
+    .gallerySlideShow {
+        max-width: 660px;
+
+        .current-img {
+            height: 500px;
+        }
+
+        .tumbnails {
+            .image {
+                height: (660 / 7) + px;
+                width: cp(660 / 7, 660);
+            }
         }
     }
 
