@@ -26,7 +26,7 @@
     }
     .right_side_container{
         width: 34%;
-        height: 500px;
+        height: 300px;
         background-color: white;
         float: left;
         border:1px solid #8e0f0f;
@@ -35,6 +35,27 @@
         box-sizing: border-box;
         margin-left: 1%;
         padding: 15px;
+    }
+    .slider_images{
+        width: 34%;
+        background-color: white;
+        float: left;
+        border:1px solid #8e0f0f;
+        border-top:4px solid #8e0f0f;
+        border-radius: 8px;
+        box-sizing: border-box;
+        margin-left: 1%;
+        margin-top: 10px;
+        padding: 15px;
+    }
+    .slider_images .pict{
+        width: 115px;
+        background-color: red;
+        float: left;
+        height: 115px;
+        margin:5px;
+        background-size: 100%;
+        background-color: lightgray;
     }
     .feed-item{
         margin:0;
@@ -128,11 +149,53 @@
         <div class="right_side_container">
 
         </div>
+        <div class="slider_images">
+            <div class="pict" id="a1">
+                <img src="images/up_back.ico" width="100%" height="100%">
+            </div>
+            <div class="pict" id="a2">
+                <img src="images/up_back.ico" width="100%" height="100%">
+            </div>
+            <div class="pict" id="a3">
+                <img src="images/up_back.ico" width="100%" height="100%">
+            </div>
+            <div class="pict" id="a4">
+                <img src="images/up_back.ico" width="100%" height="100%">
+            </div>
+            <div class="pict" id="a5">
+                <img src="images/up_back.ico" width="100%" height="100%">
+            </div>
+        <input class="a1" type="file" name="pic1" style="display:none">
+        <input class="a2" type="file" name="pic1" style="display:none">
+        <input class="a3" type="file" name="pic1" style="display:none">
+        <input class="a4" type="file" name="pic1" style="display:none">
+        <input class="a5" type="file" name="pic1" style="display:none">
+        </div>
     </div>
 </body>
 
     <script type="text/javascript">
     $(document).ready(function(){
+        $('input').change(function(){
+            readURL(this, $(this).attr("class"));
+        });
+        function readURL(input, cls) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#'+cls).find('img').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $(".pict").click(function(){
+            $id = $(this).attr('id');
+            $("."+$id).click();
+        });
+
         $(".options").on('click', '.messege',function(){
 
             var URL = "/admin_panel/loadQuestions/"+$(this).attr('id');
