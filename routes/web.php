@@ -27,6 +27,7 @@ Route::post('panelInsert/store', 'PostController@store');
 Route::get('/loadCategories', 'PagesController@loadCategories');
 Route::get('/details/{id}', 'PostController@show');
 Route::get('/admin_panel', 'AdminPanel@show');
+Route::post('/admin_panel/slider_store', 'AdminPanel@slider_store');
 Route::get('/admin_panel/loadQuestions/{id}', 'AdminPanel@loadQuestions');
 Route::get('/aplog', 'AdminPanel@getAdminPanelLogin');
 Route::post('/login','AdminPanel@login');

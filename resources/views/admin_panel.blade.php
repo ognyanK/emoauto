@@ -165,11 +165,15 @@
             <div class="pict" id="a5">
                 <img src="images/up_back.ico" width="100%" height="100%">
             </div>
-        <input class="a1" type="file" name="pic1" style="display:none">
-        <input class="a2" type="file" name="pic1" style="display:none">
-        <input class="a3" type="file" name="pic1" style="display:none">
-        <input class="a4" type="file" name="pic1" style="display:none">
-        <input class="a5" type="file" name="pic1" style="display:none">
+             <form method="POST" action="/admin_panel/slider_store" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
+              {{ csrf_field() }}
+                <input class="a1" type="file" name="pic1" style="display:none">
+                <input class="a2" type="file" name="pic2" style="display:none">
+                <input class="a3" type="file" name="pic3" style="display:none">
+                <input class="a4" type="file" name="pic4" style="display:none">
+                <input class="a5" type="file" name="pic5" style="display:none">
+                <input type="submit" name="submit" value="save">
+            </form>
         </div>
     </div>
 </body>

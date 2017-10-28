@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Question;
 use App\User;
+use App\Slider;
 
 class AdminPanel extends Controller
 {
@@ -72,4 +73,32 @@ class AdminPanel extends Controller
     	$questions = Question::where('post_id','=',$id)->get();
     	return $questions;
     }
+
+    public function slider_store(Request $request){
+        $arrayName = array('one' => "",'two' => "",'three' => "",'four' => "",'five' => "");
+        $array = array('','one','two','three','four','five');
+
+        for($i=1;$i<=5;$i++){
+            if($request->file('pic'.$i) == null){
+                continue;
+            }
+            $newfilename = $request->file('pic'.$i)->getClientOriginalName();
+            if(!file_exists("/uploads/".$newfilename)){
+                $request->file('pic'.$i)->move(public_path("/uploads"), $newfilename);
+            }
+            $arrayName[$array[$i]] = $newfilename;
+        }
+        $slider = Slider::where('id', 1);
+
+        $i = 0;
+        foreach ($arrayName as $an => $value) {
+            $i++;
+           if($value==""){
+            continue;
+           }
+           $slider->update([$array[$i] => $value]);
+        }
+        return redirect('admin_panel');
+    }
+
 }
