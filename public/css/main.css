@@ -562,11 +562,12 @@ img {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+  background: #2f2f2f;
 }
 
 .gallerySlideShow .tumbnails .image {
   margin-right: 0;
-  border: 1px solid #000;
+  border: 1px solid #2f2f2f;
   width: 25%;
 }
 

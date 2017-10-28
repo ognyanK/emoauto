@@ -94,11 +94,12 @@
 
     .tumbnails {
         @include flexbox(flex-start, row wrap, flex-start);
+        background: color(grey);
 
         .image {
             @extend %tumbnail;
             margin-right: 0;
-            border: 1px solid color(black);
+            border: 1px solid color(grey);
             width: cp(250 / 4, 250);
 
             &:hover {
