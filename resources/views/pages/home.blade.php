@@ -10,17 +10,13 @@
             </span>
 
             <ul class="bxslider">
-                <li class="slides">
-                    <img src="images/example-car.png" alt="car">
-                </li>
-    
-                <li class="slides">
-                    <img src="images/example-car.png" alt="car">
-                </li>
-    
-                <li class="slides">
-                    <img src="images/example-car.png" alt="car">
-                </li>
+                <?php
+                    foreach ($slider_pics as $sp) {
+                       echo "<li class=\"slides\">
+                            <img src=\"/uploads/".$sp."\" alt=\"car\">
+                        </li>";
+                    }
+                ?>
             </ul>
         </div>
     </div>
