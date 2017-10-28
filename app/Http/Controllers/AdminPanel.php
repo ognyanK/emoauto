@@ -59,8 +59,14 @@ class AdminPanel extends Controller
         	$questions = Question::where('post_id','=',$car['id'])->get();
         	$questions_array[$car['id']] = count($questions);
         }
+        $array = array('one','two','three','four','five');
+        $slider = Slider::where('id','=',1)->get();
+        $slider_pics = array();
+        for($i=0;$i<5;$i++){
+            array_push($slider_pics, $slider[0][$array[$i]]);
+        }
 
-        return view('admin_panel')->with('cars', $cars)->with("questions_array", $questions_array); //return models
+        return view('admin_panel')->with('cars', $cars)->with("questions_array", $questions_array)->with('slider_pics',$slider_pics); //return models
     }
 
     public function loadQuestions($id){

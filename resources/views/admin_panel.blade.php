@@ -150,7 +150,21 @@
 
         </div>
         <div class="slider_images">
-            <div class="pict" id="a1">
+        <?php
+         $i = 1;
+            foreach ($slider_pics as $sp) {
+                $img;
+                if($sp == ""){
+                    $img = "images/up_back.ico";
+                }else{
+                    $img = "uploads/".$sp;
+                }
+                echo "<div class=\"pict\" id=\"a".$i++."\">
+                        <img src=\"".$img."\" width=\"100%\" height=\"100%\">
+                    </div>";
+            }
+        ?>
+            <!--<div class="pict" id="a1">
                 <img src="images/up_back.ico" width="100%" height="100%">
             </div>
             <div class="pict" id="a2">
@@ -164,7 +178,7 @@
             </div>
             <div class="pict" id="a5">
                 <img src="images/up_back.ico" width="100%" height="100%">
-            </div>
+            </div>-->
              <form method="POST" action="/admin_panel/slider_store" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
               {{ csrf_field() }}
                 <input class="a1" type="file" name="pic1" style="display:none">
