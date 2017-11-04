@@ -285,6 +285,8 @@ img {
   position: relative;
   margin: 0 auto;
   max-width: 900px;
+  max-height: 500px;
+  overflow: hidden;
 }
 
 .slider-container .bx-pager {
