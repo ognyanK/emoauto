@@ -275,14 +275,10 @@ img {
   z-index: 1000;
 }
 
-.slider-container .slides {
-  max-height: 370px;
-}
-
 .slider-container .slides img {
   display: block;
   margin: 0 auto;
-  max-height: 370px;
+  width: 100%;
 }
 
 .slider-container .wrap-slider {
