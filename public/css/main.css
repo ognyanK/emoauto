@@ -269,9 +269,9 @@ img {
 
 .slider-container .slider-logo {
   position: absolute;
-  width: 30px;
-  left: 50px;
-  top: 50px;
+  width: 300px;
+  left: 30px;
+  bottom: 30px;
   z-index: 1000;
 }
 

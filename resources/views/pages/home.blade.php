@@ -6,7 +6,7 @@
     <div class="slider-container">
         <div class="wrap-slider">
             <span class="slider-logo">
-                <img src="images/logo.png" alt="">
+                <img src="images/logo_white.png" alt="">
             </span>
 
             <ul class="bxslider">
@@ -33,8 +33,11 @@
                         </div>
     
                         <div class="links">
-                            <a href="#">Автомобили : 21</a>
-                            <a href="#">Джипове : 1</a>
+                            <?php 
+                                foreach ($cat_count as $key => $value) {
+                                    echo "<a href=\"#\">".$key." : ".$value."</a>";
+                                }
+                            ?>
                         </div>
                     </div>
     
@@ -76,7 +79,7 @@
                             echo "<img src=\"/uploads/".$i['pictures']."\" alt=\"example\">";
                             echo "</div>"; 
                             echo "<div class=\"news-content\">
-                                    <h2>".$i['brand']." ".$i['model']."</h2>
+                                    <h2><a href=\"details/".$i['id']."\" style=\"color:#EF3B3A\">".$i['brand']." ".$i['model']."</a></h2>
                                     
                                     <h3 class=\"price\">".$i['price']." ".$i['currency']."</h3>
                                     <span class=\"date\">01/01/17</span>

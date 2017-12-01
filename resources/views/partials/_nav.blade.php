@@ -1,13 +1,12 @@
 <header class="site-header">
     <div class="header">
         <div class="logo">
-            <img src="http://localhost:8000/images/logo.png" alt="" width="60px">
+            <img src="http://localhost:8000/images/logo_white.png" alt="" width="60px">
         </div>
 
         <div class="header-menu">
             <nav>
                 <a id="home" href="/">Начало</a>
-                <a href="#">Contanct Us</a>
             </nav>
         </div>
 
@@ -17,10 +16,6 @@
             <ul class="header-dropdown">
                 <li>
                     <a id="home_ham" href="/">Начало</a>
-                </li>
-
-                <li>
-                    <a href="#">Contanct Us</a>
                 </li>
             </ul>
         </div>

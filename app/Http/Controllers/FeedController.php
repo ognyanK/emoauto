@@ -10,7 +10,7 @@ class FeedController extends Controller
 {
     public function index($category)
     {
-        $info = Post::where('base_category','=',$category)->paginate(5);
+        $info = Post::where('base_category','=',$category)->orderBy('id','DESC')->paginate(5);
 
         return view('pages/feed', ['info' => $info]); //return models
     }
@@ -22,7 +22,11 @@ class FeedController extends Controller
     	$question->contacts_question = $request->contacts_question;
     	$question->contacts_name = $request->contacts_name;
     	$question->contacts_email = $request->contacts_email;
-    	$question->contacts_phone = $request->contacts_phone;
+        if(isset($request->contacts_phone)){
+        	$question->contacts_phone = $request->contacts_phone;
+        }else{
+            $question->contacts_phone = "Не е указан телефон.";
+        }
     	$question->save();
 
     	$redirect = '/details/'.$request->post_id;

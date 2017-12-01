@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <title>emoauto admin panel</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../images/logo.png">
         <!-- Styles -->
     <style>
 
@@ -24,22 +25,52 @@
         width: 65%;
         float: left;
     }
-    .right_side_container{
+
+    .rhs {
         width: 34%;
+        float: right;
+    }
+    .right_side_container{
+        width: 100%;
         height: 300px;
         background-color: white;
-        float: left;
+        float: right;
         border:1px solid #8e0f0f;
         border-top:4px solid #8e0f0f;
         border-radius: 8px;
         box-sizing: border-box;
         margin-left: 1%;
-        padding: 15px;
+        padding: 10px 15px 15px 15px;
+        overflow-y: scroll;
     }
-    .slider_images{
-        width: 34%;
-        background-color: white;
+    .right_side_container .question{
+        width: 100%;
         float: left;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-top: 5px;
+    }
+    .right_side_container .question .q_header{
+        width: 100%;
+        float: left;
+        background-color: #EF3B3A;
+        color: white;
+        padding:5px;
+        box-sizing: border-box;
+        font-size: 12px;
+    }
+    .right_side_container .question .q_cont{
+        width: 100%;
+        float: left;
+        background-color: lightgray;
+        padding:5px;
+        box-sizing: border-box;
+    }
+
+    .slider_images{
+        width: 100%;
+        background-color: white;
+        float: right;
         border:1px solid #8e0f0f;
         border-top:4px solid #8e0f0f;
         border-radius: 8px;
@@ -100,6 +131,13 @@
     .feed-item .options{
         float: right;
     }
+    .message {
+        color:#EF3B3A;
+        cursor: pointer;
+    }
+    .message:hover{
+        text-decoration: underline;   
+    }
     </style>
     </head>
     <body>
@@ -130,15 +168,14 @@
                             $pics = explode(",", $i['pictures']);
                             $title = $i['brand']." ".$i['model'];
                             echo $title.", ";
-                            echo $i['price']." ".$i['currency'].", ";
-                            echo $i['additional_info'];
+                            echo $i['price']." ".$i['currency'];
                         ?>
                     </div>
                     <div class="options">
                         <?php
                             echo "<a href=\"/panelInsert/edit/".$i['id']."\">edit</a>, ";
                             echo "<a id=\"delete\" href=\"/panelInsert/destroy/".$i['id']."\">delete</a>, ";
-                            echo "<span class=\"messege\" id=\"".$i['id']."\">messeges(".$questions_array[$i['id']].")</span>";
+                            echo "<span class=\"message\" id=\"".$i['id']."\">messages(".$questions_array[$i['id']].")</span>";
                         ?>
                     </div>
                 </div>
@@ -146,48 +183,34 @@
             </div>
             {{ $cars->links() }}
         </div>
-        <div class="right_side_container">
-
-        </div>
-        <div class="slider_images">
-        <?php
-         $i = 1;
-            foreach ($slider_pics as $sp) {
-                $img;
-                if($sp == ""){
-                    $img = "images/up_back.ico";
-                }else{
-                    $img = "uploads/".$sp;
+        <div class="rhs">
+            <div class="right_side_container">
+            </div>
+            <div class="slider_images">
+            <?php
+             $i = 1;
+                foreach ($slider_pics as $sp) {
+                    $img;
+                    if($sp == ""){
+                        $img = "images/up_back.ico";
+                    }else{
+                        $img = "uploads/".$sp;
+                    }
+                    echo "<div class=\"pict\" id=\"a".$i++."\">
+                            <img src=\"".$img."\" width=\"100%\" height=\"100%\">
+                        </div>";
                 }
-                echo "<div class=\"pict\" id=\"a".$i++."\">
-                        <img src=\"".$img."\" width=\"100%\" height=\"100%\">
-                    </div>";
-            }
-        ?>
-            <!--<div class="pict" id="a1">
-                <img src="images/up_back.ico" width="100%" height="100%">
+            ?>
+                 <form method="POST" action="/admin_panel/slider_store" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                    <input class="a1" type="file" name="pic1" style="display:none">
+                    <input class="a2" type="file" name="pic2" style="display:none">
+                    <input class="a3" type="file" name="pic3" style="display:none">
+                    <input class="a4" type="file" name="pic4" style="display:none">
+                    <input class="a5" type="file" name="pic5" style="display:none">
+                    <input type="submit" name="submit" value="save">
+                </form>
             </div>
-            <div class="pict" id="a2">
-                <img src="images/up_back.ico" width="100%" height="100%">
-            </div>
-            <div class="pict" id="a3">
-                <img src="images/up_back.ico" width="100%" height="100%">
-            </div>
-            <div class="pict" id="a4">
-                <img src="images/up_back.ico" width="100%" height="100%">
-            </div>
-            <div class="pict" id="a5">
-                <img src="images/up_back.ico" width="100%" height="100%">
-            </div>-->
-             <form method="POST" action="/admin_panel/slider_store" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
-              {{ csrf_field() }}
-                <input class="a1" type="file" name="pic1" style="display:none">
-                <input class="a2" type="file" name="pic2" style="display:none">
-                <input class="a3" type="file" name="pic3" style="display:none">
-                <input class="a4" type="file" name="pic4" style="display:none">
-                <input class="a5" type="file" name="pic5" style="display:none">
-                <input type="submit" name="submit" value="save">
-            </form>
         </div>
     </div>
 </body>
@@ -214,16 +237,26 @@
             $("."+$id).click();
         });
 
-        $(".options").on('click', '.messege',function(){
+        $(".options").on('click', '.message',function(){
 
             var URL = "/admin_panel/loadQuestions/"+$(this).attr('id');
             $.ajax({
               type: "GET",
               url: URL
             }).done(function( msg ) {
-                for(var i=0;i<msg.length;i++){
-                    alert(msg[i].pictures);
-                }
+                cont = ""
+                for(var i=0;i<msg.length;i++){ 
+                    cont+="<div class=\"question\">\
+                            <div class=\"q_header\">\
+                                "+msg[i]['created_at']+","+msg[i]['contacts_name']+","+msg[i]['contacts_email']+","
+                                +msg[i]['contacts_phone']+"\
+                            </div>\
+                            <div class=\"q_cont\">\
+                                "+msg[i]['contacts_question']+"\
+                            </div>\
+                        </div>";
+                    }
+                $('.right_side_container').html(cont);
             });
         });
 

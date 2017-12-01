@@ -11,7 +11,7 @@ class PagesController extends Controller
 
 	public function getIndex()
 	{
-		$info = Post::select('model','brand','price','currency','pictures')->take(3)->get(); 
+		$info = Post::select('id','model','brand','price','currency','pictures')->orderBy('id', 'DESC')->take(3)->get(); 
 		for($i=0;$i<count($info);$i++){
 			$pics = explode(",",$info[$i]['pictures']);
 			$info[$i]['pictures'] = $pics[0];
@@ -26,7 +26,20 @@ class PagesController extends Controller
 				array_push($slider_pics, $slider[0][$array[$i]]);
 			}
 		}
-		return view('pages/home')->with("info", $info)->with('slider_pics', $slider_pics);
+
+		$rows = Post::select('base_category')->get();
+		$cat_count = array();
+
+		foreach ($rows as $row) {
+			$row = $row['base_category'];
+			if (!array_key_exists($row, $cat_count)) {
+				$cat_count[$row] = 1;
+			}else{
+				$cat_count[$row] += 1;
+			}
+		}
+
+		return view('pages/home')->with("info", $info)->with('slider_pics', $slider_pics)->with('cat_count', $cat_count);
 	}
 
 	public function getDetails() 

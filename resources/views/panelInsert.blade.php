@@ -210,7 +210,13 @@
                   Модел
                 </div>
                 <div class="input_value">
-                  <input class="models" type="text" name="models"></input>
+                  <?php 
+                  if(isset($model)){
+                    echo "<input class=\"models\" type=\"text\" name=\"model\" value=\"".$model."\"></input>";
+                  }else{
+                    echo "<input class=\"models\" type=\"text\" name=\"model\"></input>";
+                  }
+                ?>
                 </div>
               </div>
             </div>
@@ -274,7 +280,7 @@
                           }
                         }else{
                           for($i=0;$i<count($stateTypes);$i++){
-                            if($i == 0){
+                            if($i == 1){
                                echo "<input type=\"radio\" name=\"state\" value=\"".$stateTypes[$i]."\" checked=\"\">".$stateTypes[$i]."</input>";
                                continue;
                             }
@@ -462,40 +468,23 @@
                 <div class="input_value">
                   <select class="date_of_manufacture" name="date_of_manufacture">
                     <option value=""> </option>
-                    <option value="януари">
-                      януари
-                    </option>
-                    <option value="февруари">
-                      февруари
-                    </option>
-                    <option value="март">
-                      март
-                    </option>
-                    <option value="април">
-                      април
-                    </option>
-                    <option value="май">
-                      май
-                    </option>
-                    <option value="юни">
-                      юни
-                    </option>
-                    <option value="юли">
-                      юли
-                    </option>
-                    <option value="август">
-                      август
-                    </option>
-                    <option value="септември">
-                      септември
-                    </option>
-                    <option value="октомври">
-                      октомври
-                    </option>
-                    <option value="ноември">
-                      ноември
-                    </option>
-                    <option value="декември">декември</option>
+                    <?php
+                    $months = array("януари","февруари","март","април","май","юни","юли","август","септември","октомври","ноември","декември");
+                    if(isset($date_of_manufacture)){
+                      #echo "<option value=\"asdads\">adsasddsa</option>";
+                      for($i = 0;$i<count($months);$i++){
+                        $add = "";
+                        if($date_of_manufacture == $i){
+                          $add = " selected=\"selected\"";
+                        }
+                        echo "<option value=\"".$months[$i]."\"".$add."> ".$months[$i]." </option>";
+                      }
+                    }else{
+                      for($i = 0;$i<count($months);$i++){
+                        echo "<option value=\"".$months[$i]."\"> ".$months[$i]." </option>";
+                      }
+                    }
+                    ?>
                   </select>
                 </div>
               </div>
@@ -529,6 +518,7 @@
                     <option value=""> </option>
                     <?php
                       $colorValues = array("Tъмно син","Банан","Беата","Бежов","Бордо","Бронз","Бял","Винен","Виолетов","Вишнев","Графит","Жълт","Зелен","Златист","Кафяв","Керемиден","Кремав","Лилав","Металик","Оранжев","Охра","Пепеляв","Перла","Пясъчен","Резидав","Розов","Сахара","Светло сив","Светло син","Сив","Син","Слонова кост","Сребърен","Т.зелен","Тъмно сив","Тъмно син мет.","Тъмно червен","Тютюн","Хамелеон","Червен","Черен");
+
                         if(isset($color)){
                           for($i=0;$i<count($colorValues);$i++){
                             $add = "";
@@ -538,7 +528,7 @@
                             echo "<option value=\"".$colorValues[$i]."\"".$add.">".$colorValues[$i]."</option>";
                           }
                         }else{
-                          for($i=0;$i<count($currencyValues);$i++){
+                          for($i=0;$i<count($colorValues);$i++){
                             echo "<option value=\"".$colorValues[$i]."\">".$colorValues[$i]."</option>";
                           }
                         }
@@ -567,6 +557,10 @@
                           }
                         }else{
                           for($i=0;$i<count($regionValues);$i++){
+                            if($regionValues[$i] == "София"){
+                              echo "<option value=\"".$regionValues[$i]."\" selected=\"selected\">".$regionValues[$i]."</option>";
+                              continue;
+                            }
                             echo "<option value=\"".$regionValues[$i]."\">".$regionValues[$i]."</option>";
                           }
                         }
@@ -575,18 +569,6 @@
                 </div>
               </div>
               <div class="under_header_comp50" id="engine_type">
-                <div class="label">
-                  Населено място
-                </div>
-                <div class="input_value">
-                  <?php 
-                  if(isset($populated_place)){
-                    echo "<input class=\"populated_place\" type=\"text\" name=\"populated_place\" value=\"".$populated_place."\"> </input>";
-                  }else{
-                    echo "<input class=\"populated_place\" type=\"text\" name=\"populated_place\"> </input>";
-                  }
-                ?>
-                </div>
               </div>
             </div>
             <div class="row">
@@ -599,7 +581,7 @@
                     if(isset($phone)){
                       echo "<input type=\"text\" class=\"phone\" name=\"phone\" value=\"".$phone."\"> </input>";
                     }else{
-                      echo "<input type=\"text\" class=\"phone\" name=\"phone\"> </input>";
+                      echo "<input type=\"text\" class=\"phone\" name=\"phone\" value=\"0878503102\"> </input>";
                     }
                   ?>
                 </div>
@@ -613,7 +595,7 @@
                     if(isset($email)){
                       echo "<input type=\"text\" class=\"e-mail\" name=\"e-mail\" value=\"".$email."\"> </input>";
                     }else{
-                      echo "<input type=\"text\" class=\"e-mail\" name=\"e-mail\"> </input>";
+                      echo "<input type=\"text\" class=\"e-mail\" name=\"e-mail\" value=\"emoa4@abv.bg\"> </input>";
                     }
                   ?>
                 </div>
@@ -962,6 +944,7 @@ window.onload = function(){
       type: "GET",
       url: URL
     }).done(function( msg ) {
+      //alert(msg);
     });
   });
 

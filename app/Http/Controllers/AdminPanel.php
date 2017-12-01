@@ -52,7 +52,7 @@ class AdminPanel extends Controller
         }
         
 
-        $cars = Post::paginate(5);
+        $cars = Post::orderBy('id','DESC')->paginate(5);
 
         $questions_array = array();
         foreach ($cars as $car) {

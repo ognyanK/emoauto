@@ -82,7 +82,7 @@ class PostController extends Controller
         if($edit){
             $created_at = Post::where('id','=',$request->id)->value('created_at');
             if(!isset($created_at))return redirect('admin_panel');
-            $this->destroy($request->id);
+            $this->destroy_no_session_workaround($request->id);
         }
 
         for($i = 0;$i<count($request->file('files'));$i++){
@@ -92,7 +92,7 @@ class PostController extends Controller
 
         $pictures = implode(",", $filenames);
 
-        $arr = array('base_category','brand','model','modification','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place','phone','e-mail','additional_info');
+        $arr = array('base_category','brand','model','modification','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place','phone','e-mail');
 
         $post = new Post();
         $s = "random";
@@ -102,6 +102,11 @@ class PostController extends Controller
             if(!is_null($value)){
                 $post->setAttribute($arr[$i], $value);
             }
+        }
+        if(isset($request->additional_info)){
+            $post->additional_info = $request->additional_info;
+        }else{
+            $post->additional_info = "";
         }
 
         $post->safety = $this->getCheckboxValues($request, "safety", 17);
@@ -117,6 +122,7 @@ class PostController extends Controller
 
         if($edit){
             $post->created_at = $created_at;
+            $post->id = $request->id;
         }
 
         $post->save();
@@ -165,21 +171,8 @@ class PostController extends Controller
         ->with('safety',$info['safety'])->with('comfort',$info['comfort'])->with('other',$info['other'])
         ->with('exterior',$info['exterior'])->with('protection',$info['protection'])->with('interior',$info['interior'])
         ->with('specialized',$info['specialized'])->with('phone',$info['phone'])->with('email',$info['e-mail'])
-        ->with('additional_info',$info['additional_info'])->with('created_at',$info['created_at'])->with('updated_at',$info['updated_at']); //return models
+        ->with('additional_info',$info['additional_info'])->with('created_at',$info['created_at'])->with('updated_at',$info['updated_at'])->with("MODE", "DETAILS"); //return models
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        return 'update';
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -188,9 +181,20 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-
+        session_start();
+        ob_start();
         if(!isset($_SESSION['user']))
-        {
+        {   
+            return redirect('/aplog');
+        }
+
+        Post::where('id','=',$id)->delete();
+        return redirect('admin_panel');
+    }
+    private function destroy_no_session_workaround($id)
+    {
+        if(!isset($_SESSION['user']))
+        {   
             return redirect('/aplog');
         }
 

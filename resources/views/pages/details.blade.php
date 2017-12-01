@@ -27,9 +27,8 @@
                         echo "<div class=\"current-img\">";
                         echo "<img class=\"pic\" src='/uploads/".$key."' >";
                         echo "</div><div class=\"tumbnails\">";
-                    }else{
-                        echo "<div data-imageUrl='/uploads/".$key."' class=\"image\" style=\"background-image: url('/uploads/".$key."');\"></div>";
                     }
+                    echo "<div data-imageUrl='/uploads/".$key."' class=\"image\" style=\"background-image: url('/uploads/".$key."');\"></div>";
                 $i++;
                 }
                 echo "</div>";
@@ -48,9 +47,8 @@
                                 echo "<div class=\"current-img\">";
                                 echo "<img class=\"pic\" src='/uploads/".$pics[0]."' >";
                                 echo "</div><div class=\"tumbnails\">";
-                            }else{
-                                echo "<div data-imageUrl='/uploads/".$key."' class=\"image\" style=\"background-image: url('/uploads/".$key."');\"></div>";
                             }
+                            echo "<div data-imageUrl='/uploads/".$key."' class=\"image\" style=\"background-image: url('/uploads/".$key."');\"></div>";
                         $i++;
                         }
                         echo "</div>";
@@ -101,7 +99,7 @@
                                     Последна промяна:<br /><?php echo $updated_at?></p>
                                 </div>
                             </div>
-                            <div class="form">
+                            <div class="form" id="sub">
                                 <form method="POST" id="form_contacts" action="/storeQuestion" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
@@ -119,13 +117,20 @@
                                         <td>Вашето име:</td><td></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" name="contacts_name" required></td><td><img src="http://localhost:8000/images/captcha.gif" width="100px"></td>
+                                        <td><input type="text" name="contacts_name" required></td><td><input id="captcha" type="text" name="captcha" disabled style="-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+  text-align: center;
+  background-image: url('http://4.bp.blogspot.com/-EEMSa_GTgIo/UpAgBQaE6-I/AAAAAAAACUE/jdcxZVXelzA/s1600/ca.png');"></td>
                                     </tr>
                                     <tr>
                                         <td>Вашия E-mail:</td><td>Въведете кода:</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" name="contacts_email" required></td><td><input type="text" name="contacts_captcha"></td>
+                                        <td><input type="text" name="contacts_email" required></td><td><input id="contacts_captcha" type="text" name="contacts_captcha"></td>
                                     </tr>
                                     <tr>
                                         <td>Вашия телефон:</td><td></td>
@@ -194,6 +199,29 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+           var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+            var string_length = 6;
+            var ChangeCaptcha = '';
+            for (var i=0; i<string_length; i++) {
+                var rnum = Math.floor(Math.random() * chars.length);
+                ChangeCaptcha += chars.substring(rnum,rnum+1);
+            }
+            document.getElementById('captcha').value = ChangeCaptcha;
+
+            $("#sub").submit(function(){
+                if(document.getElementById('contacts_captcha').value == document.getElementById('captcha').value ) {
+                    return true;
+                }
+                else {
+                alert('Please re-check the captcha');
+                    return false;
+                }
+            });
+        });
+
+    </script>
 @endsection
 
     
