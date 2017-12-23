@@ -57,7 +57,7 @@ class PostController extends Controller
         ->with('safety',$info['safety'])->with('comfort',$info['comfort'])->with('other',$info['other'])
         ->with('exterior',$info['exterior'])->with('protection',$info['protection'])->with('interior',$info['interior'])
         ->with('specialized',$info['specialized'])->with('phone',$info['phone'])->with('email',$info['e-mail'])
-        ->with('additional_info',$info['additional_info']);
+        ->with('additional_info',$info['additional_info'])->with('meta_title', $info['meta_title'])->with('meta_description', $info['meta_description'])->with('meta_keywords', $info['meta_keywords'])->with('seo', $info['seo']);
     }
 
     /**
@@ -92,7 +92,7 @@ class PostController extends Controller
 
         $pictures = implode(",", $filenames);
 
-        $arr = array('base_category','brand','model','modification','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place','phone','e-mail');
+        $arr = array('base_category','brand','model','modification','engine_type','state','power','euro_standard','transmission','category','price','currency','year_of_manufacture','date_of_manufacture','mileage','color','region','populated_place','phone','e-mail','meta_title','meta_description','meta_keywords', 'seo');
 
         $post = new Post();
         $s = "random";
@@ -171,7 +171,7 @@ class PostController extends Controller
         ->with('safety',$info['safety'])->with('comfort',$info['comfort'])->with('other',$info['other'])
         ->with('exterior',$info['exterior'])->with('protection',$info['protection'])->with('interior',$info['interior'])
         ->with('specialized',$info['specialized'])->with('phone',$info['phone'])->with('email',$info['e-mail'])
-        ->with('additional_info',$info['additional_info'])->with('created_at',$info['created_at'])->with('updated_at',$info['updated_at'])->with("MODE", "DETAILS"); //return models
+        ->with('additional_info',$info['additional_info'])->with('created_at',$info['created_at'])->with('updated_at',$info['updated_at'])->with("MODE", "DETAILS")->with('meta_title', $info['meta_title'])->with('meta_description', $info['meta_description'])->with('meta_keywords', $info['meta_keywords'])->with('seo', $info['seo']); //return models
     }
     /**
      * Remove the specified resource from storage.

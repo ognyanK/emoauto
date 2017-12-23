@@ -13,6 +13,9 @@
       <!--<link rel="stylesheet" href="css/style.css">-->
       <style>
       /* Form */
+      body{
+        font-family: 'Galada', sans-serif !important;
+      }
 .form {
   position: relative;
   z-index: 1;
@@ -158,7 +161,7 @@ body:before {
   
 <div class="container">
   <div class="info">
-    <h1>Flat Login Form</h1><span>Administration login for emoauto <i class="fa fa-heart"></i></span>
+    <h1>Flat Login Form</h1><span>Administration login for emoauto</span>
   </div>
 </div>
 <div class="form">

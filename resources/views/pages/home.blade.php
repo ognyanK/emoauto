@@ -25,7 +25,7 @@
         <div class="wrapper wrapper-1000">
             <div class="flex-layout">
                 <div class="offer">
-                    <h3>Какво предлагаме?</h3>
+                    <h4><b>Какво предлагаме?</b></h4>
     
                     <div class="flex">
                         <div class="image_2">
@@ -42,7 +42,7 @@
                     </div>
     
                     <div class="our-offers">
-                        <h4>Вижте нашите оферти в :</h4>
+                        <h4><b>Вижте нашите оферти в:</b></h4>
     
                         <div class="external-sites flex">
                             <a href="http://emoauto.mobile.bg/">
@@ -54,7 +54,7 @@
                             </a>
                         </div>
 
-                        <h4>Кандидатствайте за лизинг:</h4>
+                        <h4><b>Кандидатствайте за лизинг:</b></h4>
     
                         <div class="external-sites flex">
                             <a href="https://www.mogo.bg/">
@@ -79,10 +79,12 @@
                             echo "<img src=\"/uploads/".$i['pictures']."\" alt=\"example\">";
                             echo "</div>"; 
                             echo "<div class=\"news-content\">
-                                    <h2><a href=\"details/".$i['id']."\" style=\"color:#EF3B3A\">".$i['brand']." ".$i['model']."</a></h2>
+                                    <div class='h1-wrapper'>
+                                    <h1><a href=\"details/".$i['id']."\" style=\"color:#EF3B3A\">".$i['brand']." ".$i['model']."</a></h1>
+                                    </div>
                                     
                                     <h3 class=\"price\">".$i['price']." ".$i['currency']."</h3>
-                                    <span class=\"date\">01/01/17</span>
+                                    <span class=\"date\">".$i['updated_at']."</span>
                                 </div>";
                             echo "</div>";
                         }

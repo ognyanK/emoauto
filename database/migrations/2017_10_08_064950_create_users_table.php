@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
 
         $user = new User();
         $user->username = "admin";
-        $user->password = "123456";
+        $user->password = sha1("123456");
         $user->save();
     }
 

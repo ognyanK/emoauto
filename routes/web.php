@@ -12,9 +12,10 @@
 */
 
 
-Route::get('/', 'PagesController@getIndex');
+Route::get('/', 'PagesController@home');
 
 Route::get('/something/{id}', 'BrandController@show');
+Route::post('/something/add', 'BrandController@add');
 
 //Route::resource('panelInsert', 'PostController');
 
@@ -28,6 +29,7 @@ Route::get('/loadCategories', 'PagesController@loadCategories');
 Route::get('/details/{id}', 'PostController@show');
 Route::get('/admin_panel', 'AdminPanel@show');
 Route::post('/admin_panel/slider_store', 'AdminPanel@slider_store');
+Route::post('/admin_panel/change_password', 'AdminPanel@change_password');
 Route::get('/admin_panel/loadQuestions/{id}', 'AdminPanel@loadQuestions');
 Route::get('/aplog', 'AdminPanel@getAdminPanelLogin');
 Route::post('/login','AdminPanel@login');

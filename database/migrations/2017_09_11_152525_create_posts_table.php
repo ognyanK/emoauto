@@ -53,6 +53,10 @@ class CreatePostsTable extends Migration
             $table->string("interior")->default($value);
             $table->string("specialized")->default($value);
 
+            $table->string("meta_title")->default($value);
+            $table->string("meta_description")->default($value);
+            $table->string("meta_keywords")->default($value);
+            $table->string("seo")->default($value);
 
             $table->text("pictures");
         });

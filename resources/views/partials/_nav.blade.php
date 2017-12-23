@@ -1,7 +1,19 @@
+@if (session('message'))
+    <div class="report_m"> {{session('message')}} </div>
+    <script>
+        sleep(5000).then(()=>{
+            $(".report_m").css("display","none");
+        });
+        
+        function sleep(time){
+            return new Promise((resolve)=>setTimeout(resolve,time));
+        }
+    </script>
+    @endif
 <header class="site-header">
     <div class="header">
         <div class="logo">
-            <img src="http://localhost:8000/images/logo_white.png" alt="" width="60px">
+            <img src="http://localhost:8000/images/logo_white.png" alt="" width="90px">
         </div>
 
         <div class="header-menu">

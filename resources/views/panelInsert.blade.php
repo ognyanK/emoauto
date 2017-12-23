@@ -5,11 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>emoauto insert/update car</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link rel="icon" href="../images/logo.png">
         <!-- Styles -->
         <style>
           html, body {
@@ -21,7 +21,6 @@
 
           #content {
             width: 1200px;
-            height:1650px;
             margin: 0 auto;
             box-sizing: border-box;
             background-color: lightgray;
@@ -37,15 +36,51 @@
             width: 100%;
             float: center;
             box-sizing: border-box;
+            float: left;
+          }
+
+          #content .under_header #seo{
+            width: 60%;
+            height: 120px; 
+            float: left;
           }
 
           #content .under_header #additional_info{
             width: 60%;
-            height: 120px;
+            height: 120px; 
             float: center;
-            margin:0 auto;
+            margin: 0 auto;
           }
-          #content .under_header #additional_info textarea{
+
+          #content #uh,#uh-seo{
+            float: left;
+            padding: 0 15px 15px 15px;
+          }
+
+          #content #uh-seo{
+            margin-top: 25px;
+          }
+
+          #content .under_header #metadata{
+            height: 120px;
+            width: 38%;
+            float: right;
+          }
+
+          #content .under_header #metadata .rowTit {
+
+            float: left;
+            margin-top: 2px;
+          }
+          #content .under_header #metadata .rowTit .tit{
+            width: 100px;
+            float: left;
+          }
+          #content .under_header #metadata .rowTit input{
+            width: 250px;
+          }
+
+          #content .under_header #additional_info textarea,#content .under_header #seo textarea  {
             width: 100%;
             height: 100px;
             resize: none;
@@ -144,6 +179,15 @@
           #content .under_header #containerImg #result .picture .remImg:hover{
             background-color: orange;
           }
+          #adder{
+            color:#EF3B3A;
+            float: right;
+          }
+          #adder:hover{
+            text-decoration: underline;
+            cursor: pointer;
+            color:#EF3B3A;;
+          }
         </style>
       </head>
       <body>
@@ -207,14 +251,18 @@
               </div>
               <div class="under_header_comp50" id="model">
                 <div class="label">
-                  Модел
+                  Модел 
+                  <span id="adder">add<span>
                 </div>
+                <select class="models_" name="models_">
+                    <option selected="" value=""></option>
+                </select> 
                 <div class="input_value">
                   <?php 
                   if(isset($model)){
-                    echo "<input class=\"models\" type=\"text\" name=\"model\" value=\"".$model."\"></input>";
+                    echo "<input class=\"models\" type=\"text\" name=\"model\" value=\"".$model."\" hidden></input>";
                   }else{
-                    echo "<input class=\"models\" type=\"text\" name=\"model\"></input>";
+                    echo "<input class=\"models\" type=\"text\" name=\"model\" hidden></input>";
                   }
                 ?>
                 </div>
@@ -420,7 +468,7 @@
                         if(isset($currency)){
                           for($i=0;$i<count($currencyValues);$i++){
                             $add = "";
-                            if($category == $currencyValues[$i]){
+                            if($currency == $currencyValues[$i]){
                               $add = " selected=\"selected\"";
                             }
                             echo "<option value=\"".$currencyValues[$i]."\"".$add.">".$currencyValues[$i]."</option>";
@@ -604,14 +652,14 @@
           </div>
           <!--start2-->
           <hr>
-              <div class="under_header">
+              <div class="under_header" id="uh">
                 <div id="additional_info">
                 <b>Допълнителна информация</b>
                 <?php
                     if(isset($additional_info)){
-                      echo "<textarea name=\"additional_info\">".$additional_info."</textarea>";
+                      echo "<textarea id=\"additional_infoTA\" name=\"additional_info\">".$additional_info."</textarea>";
                     }else{
-                      echo "<textarea name=\"additional_info\"></textarea>";
+                      echo "<textarea id=\"additional_infoTA\" name=\"additional_info\"></textarea>";
                     }
                   ?>
                 </div>
@@ -836,10 +884,58 @@
             ?>
       </div>
     </div>
+              <div class="under_header" id="uh-seo">
+              SEO
+              <hr>
+                <div id="seo">
+                <b>Microdata</b>
+                <?php
+                    if(isset($seo)){
+                      echo "<textarea id=\"seo\" name=\"seo\">".$seo."</textarea>";
+                    }else{
+                      echo "<textarea id=\"seo\" name=\"seo\"></textarea>";
+                    }
+                  ?>
+                </div>
+                <div id="metadata">
+                <b>Мета информация</b><br>
+                <div class="rowTit">
+                <div class="tit"> Title: </div>
+                <?php
+                if(isset($meta_title)){
+                  echo "<input type=\"text\" id=\"meta_title\" name=\"meta_title\" value=\"".$meta_title."\">";
+                }else{
+                  echo "<input type=\"text\" id=\"meta_title\" name=\"meta_title\">";
+                }
+                ?><br>
+                </div>
+                <div class="rowTit">
+                <div class="tit">Description: </div>
+                <?php 
+                if(isset($meta_description)){
+                  echo "<input type=\"text\" id=\"meta_description\" name=\"meta_description\" value=\"".$meta_description."\">";
+                }else{
+                  echo "<input type=\"text\" id=\"meta_description\" name=\"meta_description\">";
+                }?>
+                <br>
+                </div>
+                <div class="rowTit">
+                <div class="tit">Keywords: </div>
+                <?php 
+                if(isset($meta_keywords)){
+                  echo "<input type=\"text\" id=\"meta_keywords\" name=\"meta_keywords\" value=\"".$meta_keywords."\">";
+                }else{
+                  echo "<input type=\"text\" id=\"meta_keywords\" name=\"meta_keywords\">";
+                }?><br>
+                </div>
+                </div>
+              </div>
+    <hr>
 </div>
 
 <script>
 window.onload = function(){
+  ajax_call();
   var at = 0;
   var allFiles = new Array();
   var maxImages = 16;
@@ -891,14 +987,15 @@ window.onload = function(){
             break;
           }
           allFiles.push(file.name);
-      
-       var picReader = new FileReader();
+
+          var picReader = new FileReader();
+          picReader.fileName = file.name;
           picReader.addEventListener("load",function(event){
             var picFile = event.target;
             var imgclass = "image"+at;
             var remImgId = at;
             at = at + 1;
-            $("#result").append("<div class=\"picture\"><img style=\"display:none;\" class='"+imgclass+"' src='" + picFile.result +"'/><div class=\"remImg\" id=\""+remImgId+"\">X</div></div>");
+            $("#result").append("<div class=\"picture\" id=\""+event.target.fileName+"\"><img style=\"display:none;\" class='"+imgclass+"' src='" + picFile.result +"'/><div class=\"remImg\" id=\""+remImgId+"\">X</div></div>");
 
             var $img = $("."+imgclass+"");
 
@@ -932,6 +1029,25 @@ window.onload = function(){
   {
     console.log("Your browser does not support File API");
   }
+  $("#adder").on("click", function(){
+    var models = prompt("Enter new models, separated by comma.");
+    if(models == null || models == "" || models == " ")
+      return
+    models = ","+models;
+
+    var URL = "/something/add";
+    $.ajax({
+      type: "POST",
+      url: URL,
+      data: {
+        'id':$(".brands").val(),
+        'models': models,
+        '_token': $('input[name=_token]').val()
+      }
+    }).done(function( msg ) {
+      ajax_call();
+    })
+  });
 
   $("#result").on("click",".remImg", function(){
     images[parseInt($(this).attr('id'))] = "";
@@ -939,13 +1055,30 @@ window.onload = function(){
   });
 
   $(".brands").change(function(){
+    ajax_call();
+  });
+
+  function ajax_call(){
+    var models_val = $(".models").val();
     var URL = "/something/"+$(".brands").val();
     $.ajax({
       type: "GET",
       url: URL
     }).done(function( msg ) {
-      //alert(msg);
+      var res = msg.split(",");
+      $(".models_").html("");
+      $(".models_").append("<option value=\"\"></option>");
+      res.forEach(function(element) {
+          if(element == models_val){
+            $(".models_").append("<option selected=\"selected\" value=\""+element+"\">"+element+"</option>");
+          }else{
+            $(".models_").append("<option value=\""+element+"\">"+element+"</option>");
+          }
+      });
     });
+  }
+  $(".models_").on("change", function(){
+    $(".models").val($(".models_").val());
   });
 
   $("form").submit(function() {
@@ -953,14 +1086,26 @@ window.onload = function(){
       var pics_final = new Array();
       var main_pic = new Array();
       for(var i=0;i<images.length;i++){
-        if(images[i].localeCompare($('#main_pic').val())){
+        if(images[i] == $('#main_pic').val()){
           main_pic.push(images[i]);
         }
         else if(images[i]!=""){
           pics_final.push(images[i]);
         }
       }
-      $('#filenames').val(pics_final.concat(main_pic));
+      $('#filenames').val(main_pic.concat(pics_final));
+
+      //check metadata
+      if($("#meta_title").val() == ""){
+        $("#meta_title").val($(".brands").val() + " " + $(".models").val());
+      }
+      if($("#meta_description").val() == ""){
+        $("#meta_description").val($("#additional_infoTA").val());
+      }
+      //end of check
+
+
+
       return true;
     }else{
       showMissed();

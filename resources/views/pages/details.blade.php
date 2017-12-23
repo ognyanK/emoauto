@@ -10,13 +10,6 @@
             </span>
 
             <div class="navigation">
-                <!-- <span class="prev">
-                    <img src="http://localhost:8000/images/arrow.png" alt="">
-                </span>
-
-                <span class="next">
-                    <img src="http://localhost:8000/images/arrow.png" alt="">
-                </span> -->
             </div>
 
             <?php 
@@ -36,7 +29,7 @@
         </div>
 
         <div class="wrapper wrapper-1000">
-            <h1><?php echo $brandValue." ".$model ?></h1>
+            <h1><?php echo $brandValue." ".$model." ".$modification ?></h1>
             <div class="car--details">
                 <div class="gallery">
                     <?php 
@@ -83,7 +76,7 @@
                     
                     <div class="contacts">
                         <div class="more-info">
-                            <b>Допълнителна информация</b>
+                            <b>Допълнителна информация:</b>
 
                             <p><?php echo $additional_info?></p>
                         </div>

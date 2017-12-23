@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>emoauto admin panel</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="../images/logo.png">
         <!-- Styles -->
     <style>
+    body{
+        font-family: 'Allerta', sans-serif !important;
+        font-size: 17px;
+    }
 
     .whole_content{
         width: 1200px;
@@ -30,9 +35,27 @@
         width: 34%;
         float: right;
     }
+    .rhs .change_password{
+        width: 100%;
+        float: left;
+        border:1px solid #8e0f0f;
+        border-top:4px solid #8e0f0f;
+        border-radius: 8px;
+        padding: 10px;
+        margin-top: 5px;
+    }
+    .rhs .change_password .row_cp{
+        float: left;
+        width: 100%;
+        margin-top: 2px;
+    }
+    .rhs .change_password .txt{
+        float: left;
+        width: 140px;
+    }
     .right_side_container{
         width: 100%;
-        height: 300px;
+        height: 250px;
         background-color: white;
         float: right;
         border:1px solid #8e0f0f;
@@ -49,6 +72,9 @@
         border-radius: 5px;
         overflow: hidden;
         margin-top: 5px;
+        word-wrap: break-word;
+      text-overflow: ellipsis;
+      overflow:hidden;
     }
     .right_side_container .question .q_header{
         width: 100%;
@@ -76,7 +102,7 @@
         border-radius: 8px;
         box-sizing: border-box;
         margin-left: 1%;
-        margin-top: 10px;
+        margin-top: 5px;
         padding: 15px;
     }
     .slider_images .pict{
@@ -138,9 +164,30 @@
     .message:hover{
         text-decoration: underline;   
     }
+    .report_m{
+        width: 100%;
+        color: white;
+        float: left;
+        text-align: center;
+        font-size: 25;
+        background-color: #EF3B3A;
+        transition: 1s;
+    }
     </style>
     </head>
     <body>
+    @if (session('message'))
+        <div class="report_m"> {{session('message')}} </div>
+        <script>
+            sleep(5000).then(()=>{
+                $(".report_m").css("display","none");
+            });
+        
+            function sleep(time){
+                return new Promise((resolve)=>setTimeout(resolve,time));
+            }
+        </script>
+    @endif
     <div class="whole_content">
         <div class="ap_nav">
             <a href="/panelInsert">new car</a>, 
@@ -186,6 +233,21 @@
         <div class="rhs">
             <div class="right_side_container">
             </div>
+            <div class="change_password">
+                <form method="POST" action="/admin_panel/change_password" id="form_cp" accept-charset="UTF-8" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                    <div class="row_cp">
+                    <div class="txt">Стара парола: </div><input class="pass_change" type="password" name="old_pass" id="old_pass">
+                    </div>
+                    <div class="row_cp">
+                    <div class="txt">Нова парола:</div><input class="pass_change" type="password" name="new_pass" id="new_pass">
+                    </div>
+                    <div class="row_cp">
+                    <div class="txt">Нова парола х2:</div><input class="pass_change" type="password" name="new_pass2" id="new_pass2">
+                    </div>
+                    <input type="submit" name="submit" value="save">
+                </form>
+            </div>
             <div class="slider_images">
             <?php
              $i = 1;
@@ -217,6 +279,19 @@
 
     <script type="text/javascript">
     $(document).ready(function(){
+        $("#form_cp").on("submit", function(){
+            if($("#old_pass").val().length < 6 ||$("#new_pass").val().length < 6 || $("#new_pass2").val().length < 6){
+                alert("All of the passwords must be atleast 6 symbols");
+                return false;
+            }
+            if($("#new_pass").val() == $("#new_pass2").val()){
+                return true;
+            }else{
+                alert("New password & new password x2 do not match");
+                return false;
+            }
+        });
+
         $('input').change(function(){
             readURL(this, $(this).attr("class"));
         });

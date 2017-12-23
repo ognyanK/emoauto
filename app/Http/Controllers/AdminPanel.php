@@ -30,7 +30,7 @@ class AdminPanel extends Controller
     }
 
     public function login(Request $request){
-        $user = User::where('username','=',$request->username)->where('password','=',$request->password)->get();
+        $user = User::where('username','=',$request->username)->where('password','=',sha1($request->password))->get();
         if(count($user) > 0){
             session_start();
             $_SESSION['user'] = $user[0]->id;
@@ -105,6 +105,24 @@ class AdminPanel extends Controller
            $slider->update([$array[$i] => $value]);
         }
         return redirect('admin_panel');
+    }
+
+    public function change_password(Request $request)
+    {
+        $user = User::where('id', 1);
+        $user_map = $user->get()[0];
+        $old_pass = sha1($request->old_pass);
+        $message = "";
+
+
+        if($old_pass == $user_map['password']){
+            $user->update(['password' => sha1($request->new_pass)]);
+            $message = "Your password has been changed.";
+        }else{
+            $message = "Wrong old password.";
+        }
+
+        return redirect('admin_panel')->with('message', $message);
     }
 
 }
